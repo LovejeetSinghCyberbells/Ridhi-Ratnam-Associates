@@ -328,7 +328,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
           {/* General Error Banner */}
           {generalError ? (
             <View style={styles.errorBanner}>
-              <AlertCircleIcon size={14} color="#DC2626" />
+              <AlertCircleIcon size={14} color={colors.error} />
               <Text style={styles.errorText}>{generalError}</Text>
             </View>
           ) : null}
@@ -349,7 +349,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
                     }
                     setGeneralError('');
                   }}
-                  leftIcon={<MailIcon size={16} color="#64748B" />}
+                  leftIcon={<MailIcon size={16} color={colors.slate500} />}
                   error={errors.loginIdentifier}
                   accentColor={colors.primaryBlack}
                   autoCapitalize="none"
@@ -368,7 +368,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
                     setGeneralError('');
                   }}
                   isPassword={true}
-                  leftIcon={<LockIcon size={16} color="#64748B" />}
+                  leftIcon={<LockIcon size={16} color={colors.slate500} />}
                   error={errors.loginPassword}
                   accentColor={colors.primaryBlack}
                   returnKeyType="done"
@@ -426,7 +426,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
                     if (errors.fullName) setErrors((prev) => ({ ...prev, fullName: '' }));
                     setGeneralError('');
                   }}
-                  leftIcon={<UserIcon size={16} color="#64748B" />}
+                  leftIcon={<UserIcon size={16} color={colors.slate500} />}
                   error={errors.fullName}
                   accentColor={colors.primaryBlack}
                   returnKeyType="next"
@@ -442,7 +442,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
                     if (errors.email) setErrors((prev) => ({ ...prev, email: '' }));
                     setGeneralError('');
                   }}
-                  leftIcon={<MailIcon size={16} color="#64748B" />}
+                  leftIcon={<MailIcon size={16} color={colors.slate500} />}
                   error={errors.email}
                   accentColor={colors.primaryBlack}
                   keyboardType="email-address"
@@ -460,7 +460,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
                     if (errors.phone) setErrors((prev) => ({ ...prev, phone: '' }));
                     setGeneralError('');
                   }}
-                  leftIcon={<PhoneIcon size={16} color="#64748B" />}
+                  leftIcon={<PhoneIcon size={16} color={colors.slate500} />}
                   error={errors.phone}
                   accentColor={colors.primaryBlack}
                   keyboardType="phone-pad"
@@ -478,7 +478,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
                     setGeneralError('');
                   }}
                   isPassword={true}
-                  leftIcon={<LockIcon size={16} color="#64748B" />}
+                  leftIcon={<LockIcon size={16} color={colors.slate500} />}
                   error={errors.signupPassword}
                   accentColor={colors.primaryBlack}
                   returnKeyType="next"
@@ -497,7 +497,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
                     setGeneralError('');
                   }}
                   isPassword={true}
-                  leftIcon={<LockIcon size={16} color="#64748B" />}
+                  leftIcon={<LockIcon size={16} color={colors.slate500} />}
                   error={errors.confirmPassword}
                   accentColor={colors.primaryBlack}
                   returnKeyType="done"
@@ -557,10 +557,10 @@ const styles = StyleSheet.create({
     width: 72,
     height: 72,
     borderRadius: 36,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.white,
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.08,
     shadowRadius: 10,
@@ -585,20 +585,20 @@ const styles = StyleSheet.create({
     marginTop: 3,
   },
   cardContainer: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderRadius: 24,
     padding: 22,
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.06,
     shadowRadius: 16,
     elevation: 4,
     borderWidth: 1,
-    borderColor: '#E8EAED',
+    borderColor: colors.borderMedium,
   },
   shiftTrack: {
     flexDirection: 'row',
-    backgroundColor: '#F1F3F6',
+    backgroundColor: colors.slate100,
     borderRadius: borderRadius.pill,
     padding: 4,
     marginBottom: 18,
@@ -611,8 +611,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   shiftTabActive: {
-    backgroundColor: '#FFFFFF',
-    shadowColor: '#000',
+    backgroundColor: colors.white,
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.08,
     shadowRadius: 4,
@@ -621,7 +621,7 @@ const styles = StyleSheet.create({
   shiftTabText: {
     fontSize: 13.5,
     fontWeight: '600',
-    color: '#64748B',
+    color: colors.slate500,
   },
   shiftTabTextActive: {
     fontWeight: '800',
@@ -630,8 +630,8 @@ const styles = StyleSheet.create({
   errorBanner: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FEF2F2',
-    borderColor: '#FECACA',
+    backgroundColor: colors.statusRejectedBg,
+    borderColor: colors.statusRejectedBorder,
     borderWidth: 1,
     borderRadius: 12,
     paddingHorizontal: 12,
@@ -641,7 +641,7 @@ const styles = StyleSheet.create({
   },
   errorText: {
     flex: 1,
-    color: '#DC2626',
+    color: colors.error,
     fontSize: 12,
     fontWeight: '600',
   },
@@ -671,20 +671,20 @@ const styles = StyleSheet.create({
   },
   securityNoteText: {
     fontSize: 11,
-    color: '#64748B',
+    color: colors.slate500,
     fontWeight: '500',
   },
   clientOnlyNotice: {
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.slate50,
     borderRadius: 12,
     padding: 10,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
     marginBottom: 4,
   },
   clientOnlyNoticeText: {
     fontSize: 11.5,
-    color: '#64748B',
+    color: colors.slate500,
     lineHeight: 16,
     textAlign: 'center',
   },
@@ -696,7 +696,7 @@ const styles = StyleSheet.create({
   },
   footerPrompt: {
     fontSize: 13,
-    color: '#64748B',
+    color: colors.slate500,
   },
   footerLink: {
     fontSize: 13,

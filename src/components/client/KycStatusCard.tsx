@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { KycSubmission, KycStatus } from '../../types/kyc';
-import { useAppTheme, spacing, borderRadius } from '../../theme';
+import { useAppTheme, spacing, borderRadius, colors } from '../../theme';
 import {
   ShieldIcon,
   ClockIcon,
@@ -42,12 +42,12 @@ export const KycStatusCard: React.FC<KycStatusCardProps> = ({
         ]}
       >
         <View style={styles.emptyHeaderRow}>
-          <View style={[styles.emptyIconBadge, { backgroundColor: isDark ? colors.cardSecondary : '#FEF8E7' }]}>
+          <View style={[styles.emptyIconBadge, { backgroundColor: isDark ? colors.cardSecondary : colors.brandGoldSoft }]}>
             <ShieldIcon size={24} color={colors.brandGold} />
           </View>
           <View style={{ flex: 1, marginLeft: 14 }}>
             <View style={styles.statusPillEmpty}>
-              <View style={[styles.statusDot, { backgroundColor: '#F59E0B' }]} />
+              <View style={[styles.statusDot, { backgroundColor: colors.statusPending }]} />
               <Text style={styles.statusPillTextEmpty}>Not Submitted</Text>
             </View>
             <Text style={[styles.cardTitle, { color: colors.textPrimary }]}>
@@ -77,33 +77,33 @@ export const KycStatusCard: React.FC<KycStatusCardProps> = ({
       case 'APPROVED':
         return {
           label: 'Approved',
-          bg: isDark ? '#06281D' : '#ECFDF5',
-          border: isDark ? '#065F46' : '#A7F3D0',
-          text: isDark ? '#34D399' : '#047857',
-          dot: '#10B981',
-          icon: <CheckIcon size={14} color="#FFFFFF" />,
-          iconBg: '#10B981',
+          bg: colors.statusApprovedBg,
+          border: colors.statusApprovedBorder,
+          text: colors.statusApproved,
+          dot: colors.statusApproved,
+          icon: <CheckIcon size={14} color={colors.white} />,
+          iconBg: colors.statusApproved,
         };
       case 'REJECTED':
         return {
           label: 'Rejected',
-          bg: isDark ? '#2D1515' : '#FEF2F2',
-          border: isDark ? '#B91C1C' : '#FECACA',
-          text: isDark ? '#F87171' : '#DC2626',
-          dot: '#EF4444',
-          icon: <AlertCircleIcon size={14} color="#FFFFFF" />,
-          iconBg: '#EF4444',
+          bg: colors.statusRejectedBg,
+          border: colors.statusRejectedBorder,
+          text: colors.error,
+          dot: colors.error,
+          icon: <AlertCircleIcon size={14} color={colors.white} />,
+          iconBg: colors.error,
         };
       case 'PENDING':
       default:
         return {
           label: 'Pending Verification',
-          bg: isDark ? '#2E2208' : '#FFFBEB',
-          border: isDark ? '#B45309' : '#FDE68A',
-          text: isDark ? '#FBBF24' : '#B45309',
-          dot: '#F59E0B',
-          icon: <ClockIcon size={14} color="#FFFFFF" />,
-          iconBg: '#F59E0B',
+          bg: colors.statusPendingBg,
+          border: colors.statusPendingBorder,
+          text: colors.statusPending,
+          dot: colors.statusPending,
+          icon: <ClockIcon size={14} color={colors.white} />,
+          iconBg: colors.statusPending,
         };
     }
   };
@@ -153,15 +153,15 @@ export const KycStatusCard: React.FC<KycStatusCardProps> = ({
           style={[
             styles.rejectionBox,
             {
-              backgroundColor: isDark ? '#2D1515' : '#FEF2F2',
-              borderColor: isDark ? '#B91C1C' : '#FECACA',
+              backgroundColor: colors.statusRejectedBg,
+              borderColor: colors.statusRejectedBorder,
             },
           ]}
         >
-          <AlertCircleIcon size={16} color="#DC2626" />
+          <AlertCircleIcon size={16} color={colors.error} />
           <View style={{ flex: 1, marginLeft: 8 }}>
             <Text style={styles.rejectionTitle}>Action Needed: Document Rejection</Text>
-            <Text style={[styles.rejectionBody, { color: isDark ? '#F87171' : '#991B1B' }]}>
+            <Text style={[styles.rejectionBody, { color: colors.statusRejected }]}>
               {submission.rejectionReason}
             </Text>
           </View>
@@ -174,15 +174,15 @@ export const KycStatusCard: React.FC<KycStatusCardProps> = ({
           style={[
             styles.approvalBox,
             {
-              backgroundColor: isDark ? '#06281D' : '#ECFDF5',
-              borderColor: isDark ? '#065F46' : '#A7F3D0',
+              backgroundColor: colors.statusApprovedBg,
+              borderColor: colors.statusApprovedBorder,
             },
           ]}
         >
-          <CheckIcon size={16} color="#059669" />
+          <CheckIcon size={16} color={colors.statusApproved} />
           <View style={{ flex: 1, marginLeft: 8 }}>
             <Text style={styles.approvalTitle}>Identity Officially Verified</Text>
-            <Text style={[styles.approvalBody, { color: isDark ? '#34D399' : '#047857' }]}>
+            <Text style={[styles.approvalBody, { color: colors.statusApproved }]}>
               Your KYC dossier has been authenticated and approved by Ridhi Ratnam Associates.
             </Text>
           </View>
@@ -194,7 +194,7 @@ export const KycStatusCard: React.FC<KycStatusCardProps> = ({
         style={[
           styles.metaStrip,
           {
-            backgroundColor: isDark ? colors.cardSecondary : '#F8FAFC',
+            backgroundColor: isDark ? colors.cardSecondary : colors.slate50,
             borderColor: colors.cardBorder,
           },
         ]}
@@ -243,7 +243,7 @@ export const KycStatusCard: React.FC<KycStatusCardProps> = ({
               styles.resubmitBtn,
               {
                 borderColor: colors.brandGold,
-                backgroundColor: isDark ? colors.cardSecondary : '#FEF8E7',
+                backgroundColor: isDark ? colors.cardSecondary : colors.brandGoldSoft,
               },
             ]}
           >
@@ -265,7 +265,7 @@ const styles = StyleSheet.create({
     padding: 18,
     marginHorizontal: 0,
     marginBottom: 16,
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.05,
     shadowRadius: 12,
@@ -318,8 +318,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#FFFBEB',
-    borderColor: '#FDE68A',
+    backgroundColor: colors.statusPendingBg,
+    borderColor: colors.statusPendingBorder,
     borderWidth: 1,
     paddingHorizontal: 10,
     paddingVertical: 4,
@@ -331,7 +331,7 @@ const styles = StyleSheet.create({
   statusPillTextEmpty: {
     fontSize: 11,
     fontWeight: '700',
-    color: '#B45309',
+    color: colors.statusPending,
     textAlign: 'center',
     textAlignVertical: 'center',
     includeFontPadding: false,
@@ -368,7 +368,7 @@ const styles = StyleSheet.create({
   rejectionTitle: {
     fontSize: 12,
     fontWeight: '800',
-    color: '#DC2626',
+    color: colors.error,
     marginBottom: 2,
   },
   rejectionBody: {
@@ -386,7 +386,7 @@ const styles = StyleSheet.create({
   approvalTitle: {
     fontSize: 12,
     fontWeight: '800',
-    color: '#059669',
+    color: colors.statusApproved,
     marginBottom: 2,
   },
   approvalBody: {

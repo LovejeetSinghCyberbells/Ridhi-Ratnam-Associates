@@ -332,7 +332,7 @@ const styles = StyleSheet.create({
     padding: spacing.xl,
     borderWidth: 1,
     borderColor: colors.cardBorder,
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.35,
     shadowRadius: 20,
@@ -397,7 +397,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   checkMark: {
-    color: '#0A0E17',
+    color: colors.brandNavy,
     fontSize: 11,
     fontWeight: '900',
     marginTop: -1,

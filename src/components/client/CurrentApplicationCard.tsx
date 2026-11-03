@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { ClientLoanApplication, ApplicationStep } from '../../types/client';
 import { CheckIcon, ClockIcon, FileTextIcon, ShieldIcon, BuildingIcon } from '../Icons';
 import { AnimatedButton } from '../AnimatedButton';
-import { spacing, useAppTheme } from '../../theme';
+import { spacing, useAppTheme, colors } from '../../theme';
 
 interface CurrentApplicationCardProps {
   application: ClientLoanApplication | null;
@@ -48,21 +48,33 @@ export const CurrentApplicationCard: React.FC<CurrentApplicationCardProps> = ({
   const getStatusBadge = () => {
     switch (application.status) {
       case 'Under Review':
-        return isDark
-          ? { bg: '#112240', border: '#1D4ED8', text: '#60A5FA', dot: '#3B82F6' }
-          : { bg: '#EFF6FF', border: '#BFDBFE', text: '#1D4ED8', dot: '#2563EB' };
+        return {
+          bg: colors.statusReviewBg,
+          border: colors.statusReviewBorder,
+          text: colors.statusReview,
+          dot: colors.statusReview,
+        };
       case 'Approved':
-        return isDark
-          ? { bg: '#06281D', border: '#065F46', text: '#34D399', dot: '#10B981' }
-          : { bg: '#ECFDF5', border: '#A7F3D0', text: '#047857', dot: '#10B981' };
+        return {
+          bg: colors.statusApprovedBg,
+          border: colors.statusApprovedBorder,
+          text: colors.statusApproved,
+          dot: colors.statusApproved,
+        };
       case 'Rejected':
-        return isDark
-          ? { bg: '#2D1515', border: '#B91C1C', text: '#F87171', dot: '#EF4444' }
-          : { bg: '#FEF2F2', border: '#FECACA', text: '#B91C1C', dot: '#DC2626' };
+        return {
+          bg: colors.statusRejectedBg,
+          border: colors.statusRejectedBorder,
+          text: colors.statusRejected,
+          dot: colors.statusRejected,
+        };
       default:
-        return isDark
-          ? { bg: '#2E2208', border: '#B45309', text: '#FBBF24', dot: '#F59E0B' }
-          : { bg: '#FFFBEB', border: '#FDE68A', text: '#B45309', dot: '#D97706' };
+        return {
+          bg: colors.statusPendingBg,
+          border: colors.statusPendingBorder,
+          text: colors.statusPending,
+          dot: colors.statusPending,
+        };
     }
   };
 
@@ -139,7 +151,7 @@ export const CurrentApplicationCard: React.FC<CurrentApplicationCardProps> = ({
           <Text
             style={[
               styles.finValue,
-              { color: isDark ? '#34D399' : '#047857' },
+              { color: colors.statusApproved },
             ]}
           >
             {application.emiAmount || '₹16,250 / mo'}
@@ -159,24 +171,24 @@ export const CurrentApplicationCard: React.FC<CurrentApplicationCardProps> = ({
         style={[
           styles.docsSummaryStrip,
           {
-            backgroundColor: isDark ? '#06281D' : '#F0FDF4',
-            borderColor: isDark ? '#065F46' : '#BBF7D0',
+            backgroundColor: colors.surfaceSubtle,
+            borderColor: colors.statusApprovedBorder,
           },
         ]}
       >
         <View
           style={[
             styles.docsIconBox,
-            { backgroundColor: isDark ? '#0F3E2C' : '#DCFCE7' },
+            { backgroundColor: colors.statusApprovedBg },
           ]}
         >
-          <FileTextIcon size={14} color={isDark ? '#34D399' : '#047857'} />
+          <FileTextIcon size={14} color={colors.statusApproved} />
         </View>
         <View style={{ flex: 1, marginLeft: 8 }}>
           <Text
             style={[
               styles.docsSummaryTitle,
-              { color: isDark ? '#34D399' : '#166534' },
+              { color: colors.statusApproved },
             ]}
           >
             {docsCount} Mandatory Documents Attached
@@ -184,7 +196,7 @@ export const CurrentApplicationCard: React.FC<CurrentApplicationCardProps> = ({
           <Text
             style={[
               styles.docsSummarySub,
-              { color: isDark ? '#A7F3D0' : '#15803D' },
+              { color: colors.statusApproved },
             ]}
           >
             PAN, Aadhaar e-KYC, Bank Statement, ITR, GSTN & Utility Bills
@@ -193,14 +205,14 @@ export const CurrentApplicationCard: React.FC<CurrentApplicationCardProps> = ({
         <View
           style={[
             styles.docsVerifiedChip,
-            { backgroundColor: isDark ? '#0F3E2C' : '#DCFCE7' },
+            { backgroundColor: colors.statusApprovedBg },
           ]}
         >
-          <ShieldIcon size={10} color={isDark ? '#34D399' : '#047857'} />
+          <ShieldIcon size={10} color={colors.statusApproved} />
           <Text
             style={[
               styles.docsVerifiedText,
-              { color: isDark ? '#34D399' : '#166534' },
+              { color: colors.statusApproved },
             ]}
           >
             Audited
@@ -214,7 +226,7 @@ export const CurrentApplicationCard: React.FC<CurrentApplicationCardProps> = ({
           style={[
             styles.advisorStrip,
             {
-              backgroundColor: isDark ? colors.cardSecondary : '#F8FAFC',
+              backgroundColor: isDark ? colors.cardSecondary : colors.slate50,
               borderColor: colors.cardBorder,
             },
           ]}
@@ -228,7 +240,7 @@ export const CurrentApplicationCard: React.FC<CurrentApplicationCardProps> = ({
             <Text
               style={[
                 styles.advisorAvatarText,
-                { color: isDark ? '#012655' : '#FFFFFF' },
+                { color: isDark ? colors.corporateNavy : colors.white },
               ]}
             >
               RS
@@ -272,21 +284,21 @@ export const CurrentApplicationCard: React.FC<CurrentApplicationCardProps> = ({
                       style={[
                         styles.stepNode,
                         {
-                          backgroundColor: isDark ? colors.cardSecondary : '#F1F5F9',
-                          borderColor: isDark ? colors.cardBorder : '#CBD5E1',
+                          backgroundColor: isDark ? colors.cardSecondary : colors.slate100,
+                          borderColor: isDark ? colors.cardBorder : colors.slate300,
                         },
                         isCompleted && styles.stepNodeCompleted,
                         isCurrent && [
                           styles.stepNodeCurrent,
                           {
                             borderColor: colors.brandGold,
-                            backgroundColor: isDark ? '#2E2208' : '#FFFBEB',
+                            backgroundColor: colors.brandGoldSoft,
                           },
                         ],
                       ]}
                     >
                       {isCompleted ? (
-                        <CheckIcon size={12} color="#FFFFFF" />
+                        <CheckIcon size={12} color={colors.white} />
                       ) : isCurrent ? (
                         <ClockIcon size={12} color={colors.brandGold} />
                       ) : (
@@ -299,10 +311,10 @@ export const CurrentApplicationCard: React.FC<CurrentApplicationCardProps> = ({
                           styles.stepLine,
                           {
                             backgroundColor: isCompleted
-                              ? '#10B981'
+                              ? colors.success
                               : isDark
                               ? colors.cardBorder
-                              : '#E2E8F0',
+                              : colors.border,
                           },
                         ]}
                       />
@@ -366,7 +378,7 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     padding: 18,
     borderWidth: 1,
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.08,
     shadowRadius: 10,
@@ -562,8 +574,8 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   stepNodeCompleted: {
-    backgroundColor: '#10B981',
-    borderColor: '#10B981',
+    backgroundColor: colors.success,
+    borderColor: colors.success,
   },
   stepNodeCurrent: {
     borderWidth: 2,
@@ -572,7 +584,7 @@ const styles = StyleSheet.create({
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: '#94A3B8',
+    backgroundColor: colors.slate400,
   },
   stepLine: {
     width: 2,

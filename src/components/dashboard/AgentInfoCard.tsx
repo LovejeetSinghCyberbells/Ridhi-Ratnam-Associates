@@ -27,8 +27,8 @@ export const AgentInfoCard: React.FC<AgentInfoCardProps> = ({ agent }) => {
           style={[
             styles.idBadgeContainer,
             {
-              backgroundColor: isDark ? '#2E2208' : '#FEF9EE',
-              borderColor: isDark ? '#B45309' : '#FDE68A',
+              backgroundColor: colors.brandGoldSoft,
+              borderColor: colors.brandGoldLight,
             },
           ]}
         >
@@ -36,7 +36,7 @@ export const AgentInfoCard: React.FC<AgentInfoCardProps> = ({ agent }) => {
           <Text
             style={[
               styles.agentIdValue,
-              { color: isDark ? '#FDE68A' : '#78350F' },
+              { color: colors.brandGoldDark },
             ]}
           >
             Verification Officer
@@ -48,8 +48,8 @@ export const AgentInfoCard: React.FC<AgentInfoCardProps> = ({ agent }) => {
           style={[
             styles.statusPill,
             {
-              backgroundColor: isDark ? '#06281D' : '#ECFDF5',
-              borderColor: isDark ? '#065F46' : '#A7F3D0',
+              backgroundColor: colors.statusApprovedBg,
+              borderColor: colors.statusApprovedBorder,
             },
           ]}
         >
@@ -57,7 +57,7 @@ export const AgentInfoCard: React.FC<AgentInfoCardProps> = ({ agent }) => {
           <Text
             style={[
               styles.statusText,
-              { color: isDark ? '#34D399' : '#047857' },
+              { color: colors.statusApproved },
             ]}
           >
             {agent.status}
@@ -105,7 +105,7 @@ export const AgentInfoCard: React.FC<AgentInfoCardProps> = ({ agent }) => {
           <View style={styles.branchRow}>
             <BuildingIcon
               size={13}
-              color={isDark ? '#94A3B8' : '#64748B'}
+              color={colors.slate500}
             />
             <Text
               style={[
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
     paddingHorizontal: 16,
     borderWidth: 1,
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.05,
     shadowRadius: 10,
@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: '#10B981',
+    backgroundColor: colors.statusApproved,
   },
   statusText: {
     fontSize: 11,

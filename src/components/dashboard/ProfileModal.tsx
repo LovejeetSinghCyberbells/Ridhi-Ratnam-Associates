@@ -48,7 +48,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
               style={styles.closeBtn}
               accessibilityLabel="Close profile"
             >
-              <CrossIcon size={14} color="#0D0E12" />
+              <CrossIcon size={14} color={colors.topBarBlack} />
             </TouchableOpacity>
           </View>
 
@@ -75,7 +75,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
               <Text style={styles.cardHeader}>Agency & Credentials</Text>
 
               <View style={styles.itemRow}>
-                <BuildingIcon size={16} color="#64748B" />
+                <BuildingIcon size={16} color={colors.slate500} />
                 <View style={styles.itemCol}>
                   <Text style={styles.itemLabel}>Agency / Branch</Text>
                   <Text style={styles.itemValue}>{agent.branch}</Text>
@@ -83,7 +83,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
               </View>
 
               <View style={styles.itemRow}>
-                <MailIcon size={16} color="#64748B" />
+                <MailIcon size={16} color={colors.slate500} />
                 <View style={styles.itemCol}>
                   <Text style={styles.itemLabel}>Official Email</Text>
                   <Text style={styles.itemValue}>{agent.email}</Text>
@@ -91,7 +91,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
               </View>
 
               <View style={styles.itemRow}>
-                <PhoneIcon size={16} color="#64748B" />
+                <PhoneIcon size={16} color={colors.slate500} />
                 <View style={styles.itemCol}>
                   <Text style={styles.itemLabel}>Registered Mobile</Text>
                   <Text style={styles.itemValue}>{agent.phone}</Text>
@@ -102,7 +102,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
                 <View style={styles.statusDot} />
                 <View style={styles.itemCol}>
                   <Text style={styles.itemLabel}>Account Status</Text>
-                  <Text style={[styles.itemValue, { color: '#047857' }]}>
+                  <Text style={[styles.itemValue, { color: colors.statusApproved }]}>
                     {agent.status} (Verified Partner)
                   </Text>
                 </View>
@@ -138,7 +138,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
               }}
               style={styles.signOutButton}
             >
-              <LogOutIcon size={17} color="#DC2626" />
+              <LogOutIcon size={17} color={colors.error} />
               <Text style={styles.signOutButtonText}>Sign Out of Account</Text>
             </TouchableOpacity>
           </ScrollView>
@@ -151,11 +151,11 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
 const styles = StyleSheet.create({
   overlay: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.45)',
+    backgroundColor: colors.overlay,
     justifyContent: 'flex-end',
   },
   sheetContainer: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderTopLeftRadius: 32,
     borderTopRightRadius: 32,
     maxHeight: '85%',
@@ -170,25 +170,25 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     paddingBottom: 12,
     borderBottomWidth: 1,
-    borderBottomColor: '#F1F3F6',
+    borderBottomColor: colors.borderLight,
   },
   headerCategory: {
     fontSize: 10,
     fontWeight: '800',
-    color: '#94A3B8',
+    color: colors.slate400,
     letterSpacing: 0.8,
   },
   headerTitle: {
     fontSize: 20,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     letterSpacing: -0.3,
   },
   closeBtn: {
     width: 36,
     height: 36,
     borderRadius: 18,
-    backgroundColor: '#F1F3F6',
+    backgroundColor: colors.borderLight,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -204,7 +204,7 @@ const styles = StyleSheet.create({
     width: 56,
     height: 56,
     borderRadius: 28,
-    backgroundColor: '#0D0E12',
+    backgroundColor: colors.topBarBlack,
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 2,
@@ -212,7 +212,7 @@ const styles = StyleSheet.create({
     marginRight: 14,
   },
   avatarText: {
-    color: '#FFFFFF',
+    color: colors.white,
     fontSize: 18,
     fontWeight: '800',
   },
@@ -222,20 +222,20 @@ const styles = StyleSheet.create({
   agentName: {
     fontSize: 18,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   agentDesignation: {
     fontSize: 13,
     fontWeight: '600',
-    color: '#64748B',
+    color: colors.slate500,
     marginTop: 2,
   },
   idBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FEF9EE',
+    backgroundColor: colors.brandGoldSoft,
     borderWidth: 1,
-    borderColor: '#FDE68A',
+    borderColor: colors.brandGoldLight,
     paddingVertical: 2,
     paddingHorizontal: 8,
     borderRadius: 8,
@@ -246,21 +246,21 @@ const styles = StyleSheet.create({
   idText: {
     fontSize: 11,
     fontWeight: '800',
-    color: '#78350F',
+    color: colors.brandGoldDark,
     letterSpacing: 0.4,
   },
   detailCard: {
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.slate50,
     borderRadius: 20,
     padding: 16,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
     marginBottom: 14,
   },
   cardHeader: {
     fontSize: 11,
     fontWeight: '800',
-    color: '#64748B',
+    color: colors.slate500,
     textTransform: 'uppercase',
     letterSpacing: 0.6,
     marginBottom: 12,
@@ -277,50 +277,50 @@ const styles = StyleSheet.create({
   itemLabel: {
     fontSize: 10.5,
     fontWeight: '600',
-    color: '#94A3B8',
+    color: colors.slate400,
   },
   itemValue: {
     fontSize: 13.5,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     marginTop: 1,
   },
   statusDot: {
     width: 14,
     height: 14,
     borderRadius: 7,
-    backgroundColor: '#10B981',
+    backgroundColor: colors.success,
     alignItems: 'center',
     justifyContent: 'center',
   },
   devCard: {
-    backgroundColor: '#FEFCE8',
+    backgroundColor: colors.statusPendingBg,
     borderRadius: 16,
     padding: 12,
     borderWidth: 1,
-    borderColor: '#FEF08A',
+    borderColor: colors.statusPendingBorder,
     marginBottom: 16,
   },
   devTitle: {
     fontSize: 11,
     fontWeight: '800',
-    color: '#854D0E',
+    color: colors.statusPending,
     marginBottom: 2,
   },
   devText: {
     fontSize: 11.5,
-    color: '#A16207',
+    color: colors.statusPending,
     fontWeight: '600',
   },
   devSub: {
     fontSize: 11,
-    color: '#713F12',
+    color: colors.brandGoldDark,
     fontWeight: '700',
     marginTop: 2,
   },
   logoutBtn: {
     width: '100%',
-    borderColor: '#DC2626',
+    borderColor: colors.error,
   },
   signOutButton: {
     flexDirection: 'row',
@@ -329,15 +329,15 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 48,
     borderRadius: 24,
-    backgroundColor: '#FEF2F2',
+    backgroundColor: colors.statusRejectedBg,
     borderWidth: 1.5,
-    borderColor: '#FECACA',
+    borderColor: colors.statusRejectedBorder,
     gap: 8,
   },
   signOutButtonText: {
     fontSize: 14,
     fontWeight: '700',
-    color: '#DC2626',
+    color: colors.error,
   },
   testHidden: {
     position: 'absolute',

@@ -29,13 +29,33 @@ export const ClientAppDetailModal: React.FC<ClientAppDetailModalProps> = ({
   const getStatusColor = (status: ClientAppStatus) => {
     switch (status) {
       case 'Under Review':
-        return { bg: '#EFF6FF', border: '#BFDBFE', text: '#1D4ED8', dot: '#2563EB' };
+        return {
+          bg: colors.statusReviewBg,
+          border: colors.statusReviewBorder,
+          text: colors.statusReview,
+          dot: colors.statusReview,
+        };
       case 'Approved':
-        return { bg: '#ECFDF5', border: '#A7F3D0', text: '#047857', dot: '#10B981' };
+        return {
+          bg: colors.statusApprovedBg,
+          border: colors.statusApprovedBorder,
+          text: colors.statusApproved,
+          dot: colors.statusApproved,
+        };
       case 'Rejected':
-        return { bg: '#FEF2F2', border: '#FECACA', text: '#B91C1C', dot: '#DC2626' };
+        return {
+          bg: colors.statusRejectedBg,
+          border: colors.statusRejectedBorder,
+          text: colors.statusRejected,
+          dot: colors.error,
+        };
       default:
-        return { bg: '#FFFBEB', border: '#FDE68A', text: '#B45309', dot: '#D97706' };
+        return {
+          bg: colors.statusPendingBg,
+          border: colors.statusPendingBorder,
+          text: colors.statusPending,
+          dot: colors.statusPending,
+        };
     }
   };
 
@@ -63,7 +83,7 @@ export const ClientAppDetailModal: React.FC<ClientAppDetailModalProps> = ({
               style={styles.closeBtn}
               accessibilityLabel="Close details"
             >
-              <CrossIcon size={14} color="#0D0E12" />
+              <CrossIcon size={14} color={colors.textPrimary} />
             </TouchableOpacity>
           </View>
 
@@ -100,7 +120,7 @@ export const ClientAppDetailModal: React.FC<ClientAppDetailModalProps> = ({
                 </View>
                 <View style={styles.finItem}>
                   <Text style={styles.finItemLabel}>ESTIMATED EMI</Text>
-                  <Text style={[styles.finItemValue, { color: '#047857' }]}>
+                  <Text style={[styles.finItemValue, { color: colors.statusApproved }]}>
                     {application.emiAmount || 'Calculated on approval'}
                   </Text>
                 </View>
@@ -111,7 +131,7 @@ export const ClientAppDetailModal: React.FC<ClientAppDetailModalProps> = ({
             {application.status === 'Rejected' && application.rejectionReason && (
               <View style={styles.rejectionCard}>
                 <View style={styles.rejectionHeader}>
-                  <AlertCircleIcon size={16} color="#DC2626" />
+                  <AlertCircleIcon size={16} color={colors.error} />
                   <Text style={styles.rejectionTitle}>Underwriting Evaluation Reason</Text>
                 </View>
                 <Text style={styles.rejectionText}>{application.rejectionReason}</Text>
@@ -124,7 +144,7 @@ export const ClientAppDetailModal: React.FC<ClientAppDetailModalProps> = ({
                 <Text style={styles.docsTitle}>Requested Supplementary Documents</Text>
                 {application.requestedDocuments.map((doc, idx) => (
                   <View key={idx} style={styles.docRow}>
-                    <ClockIcon size={14} color="#D97706" />
+                    <ClockIcon size={14} color={colors.statusPending} />
                     <Text style={styles.docText}>{doc}</Text>
                   </View>
                 ))}
@@ -147,7 +167,7 @@ export const ClientAppDetailModal: React.FC<ClientAppDetailModalProps> = ({
                       ]}
                     >
                       {isCompleted ? (
-                        <CheckIcon size={10} color="#FFFFFF" />
+                        <CheckIcon size={10} color={colors.white} />
                       ) : (
                         <View style={styles.stepInnerDot} />
                       )}
@@ -172,7 +192,7 @@ export const ClientAppDetailModal: React.FC<ClientAppDetailModalProps> = ({
             {application.agentAssigned && (
               <View style={styles.advisorCard}>
                 <View style={styles.advisorAvatar}>
-                  <UserIcon size={16} color="#0D0E12" />
+                  <UserIcon size={16} color={colors.textPrimary} />
                 </View>
                 <View style={styles.advisorInfo}>
                   <Text style={styles.advisorName}>
@@ -187,7 +207,7 @@ export const ClientAppDetailModal: React.FC<ClientAppDetailModalProps> = ({
                   onPress={() => themeAlert('Contacting Advisor', `Connecting to ${application.agentAssigned?.phone}`)}
                   style={styles.advisorCallBtn}
                 >
-                  <PhoneIcon size={14} color="#0D0E12" />
+                  <PhoneIcon size={14} color={colors.textPrimary} />
                 </TouchableOpacity>
               </View>
             )}
@@ -208,11 +228,11 @@ export const ClientAppDetailModal: React.FC<ClientAppDetailModalProps> = ({
 const styles = StyleSheet.create({
   overlay: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.45)',
+    backgroundColor: colors.overlay,
     justifyContent: 'flex-end',
   },
   sheetContainer: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderTopLeftRadius: 32,
     borderTopRightRadius: 32,
     maxHeight: '85%',
@@ -227,25 +247,25 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     paddingBottom: 12,
     borderBottomWidth: 1,
-    borderBottomColor: '#F1F3F6',
+    borderBottomColor: colors.borderLight,
   },
   headerCategory: {
     fontSize: 10,
     fontWeight: '800',
-    color: '#94A3B8',
+    color: colors.slate400,
     letterSpacing: 0.8,
   },
   headerTitle: {
     fontSize: 18,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     letterSpacing: -0.2,
   },
   closeBtn: {
     width: 36,
     height: 36,
     borderRadius: 18,
-    backgroundColor: '#F1F3F6',
+    backgroundColor: colors.borderLight,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -253,11 +273,11 @@ const styles = StyleSheet.create({
     paddingBottom: 24,
   },
   financialCard: {
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.slate50,
     borderRadius: 20,
     padding: 16,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
     marginBottom: 12,
   },
   finTop: {
@@ -268,13 +288,13 @@ const styles = StyleSheet.create({
   finLabel: {
     fontSize: 10,
     fontWeight: '700',
-    color: '#64748B',
+    color: colors.slate500,
     letterSpacing: 0.5,
   },
   finAmount: {
     fontSize: 26,
     fontWeight: '900',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     marginVertical: 4,
     letterSpacing: -0.5,
   },
@@ -301,7 +321,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingTop: 10,
     borderTopWidth: 1,
-    borderTopColor: '#E2E8F0',
+    borderTopColor: colors.border,
   },
   finItem: {
     flex: 1,
@@ -309,21 +329,21 @@ const styles = StyleSheet.create({
   finItemLabel: {
     fontSize: 9.5,
     fontWeight: '700',
-    color: '#94A3B8',
+    color: colors.slate400,
     letterSpacing: 0.3,
   },
   finItemValue: {
     fontSize: 12.5,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     marginTop: 2,
   },
   rejectionCard: {
-    backgroundColor: '#FEF2F2',
+    backgroundColor: colors.statusRejectedBg,
     borderRadius: 16,
     padding: 14,
     borderWidth: 1,
-    borderColor: '#FECACA',
+    borderColor: colors.statusRejectedBorder,
     marginBottom: 12,
   },
   rejectionHeader: {
@@ -335,25 +355,25 @@ const styles = StyleSheet.create({
   rejectionTitle: {
     fontSize: 12,
     fontWeight: '800',
-    color: '#B91C1C',
+    color: colors.statusRejected,
   },
   rejectionText: {
     fontSize: 12,
-    color: '#7F1D1D',
+    color: colors.statusRejected,
     lineHeight: 17,
   },
   docsCard: {
-    backgroundColor: '#FFFBEB',
+    backgroundColor: colors.brandGoldSoft,
     borderRadius: 16,
     padding: 14,
     borderWidth: 1,
-    borderColor: '#FDE68A',
+    borderColor: colors.brandGoldLight,
     marginBottom: 12,
   },
   docsTitle: {
     fontSize: 12,
     fontWeight: '800',
-    color: '#92400E',
+    color: colors.brandGoldDark,
     marginBottom: 6,
   },
   docRow: {
@@ -364,21 +384,21 @@ const styles = StyleSheet.create({
   },
   docText: {
     fontSize: 12,
-    color: '#78350F',
+    color: colors.brandGoldDark,
     fontWeight: '500',
   },
   sectionCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderRadius: 18,
     padding: 14,
     borderWidth: 1,
-    borderColor: '#E8EAED',
+    borderColor: colors.borderMedium,
     marginBottom: 12,
   },
   sectionTitle: {
     fontSize: 11,
     fontWeight: '800',
-    color: '#64748B',
+    color: colors.slate500,
     textTransform: 'uppercase',
     letterSpacing: 0.6,
     marginBottom: 10,
@@ -392,26 +412,26 @@ const styles = StyleSheet.create({
     width: 18,
     height: 18,
     borderRadius: 9,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: colors.slate100,
     borderWidth: 1.5,
-    borderColor: '#CBD5E1',
+    borderColor: colors.slate300,
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 10,
   },
   stepDotCompleted: {
-    backgroundColor: '#10B981',
-    borderColor: '#10B981',
+    backgroundColor: colors.statusApproved,
+    borderColor: colors.statusApproved,
   },
   stepDotCurrent: {
-    backgroundColor: '#EFF6FF',
-    borderColor: '#2563EB',
+    backgroundColor: colors.statusReviewBg,
+    borderColor: colors.statusReview,
   },
   stepInnerDot: {
     width: 4,
     height: 4,
     borderRadius: 2,
-    backgroundColor: '#94A3B8',
+    backgroundColor: colors.slate400,
   },
   stepInfo: {
     flex: 1,
@@ -422,33 +442,33 @@ const styles = StyleSheet.create({
   stepName: {
     fontSize: 12.5,
     fontWeight: '600',
-    color: '#64748B',
+    color: colors.slate500,
   },
   stepNameActive: {
-    color: '#0D0E12',
+    color: colors.textPrimary,
     fontWeight: '700',
   },
   stepDate: {
     fontSize: 11,
-    color: '#94A3B8',
+    color: colors.slate400,
   },
   advisorCard: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.slate50,
     borderRadius: 16,
     padding: 12,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
     marginBottom: 8,
   },
   advisorAvatar: {
     width: 36,
     height: 36,
     borderRadius: 18,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 10,
@@ -459,20 +479,20 @@ const styles = StyleSheet.create({
   advisorName: {
     fontSize: 13,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   advisorBranch: {
     fontSize: 11,
-    color: '#64748B',
+    color: colors.slate500,
     marginTop: 1,
   },
   advisorCallBtn: {
     width: 36,
     height: 36,
     borderRadius: 18,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
     alignItems: 'center',
     justifyContent: 'center',
   },

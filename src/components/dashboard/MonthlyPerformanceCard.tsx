@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { MonthlyPerformance } from '../../types/dashboard';
-import { useAppTheme } from '../../theme';
+import { useAppTheme, colors } from '../../theme';
 import { TrendingUpIcon } from '../Icons';
 
 interface MonthlyPerformanceCardProps {
@@ -44,16 +44,16 @@ export const MonthlyPerformanceCard: React.FC<MonthlyPerformanceCardProps> = ({
           style={[
             styles.rateBadge,
             {
-              backgroundColor: isDark ? '#06281D' : '#ECFDF5',
-              borderColor: isDark ? '#065F46' : '#A7F3D0',
+              backgroundColor: colors.statusApprovedBg,
+              borderColor: colors.statusApprovedBorder,
             },
           ]}
         >
-          <TrendingUpIcon size={14} color={isDark ? '#34D399' : '#047857'} />
+          <TrendingUpIcon size={14} color={colors.statusApproved} />
           <Text
             style={[
               styles.rateText,
-              { color: isDark ? '#34D399' : '#047857' },
+              { color: colors.statusApproved },
             ]}
           >
             {`${approvalPercentage.toFixed(1)}%`}
@@ -61,7 +61,7 @@ export const MonthlyPerformanceCard: React.FC<MonthlyPerformanceCardProps> = ({
           <Text
             style={[
               styles.rateLabel,
-              { color: isDark ? '#A7F3D0' : '#065F46' },
+              { color: colors.statusApproved },
             ]}
           >
             APPROVAL
@@ -74,44 +74,44 @@ export const MonthlyPerformanceCard: React.FC<MonthlyPerformanceCardProps> = ({
         <View
           style={[
             styles.progressTrack,
-            { backgroundColor: isDark ? colors.cardSecondary : '#F1F5F9' },
+            { backgroundColor: colors.slate100 },
           ]}
         >
           <View
             style={[
               styles.progressSegment,
-              { width: `${approvedPct}%`, backgroundColor: '#10B981' },
+              { width: `${approvedPct}%`, backgroundColor: colors.statusApproved },
             ]}
           />
           <View
             style={[
               styles.progressSegment,
-              { width: `${pendingPct}%`, backgroundColor: '#F59E0B' },
+              { width: `${pendingPct}%`, backgroundColor: colors.brandGold },
             ]}
           />
           <View
             style={[
               styles.progressSegment,
-              { width: `${rejectedPct}%`, backgroundColor: '#EF4444' },
+              { width: `${rejectedPct}%`, backgroundColor: colors.statusRejected },
             ]}
           />
         </View>
 
         <View style={styles.legendRow}>
           <View style={styles.legendItem}>
-            <View style={[styles.legendDot, { backgroundColor: '#10B981' }]} />
+            <View style={[styles.legendDot, { backgroundColor: colors.statusApproved }]} />
             <Text style={[styles.legendText, { color: colors.textSecondary }]}>
               Approved ({approvedPct}%)
             </Text>
           </View>
           <View style={styles.legendItem}>
-            <View style={[styles.legendDot, { backgroundColor: '#F59E0B' }]} />
+            <View style={[styles.legendDot, { backgroundColor: colors.brandGold }]} />
             <Text style={[styles.legendText, { color: colors.textSecondary }]}>
               Pending ({pendingPct}%)
             </Text>
           </View>
           <View style={styles.legendItem}>
-            <View style={[styles.legendDot, { backgroundColor: '#EF4444' }]} />
+            <View style={[styles.legendDot, { backgroundColor: colors.statusRejected }]} />
             <Text style={[styles.legendText, { color: colors.textSecondary }]}>
               Rejected ({rejectedPct}%)
             </Text>
@@ -125,7 +125,7 @@ export const MonthlyPerformanceCard: React.FC<MonthlyPerformanceCardProps> = ({
           style={[
             styles.metricBox,
             {
-              backgroundColor: isDark ? colors.cardSecondary : '#F8FAFC',
+              backgroundColor: colors.slate50,
               borderColor: colors.cardBorder,
             },
           ]}
@@ -142,15 +142,15 @@ export const MonthlyPerformanceCard: React.FC<MonthlyPerformanceCardProps> = ({
           style={[
             styles.metricBox,
             {
-              backgroundColor: isDark ? '#06281D' : '#ECFDF5',
-              borderColor: isDark ? '#065F46' : '#A7F3D0',
+              backgroundColor: colors.statusApprovedBg,
+              borderColor: colors.statusApprovedBorder,
             },
           ]}
         >
           <Text
             style={[
               styles.metricLabel,
-              { color: isDark ? '#A7F3D0' : '#065F46' },
+              { color: colors.statusApproved },
             ]}
           >
             Approved
@@ -158,7 +158,7 @@ export const MonthlyPerformanceCard: React.FC<MonthlyPerformanceCardProps> = ({
           <Text
             style={[
               styles.metricValue,
-              { color: isDark ? '#34D399' : '#047857' },
+              { color: colors.statusApproved },
             ]}
           >
             {approved}
@@ -169,15 +169,15 @@ export const MonthlyPerformanceCard: React.FC<MonthlyPerformanceCardProps> = ({
           style={[
             styles.metricBox,
             {
-              backgroundColor: isDark ? '#2E2208' : '#FFFBEB',
-              borderColor: isDark ? '#B45309' : '#FDE68A',
+              backgroundColor: colors.brandGoldSoft,
+              borderColor: colors.brandGoldLight,
             },
           ]}
         >
           <Text
             style={[
               styles.metricLabel,
-              { color: isDark ? '#FDE68A' : '#92400E' },
+              { color: colors.brandGoldDark },
             ]}
           >
             Pending
@@ -185,7 +185,7 @@ export const MonthlyPerformanceCard: React.FC<MonthlyPerformanceCardProps> = ({
           <Text
             style={[
               styles.metricValue,
-              { color: isDark ? '#FBBF24' : '#B45309' },
+              { color: colors.statusPending },
             ]}
           >
             {pending}
@@ -196,15 +196,15 @@ export const MonthlyPerformanceCard: React.FC<MonthlyPerformanceCardProps> = ({
           style={[
             styles.metricBox,
             {
-              backgroundColor: isDark ? '#2D1515' : '#FEF2F2',
-              borderColor: isDark ? '#B91C1C' : '#FECACA',
+              backgroundColor: colors.statusRejectedBg,
+              borderColor: colors.statusRejectedBorder,
             },
           ]}
         >
           <Text
             style={[
               styles.metricLabel,
-              { color: isDark ? '#FECACA' : '#991B1B' },
+              { color: colors.statusRejected },
             ]}
           >
             Rejected
@@ -212,7 +212,7 @@ export const MonthlyPerformanceCard: React.FC<MonthlyPerformanceCardProps> = ({
           <Text
             style={[
               styles.metricValue,
-              { color: isDark ? '#F87171' : '#B91C1C' },
+              { color: colors.statusRejected },
             ]}
           >
             {rejected}
@@ -228,7 +228,7 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     padding: 16,
     borderWidth: 1,
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.05,
     shadowRadius: 10,

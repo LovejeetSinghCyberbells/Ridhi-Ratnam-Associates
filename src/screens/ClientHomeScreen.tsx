@@ -13,7 +13,7 @@ import {
   BackHandler,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useAppTheme } from '../theme';
+import { useAppTheme, colors } from '../theme';
 import { ClientTab } from '../types/client';
 import { KycSubmission, KycStatus } from '../types/kyc';
 import {
@@ -230,7 +230,7 @@ export const ClientHomeScreen: React.FC<ClientHomeScreenProps> = ({
   if (error && !loading && !refreshing) {
     return (
       <View style={[styles.centerContainer, { paddingTop: insets.top, backgroundColor: colors.background }]}>
-        <AlertCircleIcon size={32} color="#DC2626" />
+        <AlertCircleIcon size={32} color={colors.error} />
         <Text style={[styles.errorTitle, { color: colors.textPrimary }]}>Communication Error</Text>
         <Text style={[styles.errorSubtitle, { color: colors.textSecondary }]}>{error}</Text>
         <AnimatedButton
@@ -353,7 +353,7 @@ export const ClientHomeScreen: React.FC<ClientHomeScreenProps> = ({
                 <Text style={[styles.tabSuperTitle, { color: colors.textSecondary }]}>CLIENT DOSSIER</Text>
                 <Text style={[styles.tabTitle, { color: colors.textPrimary }]}>My KYC Submissions</Text>
               </View>
-              <View style={[styles.countPill, { backgroundColor: isDark ? colors.cardSecondary : '#F1F5F9' }]}>
+              <View style={[styles.countPill, { backgroundColor: colors.slate100 }]}>
                 <HistoryIcon size={14} color={colors.textPrimary} />
                 <Text style={[styles.countPillText, { color: colors.textPrimary }]}>{submissionsList.length} Records</Text>
               </View>
@@ -361,7 +361,7 @@ export const ClientHomeScreen: React.FC<ClientHomeScreenProps> = ({
 
             {/* Search Box */}
             <View style={[styles.searchContainer, { backgroundColor: colors.inputBg, borderColor: colors.inputBorder }]}>
-              <SearchIcon size={16} color={isDark ? '#94A3B8' : '#64748B'} />
+              <SearchIcon size={16} color={colors.slate500} />
               <TextInput
                 style={[styles.searchInput, { color: colors.textPrimary }]}
                 placeholder="Search by Submission ID or date..."
@@ -411,7 +411,7 @@ export const ClientHomeScreen: React.FC<ClientHomeScreenProps> = ({
                       <Text
                         style={[
                           styles.filterChipText,
-                          { color: isSelected ? '#FFFFFF' : colors.textSecondary },
+                          { color: isSelected ? colors.white : colors.textSecondary },
                           isSelected && { fontWeight: '700' },
                         ]}
                       >
@@ -453,17 +453,17 @@ export const ClientHomeScreen: React.FC<ClientHomeScreenProps> = ({
                           <View
                             style={[
                               styles.historyBadge,
-                              isApproved && { backgroundColor: '#ECFDF5', borderColor: '#A7F3D0' },
-                              isRejected && { backgroundColor: '#FEF2F2', borderColor: '#FECACA' },
-                              isPending && { backgroundColor: '#FFFBEB', borderColor: '#FDE68A' },
+                              isApproved && { backgroundColor: colors.statusApprovedBg, borderColor: colors.statusApprovedBorder },
+                              isRejected && { backgroundColor: colors.statusRejectedBg, borderColor: colors.statusRejectedBorder },
+                              isPending && { backgroundColor: colors.statusPendingBg, borderColor: colors.statusPendingBorder },
                             ]}
                           >
                             <Text
                               style={[
                                 styles.badgeText,
-                                isApproved && { color: '#047857' },
-                                isRejected && { color: '#B91C1C' },
-                                isPending && { color: '#B45309' },
+                                isApproved && { color: colors.statusApproved },
+                                isRejected && { color: colors.statusRejected },
+                                isPending && { color: colors.statusPending },
                               ]}
                             >
                               {sub.status === 'PENDING'
@@ -495,7 +495,7 @@ export const ClientHomeScreen: React.FC<ClientHomeScreenProps> = ({
                 })
               ) : (
                 <View style={[styles.emptyCard, { backgroundColor: colors.card, borderColor: colors.cardBorder }]}>
-                  <FilesIcon size={32} color={isDark ? '#64748B' : '#94A3B8'} />
+                  <FilesIcon size={32} color={colors.slate400} />
                   <Text style={[styles.emptyTitle, { color: colors.textPrimary }]}>No Submissions Found</Text>
                   <Text style={[styles.emptySubtitle, { color: colors.textSecondary }]}>
                     No KYC submission records match your current filter criteria.
@@ -542,8 +542,8 @@ export const ClientHomeScreen: React.FC<ClientHomeScreenProps> = ({
               <Text style={[styles.profileName, { color: colors.textPrimary }]}>{clientProfile.name}</Text>
               <Text style={[styles.profileEmail, { color: colors.textSecondary }]}>{clientProfile.email}</Text>
 
-              <View style={[styles.profileStatusBadge, { backgroundColor: '#ECFDF5', borderColor: '#A7F3D0' }]}>
-                <CheckIcon size={12} color="#047857" />
+              <View style={[styles.profileStatusBadge, { backgroundColor: colors.statusApprovedBg, borderColor: colors.statusApprovedBorder }]}>
+                <CheckIcon size={12} color={colors.statusApproved} />
                 <Text style={styles.profileStatusText}>Verified Client</Text>
               </View>
 
@@ -581,10 +581,10 @@ export const ClientHomeScreen: React.FC<ClientHomeScreenProps> = ({
                 style={[styles.profileActionRow, { backgroundColor: colors.card, borderColor: colors.cardBorder }]}
               >
                 <View style={styles.profileActionLeft}>
-                  <LogOutIcon size={18} color="#DC2626" />
-                  <Text style={[styles.profileActionText, { color: '#DC2626' }]}>Sign Out</Text>
+                  <LogOutIcon size={18} color={colors.error} />
+                  <Text style={[styles.profileActionText, { color: colors.error }]}>Sign Out</Text>
                 </View>
-                <Text style={[styles.actionArrow, { color: '#DC2626' }]}>&rarr;</Text>
+                <Text style={[styles.actionArrow, { color: colors.error }]}>&rarr;</Text>
               </TouchableOpacity>
             </View>
 
@@ -729,7 +729,7 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     borderWidth: 1,
     padding: 16,
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.04,
     shadowRadius: 6,
@@ -771,13 +771,13 @@ const styles = StyleSheet.create({
     marginTop: 10,
     padding: 10,
     borderRadius: 8,
-    backgroundColor: '#FEF2F2',
+    backgroundColor: colors.statusRejectedBg,
     borderWidth: 1,
-    borderColor: '#FECACA',
+    borderColor: colors.statusRejectedBorder,
   },
   rejectionSnippetText: {
     fontSize: 12,
-    color: '#B91C1C',
+    color: colors.statusRejected,
     fontWeight: '600',
   },
   cardFooter: {
@@ -829,7 +829,7 @@ const styles = StyleSheet.create({
     width: 64,
     height: 64,
     borderRadius: 32,
-    backgroundColor: '#012655',
+    backgroundColor: colors.brandNavy,
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 12,
@@ -855,7 +855,7 @@ const styles = StyleSheet.create({
   profileStatusText: {
     fontSize: 11,
     fontWeight: '700',
-    color: '#047857',
+    color: colors.statusApproved,
   },
   profileDetailsRow: {
     flexDirection: 'row',

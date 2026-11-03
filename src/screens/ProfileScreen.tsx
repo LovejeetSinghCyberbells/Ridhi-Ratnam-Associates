@@ -313,7 +313,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
           style={styles.headerBackBtn}
           accessibilityLabel="Go back"
         >
-          <ChevronLeftIcon size={20} color="#FFFFFF" />
+          <ChevronLeftIcon size={20} color={colors.white} />
         </TouchableOpacity>
 
         <View style={styles.headerTitleBox}>
@@ -332,7 +332,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
           style={styles.headerEditBtn}
           accessibilityLabel="Edit profile"
         >
-          <EditIcon size={16} color="#FFFFFF" />
+          <EditIcon size={16} color={colors.white} />
         </TouchableOpacity>
       </View>
 
@@ -351,8 +351,8 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
           <View style={[styles.profileHeroCard, { backgroundColor: themeColors.card, borderColor: themeColors.cardBorder }]}>
             {/* Avatar on Left */}
             <View style={styles.avatarContainer}>
-              <View style={[styles.avatarCircle, { backgroundColor: isDark ? '#0C3547' : '#E0F2FE', borderColor: isDark ? '#0284C7' : '#BAE6FD' }]}>
-                <Text style={[styles.avatarInitialText, { color: isDark ? '#38BDF8' : '#0369A1' }]}>{initials}</Text>
+              <View style={[styles.avatarCircle, { backgroundColor: colors.clientSoftBg, borderColor: colors.brandNavyLight }]}>
+                <Text style={[styles.avatarInitialText, { color: colors.brandNavy }]}>{initials}</Text>
               </View>
             </View>
 
@@ -367,7 +367,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
                 onPress={handleChangePhoto}
                 style={styles.changePhotoBtn}
               >
-                <CameraIcon size={14} color="#0284C7" />
+                <CameraIcon size={14} color={colors.brandNavy} />
                 <Text style={styles.changePhotoText}>Change photo</Text>
               </TouchableOpacity>
             </View>
@@ -390,7 +390,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
               testID="btn-open-edit-profile-hero"
               activeOpacity={0.75}
               onPress={handleOpenEditModal}
-              style={[styles.quickEditPill, { backgroundColor: isDark ? themeColors.cardSecondary : '#FFFFFF', borderColor: themeColors.cardBorder }]}
+              style={[styles.quickEditPill, { backgroundColor: colors.white, borderColor: themeColors.cardBorder }]}
             >
               <EditIcon size={11} color={themeColors.textPrimary} />
               <Text style={[styles.quickEditText, { color: themeColors.textPrimary }]}>Edit</Text>
@@ -412,7 +412,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
                 </View>
                 <View style={[styles.metricBar, { backgroundColor: themeColors.cardBorder }]} />
                 <View style={styles.metricItem}>
-                  <Text style={[styles.metricNumber, { color: '#047857' }]}>4.9 ★</Text>
+                  <Text style={[styles.metricNumber, { color: colors.statusApproved }]}>4.9 ★</Text>
                   <Text style={[styles.metricTag, { color: themeColors.textSecondary }]}>Advisor Rating</Text>
                 </View>
               </>
@@ -424,12 +424,12 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
                 </View>
                 <View style={[styles.metricBar, { backgroundColor: themeColors.cardBorder }]} />
                 <View style={styles.metricItem}>
-                  <Text style={[styles.metricNumber, { color: '#047857' }]}>2</Text>
+                  <Text style={[styles.metricNumber, { color: colors.statusApproved }]}>2</Text>
                   <Text style={[styles.metricTag, { color: themeColors.textSecondary }]}>Sanctioned</Text>
                 </View>
                 <View style={[styles.metricBar, { backgroundColor: themeColors.cardBorder }]} />
                 <View style={styles.metricItem}>
-                  <Text style={[styles.metricNumber, { color: '#D97706' }]}>1</Text>
+                  <Text style={[styles.metricNumber, { color: colors.brandGold }]}>1</Text>
                   <Text style={[styles.metricTag, { color: themeColors.textSecondary }]}>Under Review</Text>
                 </View>
               </>
@@ -452,7 +452,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
                 <Text style={[styles.fieldSmallLabel, { color: themeColors.textSecondary }]}>Display name</Text>
                 <Text style={[styles.fieldValueText, { color: themeColors.textPrimary }]}>{fullName}</Text>
               </View>
-              <EditIcon size={15} color={isDark ? '#94A3B8' : '#8E8E93'} />
+              <EditIcon size={15} color={colors.slate400} />
             </TouchableOpacity>
 
             <View style={[styles.itemDivider, { backgroundColor: themeColors.cardBorder }]} />
@@ -467,7 +467,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
                 <Text style={[styles.fieldSmallLabel, { color: themeColors.textSecondary }]}>Username</Text>
                 <Text style={[styles.fieldValueText, { color: themeColors.textPrimary }]}>{username}</Text>
               </View>
-              <EditIcon size={15} color={isDark ? '#94A3B8' : '#8E8E93'} />
+              <EditIcon size={15} color={colors.slate400} />
             </TouchableOpacity>
 
             <View style={[styles.itemDivider, { backgroundColor: themeColors.cardBorder }]} />
@@ -482,7 +482,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
                 <Text style={[styles.fieldSmallLabel, { color: themeColors.textSecondary }]}>Email Address</Text>
                 <Text style={[styles.fieldValueText, { color: themeColors.textPrimary }]}>{email}</Text>
               </View>
-              <EditIcon size={15} color={isDark ? '#94A3B8' : '#8E8E93'} />
+              <EditIcon size={15} color={colors.slate400} />
             </TouchableOpacity>
 
             <View style={[styles.itemDivider, { backgroundColor: themeColors.cardBorder }]} />
@@ -497,7 +497,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
                 <Text style={[styles.fieldSmallLabel, { color: themeColors.textSecondary }]}>Mobile Number</Text>
                 <Text style={[styles.fieldValueText, { color: themeColors.textPrimary }]}>{phone}</Text>
               </View>
-              <EditIcon size={15} color={isDark ? '#94A3B8' : '#8E8E93'} />
+              <EditIcon size={15} color={colors.slate400} />
             </TouchableOpacity>
 
             <View style={[styles.itemDivider, { backgroundColor: themeColors.cardBorder }]} />
@@ -511,7 +511,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
                 <Text style={[styles.fieldValueText, { color: themeColors.textPrimary }]}>{branch}</Text>
               </View>
               <View style={styles.verifiedMiniBadge}>
-                <CheckIcon size={10} color="#047857" />
+                <CheckIcon size={10} color={colors.statusApproved} />
                 <Text style={styles.verifiedMiniText}>Verified</Text>
               </View>
             </View>
@@ -537,14 +537,14 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
               style={styles.iconSettingRow}
               accessibilityLabel="Open Notification Settings"
             >
-              <View style={[styles.iconCircleBadge, { backgroundColor: '#0284C7' }]}>
-                <BellIcon size={16} color="#FFFFFF" />
+              <View style={[styles.iconCircleBadge, { backgroundColor: colors.brandNavy }]}>
+                <BellIcon size={16} color={colors.white} />
               </View>
               <View style={{ flex: 1 }}>
                 <Text style={[styles.iconSettingTitle, { color: themeColors.textPrimary }]}>Notifications</Text>
                 <Text style={[styles.subHintText, { color: themeColors.textSecondary }]}>Push alerts, loan updates & reminders</Text>
               </View>
-              <ChevronRightIcon size={14} color={isDark ? '#94A3B8' : '#C7C7CC'} />
+              <ChevronRightIcon size={14} color={colors.slate400} />
             </TouchableOpacity>
 
             <View style={[styles.itemDivider, { backgroundColor: themeColors.cardBorder }]} />
@@ -566,14 +566,14 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
               style={styles.iconSettingRow}
               accessibilityLabel="Open Privacy Policy"
             >
-              <View style={[styles.iconCircleBadge, { backgroundColor: '#0D9488' }]}>
-                <ShieldIcon size={16} color="#FFFFFF" />
+              <View style={[styles.iconCircleBadge, { backgroundColor: colors.statusApproved }]}>
+                <ShieldIcon size={16} color={colors.white} />
               </View>
               <View style={{ flex: 1 }}>
                 <Text style={[styles.iconSettingTitle, { color: themeColors.textPrimary }]}>Privacy Policy</Text>
                 <Text style={[styles.subHintText, { color: themeColors.textSecondary }]}>RBI NBFC compliance & data protection</Text>
               </View>
-              <ChevronRightIcon size={14} color={isDark ? '#94A3B8' : '#C7C7CC'} />
+              <ChevronRightIcon size={14} color={colors.slate400} />
             </TouchableOpacity>
 
             <View style={[styles.itemDivider, { backgroundColor: themeColors.cardBorder }]} />
@@ -595,14 +595,14 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
               style={styles.iconSettingRow}
               accessibilityLabel="Open Terms and Conditions"
             >
-              <View style={[styles.iconCircleBadge, { backgroundColor: '#CDA148' }]}>
-                <FileTextIcon size={16} color="#FFFFFF" />
+              <View style={[styles.iconCircleBadge, { backgroundColor: colors.brandGold }]}>
+                <FileTextIcon size={16} color={colors.white} />
               </View>
               <View style={{ flex: 1 }}>
                 <Text style={[styles.iconSettingTitle, { color: themeColors.textPrimary }]}>Terms & Conditions</Text>
                 <Text style={[styles.subHintText, { color: themeColors.textSecondary }]}>Loan origination & legal advisory terms</Text>
               </View>
-              <ChevronRightIcon size={14} color={isDark ? '#94A3B8' : '#C7C7CC'} />
+              <ChevronRightIcon size={14} color={colors.slate400} />
             </TouchableOpacity>
           </View>
 
@@ -652,9 +652,9 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
             testID="btn-header-sign-out"
             activeOpacity={0.8}
             onPress={handleConfirmSignOut}
-            style={[styles.signOutCardBtn, { backgroundColor: isDark ? '#2D1515' : '#FEF2F2', borderColor: isDark ? '#B91C1C' : '#FECACA' }]}
+            style={[styles.signOutCardBtn, { backgroundColor: colors.statusRejectedBg, borderColor: colors.statusRejectedBorder }]}
           >
-            <LogOutIcon size={16} color="#DC2626" />
+            <LogOutIcon size={16} color={colors.error} />
             <Text style={styles.signOutCardText}>Sign Out of Account</Text>
           </TouchableOpacity>
         </ScrollView>
@@ -682,7 +682,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
                 onPress={() => setIsEditModalVisible(false)}
                 style={styles.modalCloseBtn}
               >
-                <CrossIcon size={14} color="#0D0E12" />
+                <CrossIcon size={14} color={colors.topBarBlack} />
               </TouchableOpacity>
             </View>
 
@@ -701,7 +701,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
                   setEditName(val);
                   if (editErrors.name) setEditErrors((prev) => ({ ...prev, name: '' }));
                 }}
-                leftIcon={<EditIcon size={16} color="#64748B" />}
+                leftIcon={<EditIcon size={16} color={colors.slate500} />}
                 error={editErrors.name}
                 accentColor={colors.primaryBlack}
                 returnKeyType="next"
@@ -716,7 +716,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
                   setEditEmail(val);
                   if (editErrors.email) setEditErrors((prev) => ({ ...prev, email: '' }));
                 }}
-                leftIcon={<MailIcon size={16} color="#64748B" />}
+                leftIcon={<MailIcon size={16} color={colors.slate500} />}
                 keyboardType="email-address"
                 autoCapitalize="none"
                 error={editErrors.email}
@@ -733,7 +733,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
                   setEditPhone(val);
                   if (editErrors.phone) setEditErrors((prev) => ({ ...prev, phone: '' }));
                 }}
-                leftIcon={<PhoneIcon size={16} color="#64748B" />}
+                leftIcon={<PhoneIcon size={16} color={colors.slate500} />}
                 keyboardType="phone-pad"
                 error={editErrors.phone}
                 accentColor={colors.primaryBlack}
@@ -748,7 +748,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
                 onChangeText={(val) => {
                   setEditBranch(val);
                 }}
-                leftIcon={<BuildingIcon size={16} color="#64748B" />}
+                leftIcon={<BuildingIcon size={16} color={colors.slate500} />}
                 accentColor={colors.primaryBlack}
                 returnKeyType="done"
               />
@@ -798,7 +798,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
                 onPress={() => setIsPasswordModalVisible(false)}
                 style={styles.modalCloseBtn}
               >
-                <CrossIcon size={14} color="#0D0E12" />
+                <CrossIcon size={14} color={colors.topBarBlack} />
               </TouchableOpacity>
             </View>
 
@@ -818,7 +818,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
                   if (passwordErrors.current) setPasswordErrors((prev) => ({ ...prev, current: '' }));
                 }}
                 isPassword={true}
-                leftIcon={<LockIcon size={16} color="#64748B" />}
+                leftIcon={<LockIcon size={16} color={colors.slate500} />}
                 error={passwordErrors.current}
                 accentColor={colors.primaryBlack}
                 returnKeyType="next"
@@ -834,7 +834,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
                   if (passwordErrors.new) setPasswordErrors((prev) => ({ ...prev, new: '' }));
                 }}
                 isPassword={true}
-                leftIcon={<LockIcon size={16} color="#64748B" />}
+                leftIcon={<LockIcon size={16} color={colors.slate500} />}
                 error={passwordErrors.new}
                 accentColor={colors.primaryBlack}
                 returnKeyType="next"
@@ -850,7 +850,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
                   if (passwordErrors.confirm) setPasswordErrors((prev) => ({ ...prev, confirm: '' }));
                 }}
                 isPassword={true}
-                leftIcon={<LockIcon size={16} color="#64748B" />}
+                leftIcon={<LockIcon size={16} color={colors.slate500} />}
                 error={passwordErrors.confirm}
                 accentColor={colors.primaryBlack}
                 returnKeyType="done"
@@ -920,7 +920,7 @@ const styles = StyleSheet.create({
   headerMainTitle: {
     fontSize: 20,
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: colors.white,
     letterSpacing: -0.4,
   },
   hiddenTestString: {
@@ -950,14 +950,14 @@ const styles = StyleSheet.create({
 
   // ================= HERO PROFILE CARD (Design Match) =================
   profileHeroCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderRadius: 24,
     padding: 16,
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#E2E8F0',
-    shadowColor: '#000',
+    borderColor: colors.border,
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.03,
     shadowRadius: 6,
@@ -970,16 +970,16 @@ const styles = StyleSheet.create({
     width: 64,
     height: 64,
     borderRadius: 32,
-    backgroundColor: '#E0F2FE',
+    backgroundColor: colors.clientSoftBg,
     borderWidth: 2,
-    borderColor: '#BAE6FD',
+    borderColor: colors.brandNavyLight,
     alignItems: 'center',
     justifyContent: 'center',
   },
   avatarInitialText: {
     fontSize: 22,
     fontWeight: '800',
-    color: '#0369A1',
+    color: colors.brandNavy,
     letterSpacing: -0.5,
   },
   profileHeroRight: {
@@ -989,13 +989,13 @@ const styles = StyleSheet.create({
   profileFullName: {
     fontSize: 18,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     letterSpacing: -0.3,
   },
   profileUsername: {
     fontSize: 13,
     fontWeight: '500',
-    color: '#64748B',
+    color: colors.slate500,
     marginTop: 2,
   },
   changePhotoBtn: {
@@ -1006,7 +1006,7 @@ const styles = StyleSheet.create({
   changePhotoText: {
     fontSize: 13,
     fontWeight: '600',
-    color: '#0284C7',
+    color: colors.brandNavy,
     marginLeft: 5,
   },
 
@@ -1021,67 +1021,67 @@ const styles = StyleSheet.create({
   idBadgePill: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FEF8E7',
+    backgroundColor: colors.brandGoldSoft,
     paddingVertical: 5,
     paddingHorizontal: 10,
     borderRadius: borderRadius.pill,
     borderWidth: 1,
-    borderColor: '#FDE68A',
+    borderColor: colors.brandGoldLight,
   },
   idBadgePillText: {
     fontSize: 11,
     fontWeight: '700',
-    color: '#92400E',
+    color: colors.brandGoldDark,
     marginLeft: 5,
     letterSpacing: 0.2,
   },
   statusVerifiedPill: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#ECFDF5',
+    backgroundColor: colors.statusApprovedBg,
     paddingVertical: 5,
     paddingHorizontal: 10,
     borderRadius: borderRadius.pill,
     borderWidth: 1,
-    borderColor: '#A7F3D0',
+    borderColor: colors.statusApprovedBorder,
   },
   greenPulseDot: {
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: '#10B981',
+    backgroundColor: colors.statusApproved,
     marginRight: 5,
   },
   statusVerifiedText: {
     fontSize: 11,
     fontWeight: '700',
-    color: '#065F46',
+    color: colors.statusApproved,
   },
   quickEditPill: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.white,
     paddingVertical: 5,
     paddingHorizontal: 10,
     borderRadius: borderRadius.pill,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
   },
   quickEditText: {
     fontSize: 11,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     marginLeft: 4,
   },
   metricsBox: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderRadius: 18,
     paddingVertical: 12,
     marginTop: 10,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
   },
   metricItem: {
     flex: 1,
@@ -1090,18 +1090,18 @@ const styles = StyleSheet.create({
   metricNumber: {
     fontSize: 16,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   metricTag: {
     fontSize: 10,
     fontWeight: '600',
-    color: '#64748B',
+    color: colors.slate500,
     marginTop: 2,
   },
   metricBar: {
     width: 1,
     height: 24,
-    backgroundColor: '#E2E8F0',
+    backgroundColor: colors.border,
   },
   hiddenFieldText: {
     display: 'none',
@@ -1111,17 +1111,17 @@ const styles = StyleSheet.create({
   sectionHeaderTitle: {
     fontSize: 11.5,
     fontWeight: '700',
-    color: '#8E8E93',
+    color: colors.slate400,
     letterSpacing: 0.8,
     marginTop: 22,
     marginBottom: 8,
     marginLeft: 4,
   },
   groupedSectionCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderRadius: 22,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
     overflow: 'hidden',
   },
   groupedItemRow: {
@@ -1133,24 +1133,24 @@ const styles = StyleSheet.create({
   },
   itemDivider: {
     height: StyleSheet.hairlineWidth,
-    backgroundColor: '#E2E8F0',
+    backgroundColor: colors.border,
     marginLeft: 16,
   },
   fieldSmallLabel: {
     fontSize: 11.5,
     fontWeight: '500',
-    color: '#8E8E93',
+    color: colors.slate400,
     marginBottom: 2,
   },
   fieldValueText: {
     fontSize: 15,
     fontWeight: '600',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   verifiedMiniBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#ECFDF5',
+    backgroundColor: colors.statusApprovedBg,
     paddingHorizontal: 8,
     paddingVertical: 3,
     borderRadius: 8,
@@ -1158,7 +1158,7 @@ const styles = StyleSheet.create({
   verifiedMiniText: {
     fontSize: 10.5,
     fontWeight: '700',
-    color: '#047857',
+    color: colors.statusApproved,
     marginLeft: 3,
   },
 
@@ -1181,20 +1181,20 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 15,
     fontWeight: '600',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   subHintText: {
     fontSize: 11.5,
     fontWeight: '400',
-    color: '#64748B',
+    color: colors.slate500,
     marginTop: 1,
   },
   chipPillAction: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.slate50,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
     borderRadius: 16,
     paddingHorizontal: 12,
     paddingVertical: 4,
@@ -1202,10 +1202,10 @@ const styles = StyleSheet.create({
   chipPillActionText: {
     fontSize: 12.5,
     fontWeight: '600',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   cachePillBadge: {
-    backgroundColor: '#F1F5F9',
+    backgroundColor: colors.slate100,
     paddingHorizontal: 8,
     paddingVertical: 3,
     borderRadius: 10,
@@ -1213,7 +1213,7 @@ const styles = StyleSheet.create({
   cachePillText: {
     fontSize: 11,
     fontWeight: '700',
-    color: '#475569',
+    color: colors.slate600,
   },
 
   // ================= SIGN OUT ACTION =================
@@ -1221,9 +1221,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderWidth: 1,
-    borderColor: '#FCA5A5',
+    borderColor: colors.statusRejectedBorder,
     borderRadius: 20,
     paddingVertical: 14,
     marginTop: 22,
@@ -1232,7 +1232,7 @@ const styles = StyleSheet.create({
   signOutCardText: {
     fontSize: 14.5,
     fontWeight: '700',
-    color: '#DC2626',
+    color: colors.error,
     marginLeft: 8,
   },
 
@@ -1243,7 +1243,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   modalContentCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderTopLeftRadius: 28,
     borderTopRightRadius: 28,
     paddingHorizontal: 20,
@@ -1266,13 +1266,13 @@ const styles = StyleSheet.create({
   modalTitle: {
     fontSize: 18,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   modalCloseBtn: {
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: colors.slate100,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -1286,11 +1286,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderRadius: borderRadius.pill,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
   },
   modalCancelText: {
     fontSize: 14,
     fontWeight: '700',
-    color: '#64748B',
+    color: colors.slate500,
   },
 });

@@ -91,7 +91,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onFinish }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.white,
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingVertical: spacing.xxxl + 10,
@@ -106,16 +106,16 @@ const styles = StyleSheet.create({
     width: 144,
     height: 144,
     borderRadius: 72,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.white,
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.04,
     shadowRadius: 12,
     elevation: 2,
     borderWidth: 1.5,
-    borderColor: '#F1F3F6',
+    borderColor: colors.borderLight,
     marginBottom: spacing.xl,
   },
   logoImage: {
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
   brandTitle: {
     fontSize: 26,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     letterSpacing: -0.5,
     marginTop: spacing.sm,
     textAlign: 'center',
@@ -133,13 +133,13 @@ const styles = StyleSheet.create({
   taglineBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F7F8FA',
+    backgroundColor: colors.surfaceSubtle,
     paddingVertical: 7,
     paddingHorizontal: 16,
     borderRadius: borderRadius.pill,
     marginTop: spacing.md,
     borderWidth: 1,
-    borderColor: '#E8EAED',
+    borderColor: colors.borderMedium,
   },
   goldDot: {
     width: 7,
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
   taglineText: {
     fontSize: 11,
     fontWeight: '700',
-    color: '#4B5563',
+    color: colors.slate600,
     letterSpacing: 1,
   },
   bottomProgressWrapper: {
@@ -161,20 +161,20 @@ const styles = StyleSheet.create({
   progressTrack: {
     width: 120,
     height: 3,
-    backgroundColor: '#E5E7EB',
+    backgroundColor: colors.slate200,
     borderRadius: 1.5,
     overflow: 'hidden',
     marginBottom: spacing.md,
   },
   progressBar: {
     height: '100%',
-    backgroundColor: '#0D0E12',
+    backgroundColor: colors.topBarBlack,
     borderRadius: 1.5,
   },
   copyrightText: {
     fontSize: 10,
     fontWeight: '700',
-    color: '#9CA3AF',
+    color: colors.slate400,
     letterSpacing: 1.2,
   },
 });

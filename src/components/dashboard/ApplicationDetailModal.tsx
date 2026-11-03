@@ -10,6 +10,7 @@ import {
 import { LoanApplication, ApplicationStatus } from '../../types/dashboard';
 import { CrossIcon, PhoneIcon, MailIcon, CheckIcon } from '../Icons';
 import { AnimatedButton } from '../AnimatedButton';
+import { colors } from '../../theme';
 
 interface ApplicationDetailModalProps {
   application: LoanApplication | null;
@@ -27,13 +28,13 @@ export const ApplicationDetailModal: React.FC<ApplicationDetailModalProps> = ({
   const getStatusColor = (status: ApplicationStatus) => {
     switch (status) {
       case 'Pending':
-        return { bg: '#FFFBEB', border: '#FDE68A', text: '#B45309' };
+        return { bg: colors.statusPendingBg, border: colors.statusPendingBorder, text: colors.statusPending };
       case 'Under Review':
-        return { bg: '#EFF6FF', border: '#BFDBFE', text: '#1D4ED8' };
+        return { bg: colors.statusReviewBg, border: colors.statusReviewBorder, text: colors.statusReview };
       case 'Approved':
-        return { bg: '#ECFDF5', border: '#A7F3D0', text: '#047857' };
+        return { bg: colors.statusApprovedBg, border: colors.statusApprovedBorder, text: colors.statusApproved };
       case 'Rejected':
-        return { bg: '#FEF2F2', border: '#FECACA', text: '#B91C1C' };
+        return { bg: colors.statusRejectedBg, border: colors.statusRejectedBorder, text: colors.statusRejected };
     }
   };
 
@@ -61,7 +62,7 @@ export const ApplicationDetailModal: React.FC<ApplicationDetailModalProps> = ({
               style={styles.closeBtn}
               accessibilityLabel="Close application details"
             >
-              <CrossIcon size={14} color="#0D0E12" />
+              <CrossIcon size={14} color={colors.textPrimary} />
             </TouchableOpacity>
           </View>
 
@@ -103,7 +104,7 @@ export const ApplicationDetailModal: React.FC<ApplicationDetailModalProps> = ({
                 </View>
                 <View style={styles.finItem}>
                   <Text style={styles.finItemLabel}>CIBIL SCORE</Text>
-                  <Text style={[styles.finItemValue, { color: '#047857' }]}>
+                  <Text style={[styles.finItemValue, { color: colors.statusApproved }]}>
                     {application.cibilScore || 750}
                   </Text>
                 </View>
@@ -114,15 +115,15 @@ export const ApplicationDetailModal: React.FC<ApplicationDetailModalProps> = ({
             <View style={styles.sectionCard}>
               <Text style={styles.sectionTitle}>Client Contact Information</Text>
               <View style={styles.contactRow}>
-                <PhoneIcon size={16} color="#64748B" />
+                <PhoneIcon size={16} color={colors.slate500} />
                 <Text style={styles.contactText}>{application.clientPhone}</Text>
               </View>
               <View style={styles.contactRow}>
-                <MailIcon size={16} color="#64748B" />
+                <MailIcon size={16} color={colors.slate500} />
                 <Text style={styles.contactText}>{application.clientEmail}</Text>
               </View>
               <View style={styles.contactRow}>
-                <CheckIcon size={16} color="#10B981" />
+                <CheckIcon size={16} color={colors.success} />
                 <Text style={styles.contactText}>KYC & Aadhar Verified</Text>
               </View>
             </View>
@@ -152,11 +153,11 @@ export const ApplicationDetailModal: React.FC<ApplicationDetailModalProps> = ({
 const styles = StyleSheet.create({
   overlay: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.45)',
+    backgroundColor: colors.overlay,
     justifyContent: 'flex-end',
   },
   sheetContainer: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderTopLeftRadius: 32,
     borderTopRightRadius: 32,
     maxHeight: '85%',
@@ -171,26 +172,26 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     paddingBottom: 12,
     borderBottomWidth: 1,
-    borderBottomColor: '#F1F3F6',
+    borderBottomColor: colors.borderLight,
   },
   headerLeft: {},
   headerCategory: {
     fontSize: 10,
     fontWeight: '800',
-    color: '#94A3B8',
+    color: colors.slate400,
     letterSpacing: 0.8,
   },
   headerTitle: {
     fontSize: 17,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     letterSpacing: -0.2,
   },
   closeBtn: {
     width: 36,
     height: 36,
     borderRadius: 18,
-    backgroundColor: '#F1F3F6',
+    backgroundColor: colors.borderLight,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -206,13 +207,13 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48,
     borderRadius: 24,
-    backgroundColor: '#0D0E12',
+    backgroundColor: colors.topBarBlack,
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 12,
   },
   heroAvatarText: {
-    color: '#FFFFFF',
+    color: colors.white,
     fontSize: 16,
     fontWeight: '800',
   },
@@ -222,12 +223,12 @@ const styles = StyleSheet.create({
   heroClientName: {
     fontSize: 17,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   heroLoanType: {
     fontSize: 12.5,
     fontWeight: '600',
-    color: '#64748B',
+    color: colors.slate500,
     marginTop: 2,
   },
   statusBadge: {
@@ -241,23 +242,23 @@ const styles = StyleSheet.create({
     fontWeight: '800',
   },
   financialCard: {
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.slate50,
     borderRadius: 20,
     padding: 16,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
     marginBottom: 14,
   },
   finLabel: {
     fontSize: 10,
     fontWeight: '700',
-    color: '#64748B',
+    color: colors.slate500,
     letterSpacing: 0.5,
   },
   finAmount: {
     fontSize: 28,
     fontWeight: '900',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     marginVertical: 4,
     letterSpacing: -0.5,
   },
@@ -266,7 +267,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingTop: 10,
     borderTopWidth: 1,
-    borderTopColor: '#E2E8F0',
+    borderTopColor: colors.border,
   },
   finItem: {
     flex: 1,
@@ -274,27 +275,27 @@ const styles = StyleSheet.create({
   finItemLabel: {
     fontSize: 9.5,
     fontWeight: '700',
-    color: '#94A3B8',
+    color: colors.slate400,
     letterSpacing: 0.3,
   },
   finItemValue: {
     fontSize: 13,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     marginTop: 2,
   },
   sectionCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderRadius: 18,
     padding: 14,
     borderWidth: 1,
-    borderColor: '#E8EAED',
+    borderColor: colors.borderMedium,
     marginBottom: 12,
   },
   sectionTitle: {
     fontSize: 12,
     fontWeight: '700',
-    color: '#475569',
+    color: colors.slate600,
     marginBottom: 8,
     textTransform: 'uppercase',
     letterSpacing: 0.4,
@@ -308,11 +309,11 @@ const styles = StyleSheet.create({
   contactText: {
     fontSize: 13,
     fontWeight: '600',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   notesText: {
     fontSize: 12.5,
-    color: '#475569',
+    color: colors.slate600,
     lineHeight: 18,
   },
   actionBtn: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { useAppTheme, borderRadius, spacing } from '../../theme';
+import { useAppTheme, borderRadius, spacing, colors } from '../../theme';
 import { ShieldIcon, UploadCloudIcon } from '../Icons';
 import { AnimatedButton } from '../AnimatedButton';
 
@@ -29,7 +29,7 @@ export const KycUploadBannerCard: React.FC<KycUploadBannerCardProps> = ({
       <View style={styles.innerContent}>
         {/* Top Tag & Security Icon */}
         <View style={styles.headerRow}>
-          <View style={[styles.shieldBadge, { backgroundColor: isDark ? colors.cardSecondary : '#FEF8E7', borderColor: colors.brandGold }]}>
+          <View style={[styles.shieldBadge, { backgroundColor: isDark ? colors.cardSecondary : colors.brandGoldSoft, borderColor: colors.brandGold }]}>
             <ShieldIcon size={13} color={colors.brandGold} />
             <Text style={[styles.shieldText, { color: colors.brandGold }]}>
               DOCUMENT VERIFICATION
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     marginHorizontal: 0,
     marginBottom: 16,
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.05,
     shadowRadius: 12,

@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
   welcomeText: {
     fontSize: 13,
     fontWeight: '500',
-    color: '#64748B',
+    color: colors.slate500,
     marginBottom: 2,
     letterSpacing: 0.1,
   },
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
   designationText: {
     fontSize: 12,
     fontWeight: '600',
-    color: '#475569',
+    color: colors.slate600,
     letterSpacing: 0.2,
   },
   rightColumn: {
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     borderColor: colors.cardBorder,
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.04,
     shadowRadius: 4,
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     padding: 2,
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.1,
     shadowRadius: 6,
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     borderColor: colors.brandGold,
   },
   avatarText: {
-    color: '#FFFFFF',
+    color: colors.white,
     fontSize: 14,
     fontWeight: '800',
     letterSpacing: 0.5,

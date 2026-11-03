@@ -121,7 +121,7 @@ export const TermsAndConditionsScreen: React.FC<TermsAndConditionsScreenProps> =
           style={styles.headerBackBtn}
           accessibilityLabel="Go back"
         >
-          <ChevronLeftIcon size={20} color="#FFFFFF" />
+          <ChevronLeftIcon size={20} color={colors.white} />
         </TouchableOpacity>
 
         <View style={styles.headerTitleBox}>
@@ -136,7 +136,7 @@ export const TermsAndConditionsScreen: React.FC<TermsAndConditionsScreenProps> =
           style={styles.headerActionBtn}
           accessibilityLabel="Share terms and conditions"
         >
-          <FileTextIcon size={16} color="#FFFFFF" />
+          <FileTextIcon size={16} color={colors.white} />
         </TouchableOpacity>
       </View>
 
@@ -162,14 +162,14 @@ export const TermsAndConditionsScreen: React.FC<TermsAndConditionsScreenProps> =
             style={[
               styles.trustBanner,
               {
-                backgroundColor: isDark ? '#1F2430' : '#E8EEF5',
-                borderColor: isDark ? '#323846' : '#CBD5E1',
+                backgroundColor: colors.slate100,
+                borderColor: colors.borderDark,
               },
             ]}
           >
             <View style={styles.trustBadgeRow}>
               <View style={styles.greenPulseDot} />
-              <Text style={[styles.trustBadgeText, { color: isDark ? '#93C5FD' : '#1E40AF' }]}>
+              <Text style={[styles.trustBadgeText, { color: colors.statusReview }]}>
                 RBI FAIR PRACTICES CODE & DIGITAL LENDING GOVERNANCE
               </Text>
             </View>
@@ -197,7 +197,7 @@ export const TermsAndConditionsScreen: React.FC<TermsAndConditionsScreenProps> =
                 },
               ]}
             >
-              <BuildingIcon size={20} color="#CDA148" />
+              <BuildingIcon size={20} color={colors.brandGold} />
               <Text style={[styles.summaryCardTitle, { color: themeColors.textPrimary }]}>
                 Authorized Partner
               </Text>
@@ -215,7 +215,7 @@ export const TermsAndConditionsScreen: React.FC<TermsAndConditionsScreenProps> =
                 },
               ]}
             >
-              <LockIcon size={20} color="#0D9488" />
+              <LockIcon size={20} color={colors.accentMint} />
               <Text style={[styles.summaryCardTitle, { color: themeColors.textPrimary }]}>
                 Zero Upfront Fees
               </Text>
@@ -233,7 +233,7 @@ export const TermsAndConditionsScreen: React.FC<TermsAndConditionsScreenProps> =
                 },
               ]}
             >
-              <ShieldIcon size={20} color="#0284C7" />
+              <ShieldIcon size={20} color={colors.info} />
               <Text style={[styles.summaryCardTitle, { color: themeColors.textPrimary }]}>
                 NACH e-Mandate
               </Text>
@@ -257,7 +257,7 @@ export const TermsAndConditionsScreen: React.FC<TermsAndConditionsScreenProps> =
                 },
               ]}
             >
-              <FileTextIcon size={14} color={isDark ? '#CDA148' : '#012655'} />
+              <FileTextIcon size={14} color={colors.topBarBlack} />
               <Text style={[styles.pdfBtnText, { color: themeColors.textPrimary }]}>
                 Download PDF Summary
               </Text>
@@ -309,9 +309,7 @@ export const TermsAndConditionsScreen: React.FC<TermsAndConditionsScreenProps> =
                     styles.categoryChip,
                     {
                       backgroundColor: isActive
-                        ? isDark
-                          ? '#CDA148'
-                          : '#012655'
+                        ? colors.topBarBlack
                         : themeColors.card,
                       borderColor: isActive
                         ? 'transparent'
@@ -324,9 +322,7 @@ export const TermsAndConditionsScreen: React.FC<TermsAndConditionsScreenProps> =
                       styles.categoryChipText,
                       {
                         color: isActive
-                          ? isDark
-                            ? '#012655'
-                            : '#FFFFFF'
+                          ? colors.white
                           : themeColors.textSecondary,
                         fontWeight: isActive ? '700' : '500',
                       },
@@ -355,7 +351,7 @@ export const TermsAndConditionsScreen: React.FC<TermsAndConditionsScreenProps> =
                 onPress={() => toggleClause(1)}
                 style={styles.sectionHeaderRow}
               >
-                <View style={[styles.sectionNumBadge, { backgroundColor: '#CDA148' }]}>
+                <View style={[styles.sectionNumBadge, { backgroundColor: colors.brandGold }]}>
                   <Text style={styles.sectionNumText}>1</Text>
                 </View>
                 <Text style={[styles.sectionTitle, { color: themeColors.textPrimary }]}>
@@ -403,7 +399,7 @@ export const TermsAndConditionsScreen: React.FC<TermsAndConditionsScreenProps> =
                 onPress={() => toggleClause(2)}
                 style={styles.sectionHeaderRow}
               >
-                <View style={[styles.sectionNumBadge, { backgroundColor: '#0284C7' }]}>
+                <View style={[styles.sectionNumBadge, { backgroundColor: colors.info }]}>
                   <Text style={styles.sectionNumText}>2</Text>
                 </View>
                 <Text style={[styles.sectionTitle, { color: themeColors.textPrimary }]}>
@@ -468,7 +464,7 @@ export const TermsAndConditionsScreen: React.FC<TermsAndConditionsScreenProps> =
                 onPress={() => toggleClause(3)}
                 style={styles.sectionHeaderRow}
               >
-                <View style={[styles.sectionNumBadge, { backgroundColor: '#0D9488' }]}>
+                <View style={[styles.sectionNumBadge, { backgroundColor: colors.accentMint }]}>
                   <Text style={styles.sectionNumText}>3</Text>
                 </View>
                 <Text style={[styles.sectionTitle, { color: themeColors.textPrimary }]}>
@@ -542,7 +538,7 @@ export const TermsAndConditionsScreen: React.FC<TermsAndConditionsScreenProps> =
                 onPress={() => toggleClause(4)}
                 style={styles.sectionHeaderRow}
               >
-                <View style={[styles.sectionNumBadge, { backgroundColor: '#7C3AED' }]}>
+                <View style={[styles.sectionNumBadge, { backgroundColor: colors.accentPurple }]}>
                   <Text style={styles.sectionNumText}>4</Text>
                 </View>
                 <Text style={[styles.sectionTitle, { color: themeColors.textPrimary }]}>
@@ -615,7 +611,7 @@ export const TermsAndConditionsScreen: React.FC<TermsAndConditionsScreenProps> =
                 onPress={() => toggleClause(5)}
                 style={styles.sectionHeaderRow}
               >
-                <View style={[styles.sectionNumBadge, { backgroundColor: '#EA580C' }]}>
+                <View style={[styles.sectionNumBadge, { backgroundColor: colors.warning }]}>
                   <Text style={styles.sectionNumText}>5</Text>
                 </View>
                 <Text style={[styles.sectionTitle, { color: themeColors.textPrimary }]}>
@@ -670,7 +666,7 @@ export const TermsAndConditionsScreen: React.FC<TermsAndConditionsScreenProps> =
                 onPress={() => toggleClause(6)}
                 style={styles.sectionHeaderRow}
               >
-                <View style={[styles.sectionNumBadge, { backgroundColor: '#B91C1C' }]}>
+                <View style={[styles.sectionNumBadge, { backgroundColor: colors.error }]}>
                   <Text style={styles.sectionNumText}>6</Text>
                 </View>
                 <Text style={[styles.sectionTitle, { color: themeColors.textPrimary }]}>
@@ -713,7 +709,7 @@ export const TermsAndConditionsScreen: React.FC<TermsAndConditionsScreenProps> =
                 onPress={() => toggleClause(7)}
                 style={styles.sectionHeaderRow}
               >
-                <View style={[styles.sectionNumBadge, { backgroundColor: '#059669' }]}>
+                <View style={[styles.sectionNumBadge, { backgroundColor: colors.statusApproved }]}>
                   <Text style={styles.sectionNumText}>7</Text>
                 </View>
                 <Text style={[styles.sectionTitle, { color: themeColors.textPrimary }]}>
@@ -768,7 +764,7 @@ export const TermsAndConditionsScreen: React.FC<TermsAndConditionsScreenProps> =
                 onPress={() => toggleClause(8)}
                 style={styles.sectionHeaderRow}
               >
-                <View style={[styles.sectionNumBadge, { backgroundColor: '#4F46E5' }]}>
+                <View style={[styles.sectionNumBadge, { backgroundColor: colors.accentBlue }]}>
                   <Text style={styles.sectionNumText}>8</Text>
                 </View>
                 <Text style={[styles.sectionTitle, { color: themeColors.textPrimary }]}>
@@ -810,7 +806,7 @@ export const TermsAndConditionsScreen: React.FC<TermsAndConditionsScreenProps> =
                 onPress={() => toggleClause(9)}
                 style={styles.sectionHeaderRow}
               >
-                <View style={[styles.sectionNumBadge, { backgroundColor: '#475569' }]}>
+                <View style={[styles.sectionNumBadge, { backgroundColor: colors.textSecondary }]}>
                   <Text style={styles.sectionNumText}>9</Text>
                 </View>
                 <Text style={[styles.sectionTitle, { color: themeColors.textPrimary }]}>
@@ -852,8 +848,8 @@ export const TermsAndConditionsScreen: React.FC<TermsAndConditionsScreenProps> =
             ]}
           >
             <View style={styles.officerHeaderRow}>
-              <View style={[styles.officerIconCircle, { backgroundColor: '#CDA148' }]}>
-                <HeadphonesIcon size={20} color="#FFFFFF" />
+              <View style={[styles.officerIconCircle, { backgroundColor: colors.brandGold }]}>
+                <HeadphonesIcon size={20} color={colors.white} />
               </View>
               <View style={{ flex: 1 }}>
                 <Text style={[styles.officerLabel, { color: themeColors.textSecondary }]}>
@@ -908,12 +904,12 @@ export const TermsAndConditionsScreen: React.FC<TermsAndConditionsScreenProps> =
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#012655',
+    backgroundColor: colors.topBarBlack,
   },
 
   // 1. Sleek Corporate Navy Top Bar
   blackHeader: {
-    backgroundColor: '#012655',
+    backgroundColor: colors.topBarBlack,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -924,7 +920,7 @@ const styles = StyleSheet.create({
     width: 38,
     height: 38,
     borderRadius: 19,
-    backgroundColor: 'rgba(255, 255, 255, 0.12)',
+    backgroundColor: colors.glassBackground,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -935,7 +931,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
   },
   headerSubBadge: {
-    color: '#CDA148',
+    color: colors.brandGold,
     fontSize: 10,
     fontWeight: '800',
     letterSpacing: 1.2,
@@ -943,7 +939,7 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   headerMainTitle: {
-    color: '#FFFFFF',
+    color: colors.white,
     fontSize: 18,
     fontWeight: '800',
     letterSpacing: -0.3,
@@ -952,7 +948,7 @@ const styles = StyleSheet.create({
     width: 38,
     height: 38,
     borderRadius: 19,
-    backgroundColor: 'rgba(255, 255, 255, 0.12)',
+    backgroundColor: colors.glassBackground,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -987,7 +983,7 @@ const styles = StyleSheet.create({
     width: 8,
     height: 8,
     borderRadius: 4,
-    backgroundColor: '#10B981',
+    backgroundColor: colors.accentGreen,
   },
   trustBadgeText: {
     fontSize: 11,
@@ -1116,7 +1112,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   sectionNumText: {
-    color: '#FFFFFF',
+    color: colors.white,
     fontSize: 12,
     fontWeight: '800',
   },
@@ -1146,7 +1142,7 @@ const styles = StyleSheet.create({
     width: 5,
     height: 5,
     borderRadius: 2.5,
-    backgroundColor: '#CDA148',
+    backgroundColor: colors.brandGold,
     marginTop: 7,
   },
   bulletText: {

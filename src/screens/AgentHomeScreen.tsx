@@ -13,7 +13,7 @@ import {
   BackHandler,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useAppTheme } from '../theme';
+import { useAppTheme, colors } from '../theme';
 import {
   AgentProfile,
   DashboardTab,
@@ -98,7 +98,7 @@ export const AgentHomeScreen: React.FC<AgentHomeScreenProps> = ({
       count: 248,
       label: 'Total Applications',
       subtext: 'Registered client portfolios',
-      color: '#012655',
+      color: colors.brandNavy,
     },
     {
       id: 'stat-pending',
@@ -108,7 +108,7 @@ export const AgentHomeScreen: React.FC<AgentHomeScreenProps> = ({
       count: 42,
       label: 'Pending Applications',
       subtext: 'Awaiting officer review',
-      color: '#B45309',
+      color: colors.statusPending,
     },
     {
       id: 'stat-approved',
@@ -118,7 +118,7 @@ export const AgentHomeScreen: React.FC<AgentHomeScreenProps> = ({
       count: 176,
       label: 'Approved Applications',
       subtext: 'Fully verified dossiers',
-      color: '#047857',
+      color: colors.statusApproved,
     },
     {
       id: 'stat-rejected',
@@ -128,7 +128,7 @@ export const AgentHomeScreen: React.FC<AgentHomeScreenProps> = ({
       count: 30,
       label: 'Rejected Applications',
       subtext: 'Compliance issues flagged',
-      color: '#B91C1C',
+      color: colors.statusRejected,
     },
   ]);
   const [submissions, setSubmissions] = useState<KycSubmission[]>([...kycSubmissionsStore]);
@@ -286,7 +286,7 @@ export const AgentHomeScreen: React.FC<AgentHomeScreenProps> = ({
   if (error && !loading && !refreshing) {
     return (
       <View style={[styles.centerContainer, { paddingTop: insets.top, backgroundColor: colors.background }]}>
-        <AlertCircleIcon size={32} color="#DC2626" />
+        <AlertCircleIcon size={32} color={colors.error} />
         <Text style={[styles.errorTitle, { color: colors.textPrimary }]}>Dashboard Error</Text>
         <Text style={[styles.errorSubtitle, { color: colors.textSecondary }]}>{error}</Text>
         <AnimatedButton
@@ -469,7 +469,7 @@ export const AgentHomeScreen: React.FC<AgentHomeScreenProps> = ({
                 <Text style={[styles.tabSuperTitle, { color: colors.textSecondary }]}>VERIFICATION QUEUE</Text>
                 <Text style={[styles.tabTitle, { color: colors.textPrimary }]}>All KYC Submissions</Text>
               </View>
-              <View style={[styles.countPill, { backgroundColor: isDark ? colors.cardSecondary : '#F1F5F9' }]}>
+              <View style={[styles.countPill, { backgroundColor: colors.slate100 }]}>
                 <FilesIcon size={14} color={colors.textPrimary} />
                 <Text style={[styles.countPillText, { color: colors.textPrimary }]}>{submissions.length} Total</Text>
               </View>
@@ -477,7 +477,7 @@ export const AgentHomeScreen: React.FC<AgentHomeScreenProps> = ({
 
             {/* Search Box */}
             <View style={[styles.searchContainer, { backgroundColor: colors.inputBg, borderColor: colors.inputBorder }]}>
-              <SearchIcon size={16} color={isDark ? '#94A3B8' : '#64748B'} />
+              <SearchIcon size={16} color={colors.slate500} />
               <TextInput
                 style={[styles.searchInput, { color: colors.textPrimary }]}
                 placeholder="Search by client name or Submission ID..."
@@ -527,7 +527,7 @@ export const AgentHomeScreen: React.FC<AgentHomeScreenProps> = ({
                       <Text
                         style={[
                           styles.filterChipText,
-                          { color: isSelected ? '#FFFFFF' : colors.textSecondary },
+                          { color: isSelected ? colors.white : colors.textSecondary },
                           isSelected && { fontWeight: '700' },
                         ]}
                       >
@@ -551,7 +551,7 @@ export const AgentHomeScreen: React.FC<AgentHomeScreenProps> = ({
                 ))
               ) : (
                 <View style={[styles.emptyCard, { backgroundColor: colors.card, borderColor: colors.cardBorder }]}>
-                  <FilesIcon size={32} color={isDark ? '#64748B' : '#94A3B8'} />
+                  <FilesIcon size={32} color={colors.slate400} />
                   <Text style={[styles.emptyTitle, { color: colors.textPrimary }]}>No KYC Submissions Found</Text>
                   <Text style={[styles.emptySubtitle, { color: colors.textSecondary }]}>
                     No client records match your current search and status filter.
@@ -596,7 +596,7 @@ export const AgentHomeScreen: React.FC<AgentHomeScreenProps> = ({
                 <Text style={[styles.tabSuperTitle, { color: colors.textSecondary }]}>AUDIT TRAIL</Text>
                 <Text style={[styles.tabTitle, { color: colors.textPrimary }]}>Verification History</Text>
               </View>
-              <View style={[styles.countPill, { backgroundColor: isDark ? colors.cardSecondary : '#F1F5F9' }]}>
+              <View style={[styles.countPill, { backgroundColor: colors.slate100 }]}>
                 <HistoryIcon size={14} color={colors.textPrimary} />
                 <Text style={[styles.countPillText, { color: colors.textPrimary }]}>
                   {historySubmissions.length} Decided
@@ -634,15 +634,15 @@ export const AgentHomeScreen: React.FC<AgentHomeScreenProps> = ({
                         <View
                           style={[
                             styles.decisionBadge,
-                            isApproved && { backgroundColor: '#ECFDF5', borderColor: '#A7F3D0' },
-                            isRejected && { backgroundColor: '#FEF2F2', borderColor: '#FECACA' },
+                            isApproved && { backgroundColor: colors.statusApprovedBg, borderColor: colors.statusApprovedBorder },
+                            isRejected && { backgroundColor: colors.statusRejectedBg, borderColor: colors.statusRejectedBorder },
                           ]}
                         >
                           <Text
                             style={[
                               styles.decisionBadgeText,
-                              isApproved && { color: '#047857' },
-                              isRejected && { color: '#B91C1C' },
+                              isApproved && { color: colors.statusApproved },
+                              isRejected && { color: colors.statusRejected },
                             ]}
                           >
                             {isApproved ? 'Approved' : 'Rejected'}
@@ -660,7 +660,7 @@ export const AgentHomeScreen: React.FC<AgentHomeScreenProps> = ({
                       </View>
 
                       {sub.agentRemarks || sub.rejectionReason ? (
-                        <View style={[styles.historyRemarksBox, { backgroundColor: isDark ? colors.cardSecondary : '#F8FAFC' }]}>
+                        <View style={[styles.historyRemarksBox, { backgroundColor: colors.slate50 }]}>
                           <Text style={[styles.historyRemarksLabel, { color: colors.textSecondary }]}>
                             {isRejected ? 'Rejection Reason:' : 'Agent Remarks:'}
                           </Text>
@@ -680,7 +680,7 @@ export const AgentHomeScreen: React.FC<AgentHomeScreenProps> = ({
                 })
               ) : (
                 <View style={[styles.emptyCard, { backgroundColor: colors.card, borderColor: colors.cardBorder }]}>
-                  <HistoryIcon size={32} color={isDark ? '#64748B' : '#94A3B8'} />
+                  <HistoryIcon size={32} color={colors.slate400} />
                   <Text style={[styles.emptyTitle, { color: colors.textPrimary }]}>No Verification History</Text>
                   <Text style={[styles.emptySubtitle, { color: colors.textSecondary }]}>
                     No KYC submissions have been verified by your agent account yet.
@@ -718,8 +718,8 @@ export const AgentHomeScreen: React.FC<AgentHomeScreenProps> = ({
               <Text style={styles.testHidden}>{agent.id}</Text>
               <Text style={[styles.profileEmail, { color: colors.textSecondary }]}>{agent.email}</Text>
 
-              <View style={[styles.profileStatusBadge, { backgroundColor: '#ECFDF5', borderColor: '#A7F3D0' }]}>
-                <CheckIcon size={12} color="#047857" />
+              <View style={[styles.profileStatusBadge, { backgroundColor: colors.statusApprovedBg, borderColor: colors.statusApprovedBorder }]}>
+                <CheckIcon size={12} color={colors.statusApproved} />
                 <Text style={styles.profileStatusText}>Authorized Agent ({agent.status})</Text>
               </View>
 
@@ -757,10 +757,10 @@ export const AgentHomeScreen: React.FC<AgentHomeScreenProps> = ({
                 style={[styles.profileActionRow, { backgroundColor: colors.card, borderColor: colors.cardBorder }]}
               >
                 <View style={styles.profileActionLeft}>
-                  <LogOutIcon size={18} color="#DC2626" />
-                  <Text style={[styles.profileActionText, { color: '#DC2626' }]}>Sign Out</Text>
+                  <LogOutIcon size={18} color={colors.error} />
+                  <Text style={[styles.profileActionText, { color: colors.error }]}>Sign Out</Text>
                 </View>
-                <Text style={[styles.actionArrow, { color: '#DC2626' }]}>&rarr;</Text>
+                <Text style={[styles.actionArrow, { color: colors.error }]}>&rarr;</Text>
               </TouchableOpacity>
             </View>
 
@@ -962,7 +962,7 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     borderWidth: 1,
     padding: 16,
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.04,
     shadowRadius: 6,
@@ -1039,7 +1039,7 @@ const styles = StyleSheet.create({
     width: 64,
     height: 64,
     borderRadius: 32,
-    backgroundColor: '#012655',
+    backgroundColor: colors.brandNavy,
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 12,
@@ -1070,7 +1070,7 @@ const styles = StyleSheet.create({
   profileStatusText: {
     fontSize: 11,
     fontWeight: '700',
-    color: '#047857',
+    color: colors.statusApproved,
   },
   profileDetailsRow: {
     flexDirection: 'row',

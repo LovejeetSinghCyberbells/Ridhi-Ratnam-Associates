@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { useAppTheme } from '../../theme';
+import { useAppTheme, colors } from '../../theme';
 import { ChevronRightIcon, FileTextIcon } from '../Icons';
 
 export interface SubmissionCardData {
@@ -35,10 +35,10 @@ export const ApplicationCard: React.FC<ApplicationCardProps> = ({
   const statusLabel = isApproved ? 'Approved' : isRejected ? 'Rejected' : 'Pending';
 
   const statusStyle = isApproved
-    ? { bg: isDark ? '#06281D' : '#ECFDF5', border: isDark ? '#065F46' : '#A7F3D0', text: isDark ? '#34D399' : '#047857', dot: '#10B981' }
+    ? { bg: colors.statusApprovedBg, border: colors.statusApprovedBorder, text: colors.statusApproved, dot: colors.statusApproved }
     : isRejected
-    ? { bg: isDark ? '#2D1515' : '#FEF2F2', border: isDark ? '#B91C1C' : '#FECACA', text: isDark ? '#F87171' : '#DC2626', dot: '#EF4444' }
-    : { bg: isDark ? '#2E2208' : '#FFFBEB', border: isDark ? '#B45309' : '#FDE68A', text: isDark ? '#FBBF24' : '#B45309', dot: '#F59E0B' };
+    ? { bg: colors.statusRejectedBg, border: colors.statusRejectedBorder, text: colors.statusRejected, dot: colors.error }
+    : { bg: colors.statusPendingBg, border: colors.statusPendingBorder, text: colors.statusPending, dot: colors.brandGold };
 
   const initials =
     application.clientInitials ||
@@ -80,7 +80,7 @@ export const ApplicationCard: React.FC<ApplicationCardProps> = ({
           style={[
             styles.avatar,
             {
-              backgroundColor: isDark ? colors.cardSecondary : '#FEF8E7',
+              backgroundColor: colors.brandGoldSoft,
               borderColor: colors.cardBorder,
             },
           ]}
@@ -145,7 +145,7 @@ export const ApplicationCard: React.FC<ApplicationCardProps> = ({
           </Text>
           <ChevronRightIcon
             size={14}
-            color={isDark ? '#94A3B8' : '#64748B'}
+            color={colors.slate500}
           />
         </View>
 
@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
     borderRadius: 18,
     borderWidth: 1,
     marginBottom: 10,
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.04,
     shadowRadius: 6,

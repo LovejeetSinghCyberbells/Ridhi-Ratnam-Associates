@@ -299,7 +299,7 @@ export const SupportScreen: React.FC<SupportScreenProps> = ({
           accessibilityRole="button"
           accessibilityLabel="Go back"
         >
-          <ChevronLeftIcon size={18} color="#FFFFFF" />
+          <ChevronLeftIcon size={18} color={colors.white} />
         </TouchableOpacity>
 
         <View style={styles.headerTitleContainer}>
@@ -314,7 +314,7 @@ export const SupportScreen: React.FC<SupportScreenProps> = ({
           accessibilityRole="button"
           accessibilityLabel="Call Priority Support Hotline"
         >
-          <PhoneIcon size={14} color="#FFFFFF" />
+          <PhoneIcon size={14} color={colors.white} />
           <Text style={styles.quickCallTextDark}>Call</Text>
         </TouchableOpacity>
       </View>
@@ -336,7 +336,7 @@ export const SupportScreen: React.FC<SupportScreenProps> = ({
           >
             <HeadphonesIcon
               size={14}
-              color={activeTab === 'channels' ? '#FFFFFF' : '#64748B'}
+              color={activeTab === 'channels' ? colors.white : colors.textSecondary}
             />
             <Text
               style={[
@@ -356,7 +356,7 @@ export const SupportScreen: React.FC<SupportScreenProps> = ({
           >
             <MessageSquareIcon
               size={14}
-              color={activeTab === 'ticket' ? '#FFFFFF' : '#64748B'}
+              color={activeTab === 'ticket' ? colors.white : colors.textSecondary}
             />
             <Text
               style={[
@@ -376,7 +376,7 @@ export const SupportScreen: React.FC<SupportScreenProps> = ({
           >
             <HelpCircleIcon
               size={14}
-              color={activeTab === 'faq' ? '#FFFFFF' : '#64748B'}
+              color={activeTab === 'faq' ? colors.white : colors.textSecondary}
             />
             <Text
               style={[
@@ -396,7 +396,7 @@ export const SupportScreen: React.FC<SupportScreenProps> = ({
           >
             <ShieldIcon
               size={14}
-              color={activeTab === 'grievance' ? '#FFFFFF' : '#64748B'}
+              color={activeTab === 'grievance' ? colors.white : colors.textSecondary}
             />
             <Text
               style={[
@@ -445,7 +445,7 @@ export const SupportScreen: React.FC<SupportScreenProps> = ({
                 onPress={handleCallHotline}
                 style={styles.heroCallPill}
               >
-                <PhoneIcon size={16} color="#FFFFFF" />
+                <PhoneIcon size={16} color={colors.white} />
                 <Text style={styles.heroCallPillText}>
                   {viewerRole === 'client'
                     ? 'Toll-Free Helpline: 1800 123 4567'
@@ -461,7 +461,7 @@ export const SupportScreen: React.FC<SupportScreenProps> = ({
                   {viewerRole === 'client' ? 'Dedicated Loan Officer' : 'Regional Branch Director'}
                 </Text>
                 <View style={styles.verifiedBadge}>
-                  <CheckIcon size={12} color="#10B981" />
+                  <CheckIcon size={12} color={colors.accentGreen} />
                   <Text style={styles.verifiedBadgeText}>Assigned</Text>
                 </View>
               </View>
@@ -494,7 +494,7 @@ export const SupportScreen: React.FC<SupportScreenProps> = ({
                   onPress={handleCallHotline}
                   style={styles.advisorActionBtn}
                 >
-                  <PhoneIcon size={14} color="#0D0E12" />
+                  <PhoneIcon size={14} color={colors.textPrimary} />
                   <Text style={styles.advisorActionText}>Direct Call</Text>
                 </TouchableOpacity>
 
@@ -503,7 +503,7 @@ export const SupportScreen: React.FC<SupportScreenProps> = ({
                   onPress={handleWhatsAppChat}
                   style={styles.advisorActionBtn}
                 >
-                  <MessageSquareIcon size={14} color="#0D0E12" />
+                  <MessageSquareIcon size={14} color={colors.textPrimary} />
                   <Text style={styles.advisorActionText}>Chat Message</Text>
                 </TouchableOpacity>
 
@@ -512,7 +512,7 @@ export const SupportScreen: React.FC<SupportScreenProps> = ({
                   onPress={handleSendEmail}
                   style={styles.advisorActionBtn}
                 >
-                  <MailIcon size={14} color="#0D0E12" />
+                  <MailIcon size={14} color={colors.textPrimary} />
                   <Text style={styles.advisorActionText}>Send Email</Text>
                 </TouchableOpacity>
               </View>
@@ -528,7 +528,7 @@ export const SupportScreen: React.FC<SupportScreenProps> = ({
                 style={styles.channelItem}
               >
                 <View style={styles.channelIconBox}>
-                  <PhoneIcon size={16} color="#0D0E12" />
+                  <PhoneIcon size={16} color={colors.textPrimary} />
                 </View>
                 <View style={{ flex: 1 }}>
                   <Text style={styles.channelName}>Toll-Free Priority Line</Text>
@@ -537,7 +537,7 @@ export const SupportScreen: React.FC<SupportScreenProps> = ({
                   </Text>
                   <Text style={styles.channelTiming}>Mon – Sat, 9:00 AM – 6:00 PM IST</Text>
                 </View>
-                <ChevronRightIcon size={14} color="#94A3B8" />
+                <ChevronRightIcon size={14} color={colors.slate400} />
               </TouchableOpacity>
 
               <TouchableOpacity
@@ -546,7 +546,7 @@ export const SupportScreen: React.FC<SupportScreenProps> = ({
                 style={styles.channelItem}
               >
                 <View style={styles.channelIconBox}>
-                  <MailIcon size={16} color="#0D0E12" />
+                  <MailIcon size={16} color={colors.textPrimary} />
                 </View>
                 <View style={{ flex: 1 }}>
                   <Text style={styles.channelName}>Official Support Email</Text>
@@ -555,7 +555,7 @@ export const SupportScreen: React.FC<SupportScreenProps> = ({
                   </Text>
                   <Text style={styles.channelTiming}>2-hour response turnaround during business hours</Text>
                 </View>
-                <ChevronRightIcon size={14} color="#94A3B8" />
+                <ChevronRightIcon size={14} color={colors.slate400} />
               </TouchableOpacity>
 
               <TouchableOpacity
@@ -564,14 +564,14 @@ export const SupportScreen: React.FC<SupportScreenProps> = ({
                 style={[styles.channelItem, { borderBottomWidth: 0 }]}
               >
                 <View style={styles.channelIconBox}>
-                  <MessageSquareIcon size={16} color="#0D0E12" />
+                  <MessageSquareIcon size={16} color={colors.textPrimary} />
                 </View>
                 <View style={{ flex: 1 }}>
                   <Text style={styles.channelName}>Instant Advisory Desk</Text>
                   <Text style={styles.channelValue}>WhatsApp & Live Messaging</Text>
                   <Text style={styles.channelTiming}>Direct document upload troubleshooting</Text>
                 </View>
-                <ChevronRightIcon size={14} color="#94A3B8" />
+                <ChevronRightIcon size={14} color={colors.slate400} />
               </TouchableOpacity>
             </View>
 
@@ -631,7 +631,7 @@ export const SupportScreen: React.FC<SupportScreenProps> = ({
               <TextInput
                 style={styles.textInput}
                 placeholder="e.g. RRA-2026-00124 or General Inquiry"
-                placeholderTextColor="#94A3B8"
+                placeholderTextColor={colors.slate400}
                 value={applicationId}
                 onChangeText={setApplicationId}
               />
@@ -641,7 +641,7 @@ export const SupportScreen: React.FC<SupportScreenProps> = ({
               <TextInput
                 style={styles.textInput}
                 placeholder="Brief summary of your query or problem"
-                placeholderTextColor="#94A3B8"
+                placeholderTextColor={colors.slate400}
                 value={ticketSubject}
                 onChangeText={setTicketSubject}
               />
@@ -651,7 +651,7 @@ export const SupportScreen: React.FC<SupportScreenProps> = ({
               <TextInput
                 style={[styles.textInput, styles.textAreaInput]}
                 placeholder="Please describe the issue, document reference, or error message in detail..."
-                placeholderTextColor="#94A3B8"
+                placeholderTextColor={colors.slate400}
                 value={ticketDescription}
                 onChangeText={setTicketDescription}
                 multiline
@@ -697,7 +697,7 @@ export const SupportScreen: React.FC<SupportScreenProps> = ({
                     requestCallback && styles.checkboxBoxChecked,
                   ]}
                 >
-                  {requestCallback && <CheckIcon size={12} color="#FFFFFF" />}
+                  {requestCallback && <CheckIcon size={12} color={colors.white} />}
                 </View>
                 <Text style={styles.checkboxLabel}>
                   Request urgent phone callback from an advisory specialist
@@ -761,7 +761,7 @@ export const SupportScreen: React.FC<SupportScreenProps> = ({
                   {ticket.resolutionNotes && (
                     <View style={styles.ticketResolutionBox}>
                       <View style={styles.resolutionHeader}>
-                        <ClockIcon size={12} color="#0D0E12" />
+                        <ClockIcon size={12} color={colors.textPrimary} />
                         <Text style={styles.resolutionTitle}>Advisory Desk Note</Text>
                       </View>
                       <Text style={styles.resolutionText}>{ticket.resolutionNotes}</Text>
@@ -818,12 +818,12 @@ export const SupportScreen: React.FC<SupportScreenProps> = ({
                       accessibilityRole="button"
                     >
                       <View style={styles.faqIconBox}>
-                        <HelpCircleIcon size={14} color="#0D0E12" />
+                        <HelpCircleIcon size={14} color={colors.textPrimary} />
                       </View>
                       <Text style={styles.faqQuestionText}>{faq.question}</Text>
                       <ChevronRightIcon
                         size={14}
-                        color="#64748B"
+                        color={colors.textSecondary}
                         style={{
                           transform: [{ rotate: isExpanded ? '90deg' : '0deg' }],
                         }}
@@ -845,7 +845,7 @@ export const SupportScreen: React.FC<SupportScreenProps> = ({
 
             {/* Still Need Help Box */}
             <View style={styles.stillNeedCard}>
-              <HeadphonesIcon size={22} color="#0D0E12" />
+              <HeadphonesIcon size={22} color={colors.textPrimary} />
               <Text style={styles.stillNeedTitle}>Couldn't find what you need?</Text>
               <Text style={styles.stillNeedSub}>
                 Our advisory team is available to assist you personally via direct phone call or ticket.
@@ -856,7 +856,7 @@ export const SupportScreen: React.FC<SupportScreenProps> = ({
                   onPress={handleCallHotline}
                   style={styles.stillNeedBtn}
                 >
-                  <PhoneIcon size={14} color="#0D0E12" />
+                  <PhoneIcon size={14} color={colors.textPrimary} />
                   <Text style={styles.stillNeedBtnText}>Call Advisor</Text>
                 </TouchableOpacity>
 
@@ -865,8 +865,8 @@ export const SupportScreen: React.FC<SupportScreenProps> = ({
                   onPress={() => setActiveTab('ticket')}
                   style={[styles.stillNeedBtn, styles.stillNeedBtnDark]}
                 >
-                  <MessageSquareIcon size={14} color="#FFFFFF" />
-                  <Text style={[styles.stillNeedBtnText, { color: '#FFFFFF' }]}>
+                  <MessageSquareIcon size={14} color={colors.white} />
+                  <Text style={[styles.stillNeedBtnText, { color: colors.white }]}>
                     Raise Ticket
                   </Text>
                 </TouchableOpacity>
@@ -883,7 +883,7 @@ export const SupportScreen: React.FC<SupportScreenProps> = ({
             {/* Regulatory Compliance Badge */}
             <View style={styles.sectionCard}>
               <View style={styles.grievanceHeaderRow}>
-                <ShieldIcon size={20} color="#CDA148" />
+                <ShieldIcon size={20} color={colors.brandGold} />
                 <View style={{ flex: 1, marginLeft: 10 }}>
                   <Text style={styles.grievanceTitle}>RBI Fair Practices & Grievance Policy</Text>
                   <Text style={styles.grievanceSub}>
@@ -914,8 +914,8 @@ export const SupportScreen: React.FC<SupportScreenProps> = ({
               {/* Level 2 */}
               <View style={styles.tierCard}>
                 <View style={styles.tierHeader}>
-                  <View style={[styles.tierBadge, { backgroundColor: '#FEF3C7' }]}>
-                    <Text style={[styles.tierBadgeText, { color: '#B45309' }]}>LEVEL 2</Text>
+                  <View style={[styles.tierBadge, { backgroundColor: colors.statusPendingBg }]}>
+                    <Text style={[styles.tierBadgeText, { color: colors.statusPending }]}>LEVEL 2</Text>
                   </View>
                   <Text style={styles.tierRole}>Principal Nodal Grievance Officer</Text>
                 </View>
@@ -936,8 +936,8 @@ export const SupportScreen: React.FC<SupportScreenProps> = ({
               {/* Level 3 */}
               <View style={[styles.tierCard, { borderBottomWidth: 0 }]}>
                 <View style={styles.tierHeader}>
-                  <View style={[styles.tierBadge, { backgroundColor: '#EDE9FE' }]}>
-                    <Text style={[styles.tierBadgeText, { color: '#6D28D9' }]}>LEVEL 3</Text>
+                  <View style={[styles.tierBadge, { backgroundColor: colors.clientSoftBg }]}>
+                    <Text style={[styles.tierBadgeText, { color: colors.statusReview }]}>LEVEL 3</Text>
                   </View>
                   <Text style={styles.tierRole}>RBI Integrated Ombudsman</Text>
                 </View>
@@ -1003,7 +1003,7 @@ const styles = StyleSheet.create({
   quickCallTextDark: {
     fontSize: 12,
     fontWeight: '700',
-    color: '#FFFFFF',
+    color: colors.white,
   },
   curvedSheetContainer: {
     flex: 1,
@@ -1013,11 +1013,11 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   topHeader: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     paddingHorizontal: spacing.lg,
     paddingBottom: 14,
     borderBottomWidth: 1,
-    borderBottomColor: '#E8EAED',
+    borderBottomColor: colors.border,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -1028,13 +1028,13 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     paddingHorizontal: 8,
     borderRadius: 12,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: colors.slate100,
     gap: 4,
   },
   backButtonText: {
     fontSize: 13,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   headerTitleContainer: {
     flex: 1,
@@ -1043,22 +1043,22 @@ const styles = StyleSheet.create({
   headerCategory: {
     fontSize: 9.5,
     fontWeight: '800',
-    color: '#CDA148',
+    color: colors.brandGold,
     letterSpacing: 0.8,
     textTransform: 'uppercase',
   },
   headerMainTitle: {
     fontSize: 18,
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: colors.white,
     letterSpacing: -0.3,
   },
   quickCallPill: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.slate50,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
     paddingVertical: 6,
     paddingHorizontal: 10,
     borderRadius: 20,
@@ -1067,12 +1067,12 @@ const styles = StyleSheet.create({
   quickCallText: {
     fontSize: 12,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   tabBarContainer: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderBottomWidth: 1,
-    borderBottomColor: '#E8EAED',
+    borderBottomColor: colors.border,
   },
   tabBarScroll: {
     paddingHorizontal: spacing.lg,
@@ -1085,30 +1085,30 @@ const styles = StyleSheet.create({
     paddingHorizontal: 14,
     paddingVertical: 8,
     borderRadius: 20,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: colors.slate100,
     gap: 6,
   },
   tabButtonActive: {
-    backgroundColor: '#0D0E12',
+    backgroundColor: colors.topBarBlack,
   },
   tabButtonText: {
     fontSize: 12,
     fontWeight: '600',
-    color: '#64748B',
+    color: colors.textSecondary,
   },
   tabButtonTextActive: {
-    color: '#FFFFFF',
+    color: colors.white,
     fontWeight: '700',
   },
   scrollContent: {
     padding: spacing.lg,
   },
   heroCard: {
-    backgroundColor: '#0D0E12',
+    backgroundColor: colors.topBarBlack,
     borderRadius: 24,
     padding: 20,
     marginBottom: spacing.lg,
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.12,
     shadowRadius: 16,
@@ -1124,25 +1124,25 @@ const styles = StyleSheet.create({
     width: 7,
     height: 7,
     borderRadius: 3.5,
-    backgroundColor: '#10B981',
+    backgroundColor: colors.accentGreen,
   },
   heroBadgeText: {
     fontSize: 10,
     fontWeight: '800',
-    color: '#CDA148',
+    color: colors.brandGold,
     letterSpacing: 0.8,
   },
   heroHeading: {
     fontSize: 18,
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: colors.white,
     letterSpacing: -0.3,
     marginBottom: 6,
     lineHeight: 24,
   },
   heroSub: {
     fontSize: 12.5,
-    color: '#94A3B8',
+    color: colors.slate400,
     lineHeight: 18,
     marginBottom: 16,
   },
@@ -1159,17 +1159,17 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   heroCallPillText: {
-    color: '#FFFFFF',
+    color: colors.white,
     fontSize: 13,
     fontWeight: '700',
   },
   sectionCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderRadius: 24,
     padding: 18,
     borderWidth: 1,
-    borderColor: '#E8EAED',
-    shadowColor: '#000',
+    borderColor: colors.borderMedium,
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.04,
     shadowRadius: 12,
@@ -1185,13 +1185,13 @@ const styles = StyleSheet.create({
   cardTitle: {
     fontSize: 15,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     letterSpacing: -0.2,
   },
   verifiedBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#ECFDF5',
+    backgroundColor: colors.statusApprovedBg,
     paddingVertical: 3,
     paddingHorizontal: 8,
     borderRadius: 12,
@@ -1200,7 +1200,7 @@ const styles = StyleSheet.create({
   verifiedBadgeText: {
     fontSize: 11,
     fontWeight: '700',
-    color: '#10B981',
+    color: colors.accentGreen,
   },
   advisorProfileRow: {
     flexDirection: 'row',
@@ -1212,31 +1212,31 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48,
     borderRadius: 24,
-    backgroundColor: '#0D0E12',
+    backgroundColor: colors.topBarBlack,
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1.5,
-    borderColor: '#CDA148',
+    borderColor: colors.brandGold,
   },
   advisorInitials: {
-    color: '#FFFFFF',
+    color: colors.white,
     fontSize: 16,
     fontWeight: '800',
   },
   advisorName: {
     fontSize: 15,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   advisorDesignation: {
     fontSize: 12,
-    color: '#64748B',
+    color: colors.textSecondary,
     marginTop: 1,
   },
   advisorCode: {
     fontSize: 11,
     fontWeight: '600',
-    color: '#CDA148',
+    color: colors.brandGold,
     marginTop: 2,
   },
   advisorActionGrid: {
@@ -1248,9 +1248,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.slate50,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
     borderRadius: 12,
     paddingVertical: 9,
     gap: 6,
@@ -1258,46 +1258,46 @@ const styles = StyleSheet.create({
   advisorActionText: {
     fontSize: 11.5,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   channelItem: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: 12,
     borderBottomWidth: 1,
-    borderBottomColor: '#F1F5F9',
+    borderBottomColor: colors.slate100,
     gap: 12,
   },
   channelIconBox: {
     width: 38,
     height: 38,
     borderRadius: 19,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: colors.slate100,
     alignItems: 'center',
     justifyContent: 'center',
   },
   channelName: {
     fontSize: 13,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   channelValue: {
     fontSize: 12,
     fontWeight: '700',
-    color: '#CDA148',
+    color: colors.brandGold,
     marginTop: 1,
   },
   channelTiming: {
     fontSize: 11,
-    color: '#64748B',
+    color: colors.textSecondary,
     marginTop: 1,
   },
   ticketBannerCard: {
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.slate50,
     borderRadius: 20,
     padding: 16,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -1309,12 +1309,12 @@ const styles = StyleSheet.create({
   ticketBannerTitle: {
     fontSize: 13.5,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     marginBottom: 2,
   },
   ticketBannerSub: {
     fontSize: 11.5,
-    color: '#64748B',
+    color: colors.textSecondary,
     lineHeight: 16,
   },
   ticketBannerBtn: {
@@ -1323,13 +1323,13 @@ const styles = StyleSheet.create({
   fieldLabel: {
     fontSize: 12,
     fontWeight: '700',
-    color: '#334155',
+    color: colors.slate700,
     marginBottom: 6,
     marginTop: 12,
   },
   requiredNotice: {
     fontSize: 11,
-    color: '#94A3B8',
+    color: colors.slate400,
   },
   chipsRow: {
     flexDirection: 'row',
@@ -1341,14 +1341,14 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   textInput: {
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.slate50,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
     borderRadius: 14,
     paddingHorizontal: 14,
     paddingVertical: 10,
     fontSize: 13,
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   textAreaInput: {
     height: 96,
@@ -1363,27 +1363,27 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingVertical: 8,
     borderRadius: 12,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: colors.slate100,
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
   },
   priorityPillActive: {
-    backgroundColor: '#0D0E12',
-    borderColor: '#0D0E12',
+    backgroundColor: colors.topBarBlack,
+    borderColor: colors.topBarBlack,
   },
   priorityPillUrgent: {
-    backgroundColor: '#FEF2F2',
-    borderColor: '#FECACA',
+    backgroundColor: colors.statusRejectedBg,
+    borderColor: colors.statusRejectedBorder,
   },
   priorityPillText: {
     fontSize: 12,
     fontWeight: '600',
-    color: '#64748B',
+    color: colors.slate500,
   },
   priorityPillTextActive: {
-    color: '#FFFFFF',
+    color: colors.white,
     fontWeight: '700',
   },
   checkboxRow: {
@@ -1397,18 +1397,18 @@ const styles = StyleSheet.create({
     height: 20,
     borderRadius: 6,
     borderWidth: 1.5,
-    borderColor: '#94A3B8',
+    borderColor: colors.slate400,
     alignItems: 'center',
     justifyContent: 'center',
   },
   checkboxBoxChecked: {
-    backgroundColor: '#0D0E12',
-    borderColor: '#0D0E12',
+    backgroundColor: colors.topBarBlack,
+    borderColor: colors.topBarBlack,
   },
   checkboxLabel: {
     flex: 1,
     fontSize: 12,
-    color: '#334155',
+    color: colors.slate700,
     lineHeight: 16,
   },
   submitTicketBtn: {
@@ -1417,14 +1417,14 @@ const styles = StyleSheet.create({
   },
   ticketCountSub: {
     fontSize: 11.5,
-    color: '#64748B',
+    color: colors.slate500,
   },
   ticketCardItem: {
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.slate50,
     borderRadius: 16,
     padding: 14,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
     marginBottom: 12,
   },
   ticketItemHeader: {
@@ -1441,7 +1441,7 @@ const styles = StyleSheet.create({
   ticketIdText: {
     fontSize: 13,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   ticketStatusBadge: {
     paddingVertical: 3,
@@ -1449,34 +1449,34 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   badgeInReview: {
-    backgroundColor: '#FEF3C7',
+    backgroundColor: colors.statusPendingBg,
   },
   badgeResolved: {
-    backgroundColor: '#DCFCE7',
+    backgroundColor: colors.statusApprovedBg,
   },
   ticketStatusText: {
     fontSize: 10.5,
     fontWeight: '700',
   },
   textInReview: {
-    color: '#B45309',
+    color: colors.statusPending,
   },
   textResolved: {
-    color: '#15803D',
+    color: colors.statusApproved,
   },
   ticketDateText: {
     fontSize: 11,
-    color: '#94A3B8',
+    color: colors.slate400,
   },
   ticketSubjectText: {
     fontSize: 13.5,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     marginBottom: 4,
   },
   ticketDescText: {
     fontSize: 12,
-    color: '#64748B',
+    color: colors.slate500,
     lineHeight: 17,
     marginBottom: 8,
   },
@@ -1488,18 +1488,18 @@ const styles = StyleSheet.create({
   ticketMetaTag: {
     fontSize: 10.5,
     fontWeight: '600',
-    color: '#475569',
-    backgroundColor: '#EDE9FE',
+    color: colors.slate600,
+    backgroundColor: colors.statusReviewBg,
     paddingVertical: 2,
     paddingHorizontal: 6,
     borderRadius: 6,
   },
   ticketResolutionBox: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderRadius: 10,
     padding: 10,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
   },
   resolutionHeader: {
     flexDirection: 'row',
@@ -1510,11 +1510,11 @@ const styles = StyleSheet.create({
   resolutionTitle: {
     fontSize: 11,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   resolutionText: {
     fontSize: 11.5,
-    color: '#475569',
+    color: colors.slate600,
     lineHeight: 16,
   },
   faqFilterContainer: {
@@ -1528,13 +1528,13 @@ const styles = StyleSheet.create({
   },
   faqSub: {
     fontSize: 12,
-    color: '#64748B',
+    color: colors.slate500,
     marginBottom: 14,
     lineHeight: 17,
   },
   faqAccordionItem: {
     borderBottomWidth: 1,
-    borderBottomColor: '#F1F5F9',
+    borderBottomColor: colors.slate100,
     paddingVertical: 12,
   },
   faqQuestionRow: {
@@ -1547,7 +1547,7 @@ const styles = StyleSheet.create({
     width: 26,
     height: 26,
     borderRadius: 13,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: colors.slate100,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -1555,7 +1555,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 13,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     lineHeight: 18,
   },
   faqAnswerContainer: {
@@ -1564,13 +1564,13 @@ const styles = StyleSheet.create({
   },
   faqAnswerText: {
     fontSize: 12,
-    color: '#475569',
+    color: colors.slate600,
     lineHeight: 18,
     marginBottom: 6,
   },
   faqCategoryBadge: {
     alignSelf: 'flex-start',
-    backgroundColor: '#F1F5F9',
+    backgroundColor: colors.slate100,
     paddingVertical: 2,
     paddingHorizontal: 8,
     borderRadius: 8,
@@ -1578,14 +1578,14 @@ const styles = StyleSheet.create({
   faqCategoryText: {
     fontSize: 10,
     fontWeight: '600',
-    color: '#64748B',
+    color: colors.slate500,
   },
   stillNeedCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderRadius: 24,
     padding: 20,
     borderWidth: 1,
-    borderColor: '#E8EAED',
+    borderColor: colors.borderMedium,
     alignItems: 'center',
     textAlign: 'center',
     marginBottom: spacing.lg,
@@ -1593,13 +1593,13 @@ const styles = StyleSheet.create({
   stillNeedTitle: {
     fontSize: 15,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     marginTop: 8,
     marginBottom: 4,
   },
   stillNeedSub: {
     fontSize: 12,
-    color: '#64748B',
+    color: colors.slate500,
     textAlign: 'center',
     lineHeight: 17,
     marginBottom: 14,
@@ -1614,45 +1614,45 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.slate50,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
     borderRadius: 14,
     paddingVertical: 10,
     gap: 6,
   },
   stillNeedBtnDark: {
-    backgroundColor: '#0D0E12',
-    borderColor: '#0D0E12',
+    backgroundColor: colors.topBarBlack,
+    borderColor: colors.topBarBlack,
   },
   stillNeedBtnText: {
     fontSize: 12,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   grievanceHeaderRow: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    backgroundColor: '#FFFBEB',
+    backgroundColor: colors.brandGoldSoft,
     borderRadius: 16,
     padding: 14,
     borderWidth: 1,
-    borderColor: '#FEF3C7',
+    borderColor: colors.brandGoldLight,
   },
   grievanceTitle: {
     fontSize: 13.5,
     fontWeight: '800',
-    color: '#92400E',
+    color: colors.brandGoldDark,
     marginBottom: 2,
   },
   grievanceSub: {
     fontSize: 11.5,
-    color: '#78350F',
+    color: colors.brandGoldDark,
     lineHeight: 16,
   },
   tierCard: {
     borderBottomWidth: 1,
-    borderBottomColor: '#F1F5F9',
+    borderBottomColor: colors.slate100,
     paddingVertical: 14,
   },
   tierHeader: {
@@ -1662,7 +1662,7 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   tierBadge: {
-    backgroundColor: '#E0F2FE',
+    backgroundColor: colors.clientSoftBg,
     paddingVertical: 2,
     paddingHorizontal: 6,
     borderRadius: 6,
@@ -1670,65 +1670,65 @@ const styles = StyleSheet.create({
   tierBadgeText: {
     fontSize: 9.5,
     fontWeight: '800',
-    color: '#0369A1',
+    color: colors.brandNavy,
   },
   tierRole: {
     fontSize: 13,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   tierDesc: {
     fontSize: 12,
-    color: '#475569',
+    color: colors.slate600,
     lineHeight: 17,
     marginTop: 2,
   },
   tierSla: {
     fontSize: 11,
     fontWeight: '700',
-    color: '#CDA148',
+    color: colors.brandGold,
     marginTop: 4,
   },
   officerDetailsBox: {
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.slate50,
     borderRadius: 12,
     padding: 10,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
     marginTop: 8,
     marginBottom: 4,
   },
   officerName: {
     fontSize: 12,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     marginBottom: 2,
   },
   officerInfo: {
     fontSize: 11.5,
-    color: '#475569',
+    color: colors.slate600,
     lineHeight: 16,
   },
   legalBox: {
-    backgroundColor: '#F1F5F9',
+    backgroundColor: colors.slate100,
     borderRadius: 16,
     padding: 14,
   },
   legalHeader: {
     fontSize: 11.5,
     fontWeight: '800',
-    color: '#334155',
+    color: colors.slate700,
     marginBottom: 4,
   },
   legalBody: {
     fontSize: 11,
-    color: '#64748B',
+    color: colors.slate500,
     lineHeight: 16,
     marginBottom: 6,
   },
   legalFooter: {
     fontSize: 10,
     fontWeight: '700',
-    color: '#94A3B8',
+    color: colors.slate400,
   },
 });

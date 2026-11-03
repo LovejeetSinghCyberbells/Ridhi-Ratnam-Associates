@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { NotificationItem } from '../../types/dashboard';
 import { CrossIcon, CheckIcon, BellIcon } from '../Icons';
+import { colors } from '../../theme';
 
 interface NotificationModalProps {
   notifications: NotificationItem[];
@@ -52,7 +53,7 @@ export const NotificationModal: React.FC<NotificationModalProps> = ({
                 onPress={onClose}
                 style={styles.closeBtn}
               >
-                <CrossIcon size={14} color="#0D0E12" />
+                <CrossIcon size={14} color={colors.topBarBlack} />
               </TouchableOpacity>
             </View>
           </View>
@@ -69,9 +70,9 @@ export const NotificationModal: React.FC<NotificationModalProps> = ({
               >
                 <View style={styles.notifIconContainer}>
                   {item.type === 'approval' ? (
-                    <CheckIcon size={14} color="#059669" />
+                    <CheckIcon size={14} color={colors.statusApproved} />
                   ) : (
-                    <BellIcon size={14} color="#0D0E12" />
+                    <BellIcon size={14} color={colors.topBarBlack} />
                   )}
                 </View>
 
@@ -100,7 +101,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   sheetContainer: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderTopLeftRadius: 32,
     borderTopRightRadius: 32,
     maxHeight: '80%',
@@ -115,19 +116,19 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     paddingBottom: 12,
     borderBottomWidth: 1,
-    borderBottomColor: '#F1F3F6',
+    borderBottomColor: colors.borderLight,
   },
   headerLeft: {},
   headerCategory: {
     fontSize: 10,
     fontWeight: '800',
-    color: '#94A3B8',
+    color: colors.slate400,
     letterSpacing: 0.8,
   },
   headerTitle: {
     fontSize: 20,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     letterSpacing: -0.3,
   },
   headerRight: {
@@ -139,18 +140,18 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     paddingHorizontal: 10,
     borderRadius: 12,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: colors.slate100,
   },
   markReadText: {
     fontSize: 11.5,
     fontWeight: '700',
-    color: '#475569',
+    color: colors.slate600,
   },
   closeBtn: {
     width: 34,
     height: 34,
     borderRadius: 17,
-    backgroundColor: '#F1F3F6',
+    backgroundColor: colors.borderLight,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -161,21 +162,21 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     padding: 12,
     borderRadius: 16,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderWidth: 1,
-    borderColor: '#E8EAED',
+    borderColor: colors.borderMedium,
     marginBottom: 8,
     alignItems: 'center',
   },
   notifCardUnread: {
-    backgroundColor: '#F8FAFC',
-    borderColor: '#CBD5E1',
+    backgroundColor: colors.slate50,
+    borderColor: colors.slate300,
   },
   notifIconContainer: {
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: colors.slate100,
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 12,
@@ -192,23 +193,23 @@ const styles = StyleSheet.create({
   notifTitle: {
     fontSize: 13,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   notifTime: {
     fontSize: 10.5,
-    color: '#94A3B8',
+    color: colors.slate400,
     fontWeight: '500',
   },
   notifMessage: {
     fontSize: 12,
-    color: '#64748B',
+    color: colors.slate500,
     lineHeight: 16,
   },
   unreadDot: {
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: '#2563EB',
+    backgroundColor: colors.brandNavy,
     marginLeft: 6,
   },
 });

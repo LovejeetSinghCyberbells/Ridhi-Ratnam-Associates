@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { ClientLoanApplication, ClientAppStatus } from '../../types/client';
 import { ChevronRightIcon } from '../Icons';
-import { spacing, useAppTheme } from '../../theme';
+import { spacing, useAppTheme, colors } from '../../theme';
 
 interface RecentApplicationsSectionProps {
   applications: ClientLoanApplication[];
@@ -20,21 +20,33 @@ export const RecentApplicationsSection: React.FC<RecentApplicationsSectionProps>
   const getStatusTheme = (status: ClientAppStatus) => {
     switch (status) {
       case 'Under Review':
-        return isDark
-          ? { bg: '#112240', border: '#1D4ED8', text: '#60A5FA', dot: '#3B82F6' }
-          : { bg: '#EFF6FF', border: '#BFDBFE', text: '#1D4ED8', dot: '#2563EB' };
+        return {
+          bg: colors.statusReviewBg,
+          border: colors.statusReviewBorder,
+          text: colors.statusReview,
+          dot: colors.statusReview,
+        };
       case 'Approved':
-        return isDark
-          ? { bg: '#06281D', border: '#065F46', text: '#34D399', dot: '#10B981' }
-          : { bg: '#ECFDF5', border: '#A7F3D0', text: '#047857', dot: '#10B981' };
+        return {
+          bg: colors.statusApprovedBg,
+          border: colors.statusApprovedBorder,
+          text: colors.statusApproved,
+          dot: colors.statusApproved,
+        };
       case 'Rejected':
-        return isDark
-          ? { bg: '#2D1515', border: '#B91C1C', text: '#F87171', dot: '#EF4444' }
-          : { bg: '#FEF2F2', border: '#FECACA', text: '#B91C1C', dot: '#DC2626' };
+        return {
+          bg: colors.statusRejectedBg,
+          border: colors.statusRejectedBorder,
+          text: colors.statusRejected,
+          dot: colors.statusRejected,
+        };
       default:
-        return isDark
-          ? { bg: '#2E2208', border: '#B45309', text: '#FBBF24', dot: '#F59E0B' }
-          : { bg: '#FFFBEB', border: '#FDE68A', text: '#B45309', dot: '#D97706' };
+        return {
+          bg: colors.statusPendingBg,
+          border: colors.statusPendingBorder,
+          text: colors.statusPending,
+          dot: colors.statusPending,
+        };
     }
   };
 
@@ -124,7 +136,7 @@ export const RecentApplicationsSection: React.FC<RecentApplicationsSectionProps>
 
                   <ChevronRightIcon
                     size={14}
-                    color={isDark ? '#94A3B8' : '#64748B'}
+                    color={isDark ? colors.slate400 : colors.slate500}
                   />
                 </View>
               </View>
@@ -171,7 +183,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.05,
     shadowRadius: 6,

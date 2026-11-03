@@ -8,7 +8,7 @@ import {
   Modal,
   Image,
 } from 'react-native';
-import { useAppTheme, borderRadius, spacing } from '../../theme';
+import { useAppTheme, borderRadius, spacing, colors } from '../../theme';
 import {
   KycDocument,
   KycDocumentConfig,
@@ -235,7 +235,7 @@ export const KycDocumentUploadForm: React.FC<KycDocumentUploadFormProps> = ({
           style={[
             styles.clientProfileStrip,
             {
-              backgroundColor: isDark ? colors.cardSecondary : '#F8FAFC',
+              backgroundColor: isDark ? colors.cardSecondary : colors.slate50,
               borderColor: colors.cardBorder,
             },
           ]}
@@ -321,13 +321,13 @@ export const KycDocumentUploadForm: React.FC<KycDocumentUploadFormProps> = ({
                   style={[
                     styles.uploadedInfoBox,
                     {
-                      backgroundColor: isDark ? colors.cardSecondary : '#F0FDF4',
-                      borderColor: isDark ? '#065F46' : '#BBF7D0',
+                      backgroundColor: colors.surfaceSubtle,
+                      borderColor: colors.statusApprovedBorder,
                     },
                   ]}
                 >
                   <View style={styles.fileIconBadge}>
-                    <CheckIcon size={14} color="#059669" />
+                    <CheckIcon size={14} color={colors.statusApproved} />
                   </View>
                   <View style={{ flex: 1, marginLeft: 8 }}>
                     <Text style={[styles.fileNameText, { color: colors.textPrimary }]} numberOfLines={1}>
@@ -364,10 +364,10 @@ export const KycDocumentUploadForm: React.FC<KycDocumentUploadFormProps> = ({
                       testID={`btn-remove-${config.id}`}
                       activeOpacity={0.7}
                       onPress={() => handleRemoveDocument(config.id, config.name)}
-                      style={[styles.smallActionBtn, { borderColor: '#FECACA' }]}
+                      style={[styles.smallActionBtn, { borderColor: colors.statusRejectedBorder }]}
                       accessibilityLabel={`Remove ${config.name}`}
                     >
-                      <Text style={[styles.smallActionText, { color: '#DC2626' }]}>Remove</Text>
+                      <Text style={[styles.smallActionText, { color: colors.error }]}>Remove</Text>
                     </TouchableOpacity>
                   </View>
                 </View>
@@ -381,7 +381,7 @@ export const KycDocumentUploadForm: React.FC<KycDocumentUploadFormProps> = ({
                     styles.uploadTriggerBox,
                     {
                       borderColor: colors.cardBorder,
-                      backgroundColor: isDark ? colors.cardSecondary : '#F8FAFC',
+                      backgroundColor: isDark ? colors.cardSecondary : colors.slate50,
                     },
                   ]}
                   accessibilityRole="button"
@@ -406,7 +406,7 @@ export const KycDocumentUploadForm: React.FC<KycDocumentUploadFormProps> = ({
         style={[
           styles.securityNote,
           {
-            backgroundColor: isDark ? colors.cardSecondary : '#FEF8E7',
+            backgroundColor: isDark ? colors.cardSecondary : colors.brandGoldSoft,
             borderColor: colors.brandGold,
           },
         ]}
@@ -479,8 +479,8 @@ export const KycDocumentUploadForm: React.FC<KycDocumentUploadFormProps> = ({
                 onPress={() => handleAttachDocument('camera')}
                 style={[styles.pickerOptionRow, { borderColor: colors.cardBorder }]}
               >
-                <View style={[styles.pickerIconCircle, { backgroundColor: '#EFF6FF' }]}>
-                  <CameraIcon size={20} color="#2563EB" />
+                <View style={[styles.pickerIconCircle, { backgroundColor: colors.statusReviewBg }]}>
+                  <CameraIcon size={20} color={colors.statusReview} />
                 </View>
                 <View style={{ flex: 1, marginLeft: 12 }}>
                   <Text style={[styles.pickerOptionTitle, { color: colors.textPrimary }]}>
@@ -498,8 +498,8 @@ export const KycDocumentUploadForm: React.FC<KycDocumentUploadFormProps> = ({
                 onPress={() => handleAttachDocument('gallery')}
                 style={[styles.pickerOptionRow, { borderColor: colors.cardBorder }]}
               >
-                <View style={[styles.pickerIconCircle, { backgroundColor: '#ECFDF5' }]}>
-                  <UploadCloudIcon size={20} color="#059669" />
+                <View style={[styles.pickerIconCircle, { backgroundColor: colors.statusApprovedBg }]}>
+                  <UploadCloudIcon size={20} color={colors.statusApproved} />
                 </View>
                 <View style={{ flex: 1, marginLeft: 12 }}>
                   <Text style={[styles.pickerOptionTitle, { color: colors.textPrimary }]}>
@@ -517,7 +517,7 @@ export const KycDocumentUploadForm: React.FC<KycDocumentUploadFormProps> = ({
                 onPress={() => handleAttachDocument('file')}
                 style={[styles.pickerOptionRow, { borderColor: colors.cardBorder }]}
               >
-                <View style={[styles.pickerIconCircle, { backgroundColor: '#FEF8E7' }]}>
+                <View style={[styles.pickerIconCircle, { backgroundColor: colors.brandGoldSoft }]}>
                   <FileTextIcon size={20} color={colors.brandGold} />
                 </View>
                 <View style={{ flex: 1, marginLeft: 12 }}>
@@ -584,7 +584,7 @@ export const KycDocumentUploadForm: React.FC<KycDocumentUploadFormProps> = ({
               style={[
                 styles.previewCanvas,
                 {
-                  backgroundColor: isDark ? colors.cardSecondary : '#F8FAFC',
+                  backgroundColor: isDark ? colors.cardSecondary : colors.slate50,
                   borderColor: colors.cardBorder,
                 },
               ]}
@@ -614,7 +614,7 @@ export const KycDocumentUploadForm: React.FC<KycDocumentUploadFormProps> = ({
                 </View>
                 <View style={styles.certRow}>
                   <Text style={[styles.certLabel, { color: colors.textSecondary }]}>File Verification:</Text>
-                  <Text style={[styles.certValue, { color: '#059669' }]}>SHA-256 Checksum Verified ✓</Text>
+                  <Text style={[styles.certValue, { color: colors.statusApproved }]}>SHA-256 Checksum Verified ✓</Text>
                 </View>
               </View>
 
@@ -721,7 +721,7 @@ const styles = StyleSheet.create({
     borderRadius: 18,
     borderWidth: 1.2,
     padding: 16,
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.04,
     shadowRadius: 8,
@@ -764,8 +764,8 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   mandatoryBadge: {
-    backgroundColor: '#FEF2F2',
-    borderColor: '#FECACA',
+    backgroundColor: colors.statusRejectedBg,
+    borderColor: colors.statusRejectedBorder,
     borderWidth: 1,
     paddingHorizontal: 8,
     paddingVertical: 2,
@@ -774,7 +774,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   mandatoryText: {
-    color: '#DC2626',
+    color: colors.error,
     fontSize: 10,
     fontWeight: '800',
     textAlign: 'center',
@@ -782,8 +782,8 @@ const styles = StyleSheet.create({
     includeFontPadding: false,
   },
   optionalBadge: {
-    backgroundColor: '#F1F5F9',
-    borderColor: '#E2E8F0',
+    backgroundColor: colors.slate100,
+    borderColor: colors.border,
     borderWidth: 1,
     paddingHorizontal: 8,
     paddingVertical: 2,
@@ -792,7 +792,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   optionalText: {
-    color: '#64748B',
+    color: colors.slate500,
     fontSize: 10,
     fontWeight: '700',
     textAlign: 'center',
@@ -815,7 +815,7 @@ const styles = StyleSheet.create({
     width: 28,
     height: 28,
     borderRadius: 14,
-    backgroundColor: '#ECFDF5',
+    backgroundColor: colors.statusApprovedBg,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -914,7 +914,7 @@ const styles = StyleSheet.create({
     width: 36,
     height: 4,
     borderRadius: 2,
-    backgroundColor: '#CBD5E1',
+    backgroundColor: colors.slate300,
     alignSelf: 'center',
     marginBottom: 16,
   },
@@ -980,7 +980,7 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     borderWidth: 1,
     padding: 20,
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 8 },
     shadowOpacity: 0.15,
     shadowRadius: 20,
@@ -1004,7 +1004,7 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: colors.slate100,
     alignItems: 'center',
     justifyContent: 'center',
   },

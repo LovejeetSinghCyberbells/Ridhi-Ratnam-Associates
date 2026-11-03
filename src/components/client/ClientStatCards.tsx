@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { ClientStats } from '../../types/client';
 import { FilesIcon, CheckIcon, ClockIcon } from '../Icons';
-import { spacing, useAppTheme } from '../../theme';
+import { spacing, useAppTheme, colors } from '../../theme';
 
 interface ClientStatCardsProps {
   stats: ClientStats;
@@ -26,7 +26,7 @@ export const ClientStatCards: React.FC<ClientStatCardsProps> = ({ stats }) => {
         <View
           style={[
             styles.iconPill,
-            { backgroundColor: isDark ? colors.cardSecondary : '#F1F5F9' },
+            { backgroundColor: isDark ? colors.cardSecondary : colors.slate100 },
           ]}
         >
           <FilesIcon size={14} color={colors.textPrimary} />
@@ -44,23 +44,23 @@ export const ClientStatCards: React.FC<ClientStatCardsProps> = ({ stats }) => {
         style={[
           styles.statBox,
           {
-            backgroundColor: isDark ? '#06281D' : '#FBFFFD',
-            borderColor: isDark ? '#065F46' : '#A7F3D0',
+            backgroundColor: isDark ? colors.statusApprovedBg : colors.surfaceSubtle,
+            borderColor: isDark ? colors.statusApprovedBorder : colors.statusApprovedBorder,
           },
         ]}
       >
         <View
           style={[
             styles.iconPill,
-            { backgroundColor: isDark ? '#0F3E2C' : '#ECFDF5' },
+            { backgroundColor: colors.statusApprovedBg },
           ]}
         >
-          <CheckIcon size={14} color={isDark ? '#34D399' : '#059669'} />
+          <CheckIcon size={14} color={colors.statusApproved} />
         </View>
         <Text
           style={[
             styles.statValue,
-            { color: isDark ? '#34D399' : '#047857' },
+            { color: colors.statusApproved },
           ]}
         >
           {stats.approved}
@@ -75,23 +75,23 @@ export const ClientStatCards: React.FC<ClientStatCardsProps> = ({ stats }) => {
         style={[
           styles.statBox,
           {
-            backgroundColor: isDark ? '#2E2208' : '#FFFEFB',
-            borderColor: isDark ? '#B45309' : '#FDE68A',
+            backgroundColor: colors.brandGoldSoft,
+            borderColor: colors.brandGoldLight,
           },
         ]}
       >
         <View
           style={[
             styles.iconPill,
-            { backgroundColor: isDark ? '#45330D' : '#FFFBEB' },
+            { backgroundColor: colors.statusPendingBg },
           ]}
         >
-          <ClockIcon size={14} color={isDark ? '#FBBF24' : '#D97706'} />
+          <ClockIcon size={14} color={colors.statusPending} />
         </View>
         <Text
           style={[
             styles.statValue,
-            { color: isDark ? '#FBBF24' : '#B45309' },
+            { color: colors.statusPending },
           ]}
         >
           {stats.pending}
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.05,
     shadowRadius: 6,

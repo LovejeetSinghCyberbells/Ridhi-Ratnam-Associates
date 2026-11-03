@@ -31,6 +31,7 @@ export const lightColors = {
   
   // Ridhi Ratnam Brand Identity & Warm Antique Gold Highlights (#CDA148)
   brandNavy: '#012655',
+  corporateNavy: '#012655',
   brandNavyLight: '#08326D',
   brandGold: '#CDA148',
   highlightGold: '#CDA148',
@@ -101,6 +102,37 @@ export const lightColors = {
   clientSoftBg: '#EFF6FF',
   agentAccent: '#CDA148',
   agentSoftBg: '#FEF8E7',
+
+  // Neutrals & Foundation
+  white: '#FFFFFF',
+  black: '#000000',
+  transparent: 'transparent',
+  overlay: 'rgba(0, 0, 0, 0.5)',
+  overlayDark: 'rgba(1, 38, 85, 0.6)',
+  overlayLight: 'rgba(255, 255, 255, 0.85)',
+
+  // Slate / Neutral Scale
+  slate50: '#F8FAFC',
+  slate100: '#F1F5F9',
+  slate200: '#E2E8F0',
+  slate300: '#CBD5E1',
+  slate400: '#94A3B8',
+  slate500: '#64748B',
+  slate600: '#475569',
+  slate700: '#334155',
+  slate800: '#1E293B',
+  slate900: '#0F172A',
+
+  // Semantic UI Helpers
+  border: '#E2E8F0',
+  borderLight: '#F1F5F9',
+  borderMedium: '#D8DCE2',
+  borderDark: '#CBD5E1',
+  textMuted: '#64748B',
+  surfaceSubtle: '#F8FAFC',
+  surfaceMuted: '#F1F5F9',
+  divider: '#E2E8F0',
+  shadow: '#000000',
 };
 
 // Light theme is the sole application theme

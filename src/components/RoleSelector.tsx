@@ -109,12 +109,12 @@ export const RoleSelector: React.FC<RoleSelectorProps> = ({
           {
             backgroundColor:
               selectedRole === 'client'
-                ? 'rgba(110, 231, 183, 0.08)'
-                : 'rgba(212, 175, 55, 0.08)',
+                ? colors.statusApprovedBg
+                : colors.highlightGoldSoft,
             borderColor:
               selectedRole === 'client'
-                ? 'rgba(110, 231, 183, 0.25)'
-                : 'rgba(212, 175, 55, 0.25)',
+                ? colors.statusApprovedBorder
+                : colors.brandGoldLight,
           },
         ]}
       >
@@ -143,13 +143,13 @@ const styles = StyleSheet.create({
   },
   selectorTrack: {
     flexDirection: 'row',
-    backgroundColor: '#121622',
+    backgroundColor: colors.primaryBlack,
     borderRadius: borderRadius.pill,
     padding: 4,
     position: 'relative',
     height: 52,
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.08)',
+    borderColor: colors.glassBorder,
   },
   animatedIndicator: {
     position: 'absolute',
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
     bottom: 4,
     width: '48%',
     borderRadius: borderRadius.pill,
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.08,
     shadowRadius: 3,
@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.2,
   },
   activeTabLabel: {
-    color: '#0A101D',
+    color: colors.textDark,
   },
   inactiveTabLabel: {
     color: colors.textSecondary,

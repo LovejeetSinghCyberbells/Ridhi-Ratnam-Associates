@@ -129,7 +129,7 @@ export const PrivacyPolicyScreen: React.FC<PrivacyPolicyScreenProps> = ({
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
 
-      {/* ================= 1. CORPORATE NAVY TOP HEADER (#012655) ================= */}
+      {/* ================= 1. CORPORATE NAVY TOP HEADER ================= */}
       <View style={[styles.blackHeader, { paddingTop: Math.max(insets.top, 20) + 8 }]}>
         <TouchableOpacity
           activeOpacity={0.7}
@@ -137,7 +137,7 @@ export const PrivacyPolicyScreen: React.FC<PrivacyPolicyScreenProps> = ({
           style={styles.headerBackBtn}
           accessibilityLabel="Go back"
         >
-          <ChevronLeftIcon size={20} color="#FFFFFF" />
+          <ChevronLeftIcon size={20} color={colors.white} />
         </TouchableOpacity>
 
         <View style={styles.headerTitleBox}>
@@ -152,7 +152,7 @@ export const PrivacyPolicyScreen: React.FC<PrivacyPolicyScreenProps> = ({
           style={styles.headerActionBtn}
           accessibilityLabel="Share privacy policy"
         >
-          <FileTextIcon size={16} color="#FFFFFF" />
+          <FileTextIcon size={16} color={colors.white} />
         </TouchableOpacity>
       </View>
 
@@ -211,7 +211,7 @@ export const PrivacyPolicyScreen: React.FC<PrivacyPolicyScreenProps> = ({
           >
             <View style={styles.highlightCol}>
               <Text style={styles.highlightTag}>DATA SALE</Text>
-              <Text style={[styles.highlightValue, { color: '#047857' }]}>Zero Sale</Text>
+              <Text style={[styles.highlightValue, { color: colors.statusApproved }]}>Zero Sale</Text>
               <Text style={[styles.highlightSub, { color: themeColors.textSecondary }]}>
                 Never monetized
               </Text>
@@ -219,7 +219,7 @@ export const PrivacyPolicyScreen: React.FC<PrivacyPolicyScreenProps> = ({
             <View style={[styles.highlightDivider, { backgroundColor: themeColors.cardBorder }]} />
             <View style={styles.highlightCol}>
               <Text style={styles.highlightTag}>ENCRYPTION</Text>
-              <Text style={[styles.highlightValue, { color: '#0284C7' }]}>256-Bit AES</Text>
+              <Text style={[styles.highlightValue, { color: colors.info }]}>256-Bit AES</Text>
               <Text style={[styles.highlightSub, { color: themeColors.textSecondary }]}>
                 Rest & Transit
               </Text>
@@ -310,9 +310,7 @@ export const PrivacyPolicyScreen: React.FC<PrivacyPolicyScreenProps> = ({
                       styles.categoryChipText,
                       {
                         color: isActive
-                          ? isDark
-                            ? colors.topBarBlack
-                            : '#FFFFFF'
+                          ? colors.white
                           : themeColors.textSecondary,
                         fontWeight: isActive ? '700' : '500',
                       },
@@ -341,7 +339,7 @@ export const PrivacyPolicyScreen: React.FC<PrivacyPolicyScreenProps> = ({
                 onPress={() => toggleSection(1)}
                 style={styles.sectionHeaderRow}
               >
-                <View style={[styles.sectionNumBadge, { backgroundColor: '#0284C7' }]}>
+                <View style={[styles.sectionNumBadge, { backgroundColor: colors.info }]}>
                   <Text style={styles.sectionNumText}>1</Text>
                 </View>
                 <Text style={[styles.sectionTitleText, { color: themeColors.textPrimary }]}>
@@ -383,7 +381,7 @@ export const PrivacyPolicyScreen: React.FC<PrivacyPolicyScreenProps> = ({
                 onPress={() => toggleSection(2)}
                 style={styles.sectionHeaderRow}
               >
-                <View style={[styles.sectionNumBadge, { backgroundColor: '#047857' }]}>
+                <View style={[styles.sectionNumBadge, { backgroundColor: colors.statusApproved }]}>
                   <Text style={styles.sectionNumText}>2</Text>
                 </View>
                 <Text style={[styles.sectionTitleText, { color: themeColors.textPrimary }]}>
@@ -473,28 +471,28 @@ export const PrivacyPolicyScreen: React.FC<PrivacyPolicyScreenProps> = ({
 
                   <View style={styles.bulletList}>
                     <View style={styles.bulletItem}>
-                      <CheckIcon size={14} color="#047857" />
+                      <CheckIcon size={14} color={colors.statusApproved} />
                       <Text style={[styles.bulletText, { color: themeColors.textPrimary, marginLeft: 8 }]}>
                         Underwriting assessment: Calculating Debt-to-Income (FOIR), Loan-to-Value (LTV), and creditworthiness ratios.
                       </Text>
                     </View>
 
                     <View style={styles.bulletItem}>
-                      <CheckIcon size={14} color="#047857" />
+                      <CheckIcon size={14} color={colors.statusApproved} />
                       <Text style={[styles.bulletText, { color: themeColors.textPrimary, marginLeft: 8 }]}>
                         Statutory KYC & Anti-Money Laundering (AML) checks against domestic and international sanction gazettes.
                       </Text>
                     </View>
 
                     <View style={styles.bulletItem}>
-                      <CheckIcon size={14} color="#047857" />
+                      <CheckIcon size={14} color={colors.statusApproved} />
                       <Text style={[styles.bulletText, { color: themeColors.textPrimary, marginLeft: 8 }]}>
                         NACH / e-Mandate automated repayment setup for electronic monthly installment settlement.
                       </Text>
                     </View>
 
                     <View style={styles.bulletItem}>
-                      <CheckIcon size={14} color="#047857" />
+                      <CheckIcon size={14} color={colors.statusApproved} />
                       <Text style={[styles.bulletText, { color: themeColors.textPrimary, marginLeft: 8 }]}>
                         Real-time delivery of transactional loan status updates, RTGS disbursement receipts, and repayment reminders.
                       </Text>
@@ -521,7 +519,7 @@ export const PrivacyPolicyScreen: React.FC<PrivacyPolicyScreenProps> = ({
                 onPress={() => toggleSection(4)}
                 style={styles.sectionHeaderRow}
               >
-                <View style={[styles.sectionNumBadge, { backgroundColor: '#DC2626' }]}>
+                <View style={[styles.sectionNumBadge, { backgroundColor: colors.error }]}>
                   <Text style={styles.sectionNumText}>4</Text>
                 </View>
                 <Text style={[styles.sectionTitleText, { color: themeColors.textPrimary }]}>
@@ -545,13 +543,13 @@ export const PrivacyPolicyScreen: React.FC<PrivacyPolicyScreenProps> = ({
                       style={[
                         styles.securityCard,
                         {
-                          backgroundColor: isDark ? themeColors.cardSecondary : '#FEF2F2',
-                          borderColor: isDark ? '#B91C1C' : '#FECACA',
+                          backgroundColor: colors.statusRejectedBg,
+                          borderColor: colors.statusRejectedBorder,
                         },
                       ]}
                     >
-                      <AlertCircleIcon size={16} color="#DC2626" />
-                      <Text style={[styles.securityTitle, { color: isDark ? '#F87171' : '#991B1B' }]}>
+                      <AlertCircleIcon size={16} color={colors.error} />
+                      <Text style={[styles.securityTitle, { color: colors.error }]}>
                         No Contacts or Photos
                       </Text>
                       <Text style={[styles.securitySub, { color: themeColors.textSecondary }]}>
@@ -563,13 +561,13 @@ export const PrivacyPolicyScreen: React.FC<PrivacyPolicyScreenProps> = ({
                       style={[
                         styles.securityCard,
                         {
-                          backgroundColor: isDark ? themeColors.cardSecondary : '#FEF2F2',
-                          borderColor: isDark ? '#B91C1C' : '#FECACA',
+                          backgroundColor: colors.statusRejectedBg,
+                          borderColor: colors.statusRejectedBorder,
                         },
                       ]}
                     >
-                      <AlertCircleIcon size={16} color="#DC2626" />
-                      <Text style={[styles.securityTitle, { color: isDark ? '#F87171' : '#991B1B' }]}>
+                      <AlertCircleIcon size={16} color={colors.error} />
+                      <Text style={[styles.securityTitle, { color: colors.error }]}>
                         No Biometric Storage
                       </Text>
                       <Text style={[styles.securitySub, { color: themeColors.textSecondary }]}>
@@ -598,7 +596,7 @@ export const PrivacyPolicyScreen: React.FC<PrivacyPolicyScreenProps> = ({
                 onPress={() => toggleSection(5)}
                 style={styles.sectionHeaderRow}
               >
-                <View style={[styles.sectionNumBadge, { backgroundColor: '#6366F1' }]}>
+                <View style={[styles.sectionNumBadge, { backgroundColor: colors.accentBlue }]}>
                   <Text style={styles.sectionNumText}>5</Text>
                 </View>
                 <Text style={[styles.sectionTitleText, { color: themeColors.textPrimary }]}>
@@ -622,12 +620,12 @@ export const PrivacyPolicyScreen: React.FC<PrivacyPolicyScreenProps> = ({
                       style={[
                         styles.securityCard,
                         {
-                          backgroundColor: isDark ? themeColors.cardSecondary : '#F8FAFC',
+                          backgroundColor: colors.slate50,
                           borderColor: themeColors.cardBorder,
                         },
                       ]}
                     >
-                      <LockIcon size={16} color="#0284C7" />
+                      <LockIcon size={16} color={colors.info} />
                       <Text style={[styles.securityTitle, { color: themeColors.textPrimary }]}>
                         256-Bit AES & TLS 1.3
                       </Text>
@@ -640,12 +638,12 @@ export const PrivacyPolicyScreen: React.FC<PrivacyPolicyScreenProps> = ({
                       style={[
                         styles.securityCard,
                         {
-                          backgroundColor: isDark ? themeColors.cardSecondary : '#F8FAFC',
+                          backgroundColor: colors.slate50,
                           borderColor: themeColors.cardBorder,
                         },
                       ]}
                     >
-                      <ShieldIcon size={16} color="#047857" />
+                      <ShieldIcon size={16} color={colors.statusApproved} />
                       <Text style={[styles.securityTitle, { color: themeColors.textPrimary }]}>
                         Role-Based Access
                       </Text>
@@ -675,7 +673,7 @@ export const PrivacyPolicyScreen: React.FC<PrivacyPolicyScreenProps> = ({
                 onPress={() => toggleSection(6)}
                 style={styles.sectionHeaderRow}
               >
-                <View style={[styles.sectionNumBadge, { backgroundColor: '#B45309' }]}>
+                <View style={[styles.sectionNumBadge, { backgroundColor: colors.statusPending }]}>
                   <Text style={styles.sectionNumText}>6</Text>
                 </View>
                 <Text style={[styles.sectionTitleText, { color: themeColors.textPrimary }]}>
@@ -723,7 +721,7 @@ export const PrivacyPolicyScreen: React.FC<PrivacyPolicyScreenProps> = ({
                 onPress={() => toggleSection(7)}
                 style={styles.sectionHeaderRow}
               >
-                <View style={[styles.sectionNumBadge, { backgroundColor: '#0D9488' }]}>
+                <View style={[styles.sectionNumBadge, { backgroundColor: colors.accentMint }]}>
                   <Text style={styles.sectionNumText}>7</Text>
                 </View>
                 <Text style={[styles.sectionTitleText, { color: themeColors.textPrimary }]}>
@@ -768,7 +766,7 @@ export const PrivacyPolicyScreen: React.FC<PrivacyPolicyScreenProps> = ({
                 onPress={() => toggleSection(8)}
                 style={styles.sectionHeaderRow}
               >
-                <View style={[styles.sectionNumBadge, { backgroundColor: '#8B5CF6' }]}>
+                <View style={[styles.sectionNumBadge, { backgroundColor: colors.accentPurple }]}>
                   <Text style={styles.sectionNumText}>8</Text>
                 </View>
                 <Text style={[styles.sectionTitleText, { color: themeColors.textPrimary }]}>
@@ -813,7 +811,7 @@ export const PrivacyPolicyScreen: React.FC<PrivacyPolicyScreenProps> = ({
                 onPress={() => toggleSection(9)}
                 style={styles.sectionHeaderRow}
               >
-                <View style={[styles.sectionNumBadge, { backgroundColor: '#2563EB' }]}>
+                <View style={[styles.sectionNumBadge, { backgroundColor: colors.accentBlue }]}>
                   <Text style={styles.sectionNumText}>9</Text>
                 </View>
                 <Text style={[styles.sectionTitleText, { color: themeColors.textPrimary }]}>
@@ -854,7 +852,7 @@ export const PrivacyPolicyScreen: React.FC<PrivacyPolicyScreenProps> = ({
               style={[
                 styles.grievanceCard,
                 {
-                  backgroundColor: isDark ? themeColors.cardSecondary : '#FEFBF3',
+                  backgroundColor: colors.brandGoldSoft,
                   borderColor: colors.brandGold,
                 },
               ]}
@@ -924,7 +922,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.topBarBlack,
   },
 
-  // Corporate Navy Top Header (#012655)
+  // Corporate Navy Top Header
   blackHeader: {
     backgroundColor: colors.topBarBlack,
     paddingHorizontal: 20,
@@ -956,7 +954,7 @@ const styles = StyleSheet.create({
   headerMainTitle: {
     fontSize: 20,
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: colors.white,
     letterSpacing: -0.4,
   },
   headerActionBtn: {
@@ -988,7 +986,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderWidth: 1,
     marginBottom: 14,
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.04,
     shadowRadius: 8,
@@ -998,7 +996,7 @@ const styles = StyleSheet.create({
     width: 44,
     height: 44,
     borderRadius: 22,
-    backgroundColor: 'rgba(205, 161, 72, 0.12)',
+    backgroundColor: colors.highlightGoldSoft,
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 14,
@@ -1016,7 +1014,7 @@ const styles = StyleSheet.create({
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: '#10B981',
+    backgroundColor: colors.accentGreen,
   },
   badgeLabel: {
     fontSize: 9,
@@ -1052,7 +1050,7 @@ const styles = StyleSheet.create({
   highlightTag: {
     fontSize: 9,
     fontWeight: '800',
-    color: '#64748B',
+    color: colors.textSecondary,
     letterSpacing: 0.8,
     marginBottom: 2,
   },
@@ -1139,7 +1137,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   sectionNumText: {
-    color: '#FFFFFF',
+    color: colors.white,
     fontSize: 12,
     fontWeight: '800',
   },

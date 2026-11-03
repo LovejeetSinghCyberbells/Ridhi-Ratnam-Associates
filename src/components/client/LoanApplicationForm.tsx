@@ -509,7 +509,7 @@ export const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({
 
         {/* Live EMI Estimator Callout */}
         <View style={styles.emiBanner}>
-          <TrendingUpIcon size={16} color="#047857" />
+          <TrendingUpIcon size={16} color={colors.statusApproved} />
           <View style={styles.emiTextCol}>
             <Text style={styles.emiLabel}>Estimated Monthly EMI</Text>
             <Text style={styles.emiValue}>
@@ -646,9 +646,9 @@ export const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({
 
         {/* Real-time FOIR Debt Capacity Pill */}
         <View style={[styles.foirBadge, foirPercent <= 50 ? styles.foirHealthy : styles.foirCaution]}>
-          <ShieldIcon size={14} color={foirPercent <= 50 ? '#047857' : '#B45309'} />
+          <ShieldIcon size={14} color={foirPercent <= 50 ? colors.statusApproved : colors.statusPending} />
           <View style={{ flex: 1, marginLeft: 8 }}>
-            <Text style={[styles.foirTitle, { color: foirPercent <= 50 ? '#047857' : '#B45309' }]}>
+            <Text style={[styles.foirTitle, { color: foirPercent <= 50 ? colors.statusApproved : colors.statusPending }]}>
               Estimated FOIR: {foirPercent}% {foirPercent <= 50 ? '(Healthy Capacity)' : '(High Debt Ratio)'}
             </Text>
             <Text style={styles.foirSub}>
@@ -725,7 +725,7 @@ export const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({
 
         {errors.documents ? (
           <View style={styles.errorNotice}>
-            <AlertCircleIcon size={14} color="#DC2626" />
+            <AlertCircleIcon size={14} color={colors.error} />
             <Text style={styles.errorNoticeText}>{errors.documents}</Text>
           </View>
         ) : null}
@@ -736,7 +736,7 @@ export const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({
             <View key={doc.id} style={styles.docItemCard}>
               <View style={styles.docTopRow}>
                 <View style={[styles.docIconBox, doc.isAttached && styles.docIconBoxAttached]}>
-                  <FileTextIcon size={16} color={doc.isAttached ? '#047857' : '#0D0E12'} />
+                  <FileTextIcon size={16} color={doc.isAttached ? colors.statusApproved : colors.textPrimary} />
                 </View>
 
                 <View style={{ flex: 1, marginLeft: 10 }}>
@@ -754,14 +754,14 @@ export const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({
                   ]}
                 >
                   {doc.isAttached ? (
-                    <CheckIcon size={10} color="#047857" />
+                    <CheckIcon size={10} color={colors.statusApproved} />
                   ) : (
-                    <ClockIcon size={10} color="#B45309" />
+                    <ClockIcon size={10} color={colors.statusPending} />
                   )}
                   <Text
                     style={[
                       styles.docStatusBadgeText,
-                      { color: doc.isAttached ? '#047857' : '#B45309' },
+                      { color: doc.isAttached ? colors.statusApproved : colors.statusPending },
                     ]}
                   >
                     {doc.isAttached ? 'Attached' : 'Required'}
@@ -780,11 +780,11 @@ export const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({
                     doc.isAttached ? styles.docToggleBtnAttached : styles.docToggleBtnAttach,
                   ]}
                 >
-                  <UploadCloudIcon size={12} color={doc.isAttached ? '#DC2626' : '#0D0E12'} />
+                  <UploadCloudIcon size={12} color={doc.isAttached ? colors.error : colors.textPrimary} />
                   <Text
                     style={[
                       styles.docToggleBtnText,
-                      { color: doc.isAttached ? '#DC2626' : '#0D0E12' },
+                      { color: doc.isAttached ? colors.error : colors.textPrimary },
                     ]}
                   >
                     {doc.isAttached ? 'Remove File' : 'Attach Document'}
@@ -818,7 +818,7 @@ export const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({
           style={styles.consentItemRow}
         >
           <View style={[styles.checkboxBox, cibilConsent && styles.checkboxBoxChecked]}>
-            {cibilConsent && <CheckIcon size={12} color="#FFFFFF" />}
+            {cibilConsent && <CheckIcon size={12} color={colors.white} />}
           </View>
           <View style={{ flex: 1, marginLeft: 10 }}>
             <Text style={styles.consentTitle}>Credit Bureau Query Authorization</Text>
@@ -838,7 +838,7 @@ export const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({
           style={[styles.consentItemRow, { borderBottomWidth: 0 }]}
         >
           <View style={[styles.checkboxBox, dataAccuracyDeclaration && styles.checkboxBoxChecked]}>
-            {dataAccuracyDeclaration && <CheckIcon size={12} color="#FFFFFF" />}
+            {dataAccuracyDeclaration && <CheckIcon size={12} color={colors.white} />}
           </View>
           <View style={{ flex: 1, marginLeft: 10 }}>
             <Text style={styles.consentTitle}>Data Accuracy & Legal Compliance</Text>
@@ -891,13 +891,13 @@ export const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({
                 onPress={() => setPreviewDoc(null)}
                 style={styles.modalCloseBtn}
               >
-                <CrossIcon size={14} color="#0D0E12" />
+                <CrossIcon size={14} color={colors.textPrimary} />
               </TouchableOpacity>
             </View>
 
             <View style={styles.docPreviewCard}>
               <View style={styles.stampBadge}>
-                <CheckIcon size={14} color="#047857" />
+                <CheckIcon size={14} color={colors.statusApproved} />
                 <Text style={styles.stampText}>ATTACHED COMPLIANCE ASSET</Text>
               </View>
 
@@ -942,29 +942,29 @@ const styles = StyleSheet.create({
   badgeText: {
     fontSize: 9.5,
     fontWeight: '800',
-    color: '#92400E',
+    color: colors.brandGoldDark,
     letterSpacing: 0.6,
   },
   mainTitle: {
     fontSize: 24,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     letterSpacing: -0.4,
   },
   subTitle: {
     fontSize: 13,
-    color: '#64748B',
+    color: colors.slate500,
     lineHeight: 18,
     marginTop: 3,
   },
   formCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     marginHorizontal: spacing.lg,
     borderRadius: 24,
     padding: 18,
     borderWidth: 1,
-    borderColor: '#E8EAED',
-    shadowColor: '#000',
+    borderColor: colors.borderMedium,
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.04,
     shadowRadius: 8,
@@ -974,14 +974,14 @@ const styles = StyleSheet.create({
   cardHeaderTitle: {
     fontSize: 15,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     letterSpacing: -0.2,
     marginBottom: 14,
   },
   sectionLabel: {
     fontSize: 12,
     fontWeight: '700',
-    color: '#475569',
+    color: colors.slate600,
     marginBottom: 8,
   },
   typeChipsGrid: {
@@ -1003,21 +1003,21 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     paddingHorizontal: 12,
     borderRadius: 14,
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.slate50,
     borderWidth: 1,
-    borderColor: '#CBD5E1',
+    borderColor: colors.slate300,
   },
   quickPillSelected: {
-    backgroundColor: '#0D0E12',
-    borderColor: '#0D0E12',
+    backgroundColor: colors.topBarBlack,
+    borderColor: colors.topBarBlack,
   },
   quickPillText: {
     fontSize: 11.5,
     fontWeight: '700',
-    color: '#475569',
+    color: colors.slate600,
   },
   quickPillTextSelected: {
-    color: '#FFFFFF',
+    color: colors.white,
   },
   tenureRow: {
     flexDirection: 'row',
@@ -1028,32 +1028,32 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingVertical: 10,
     borderRadius: 14,
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.slate50,
     borderWidth: 1,
-    borderColor: '#CBD5E1',
+    borderColor: colors.slate300,
     alignItems: 'center',
     justifyContent: 'center',
   },
   tenureBtnSelected: {
-    backgroundColor: '#0D0E12',
-    borderColor: '#0D0E12',
+    backgroundColor: colors.topBarBlack,
+    borderColor: colors.topBarBlack,
   },
   tenureText: {
     fontSize: 12.5,
     fontWeight: '700',
-    color: '#475569',
+    color: colors.slate600,
   },
   tenureTextSelected: {
-    color: '#FFFFFF',
+    color: colors.white,
   },
   emiBanner: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#ECFDF5',
+    backgroundColor: colors.statusApprovedBg,
     padding: 12,
     borderRadius: 16,
     borderWidth: 1,
-    borderColor: '#A7F3D0',
+    borderColor: colors.statusApprovedBorder,
     marginBottom: 14,
   },
   emiTextCol: {
@@ -1063,17 +1063,17 @@ const styles = StyleSheet.create({
   emiLabel: {
     fontSize: 10.5,
     fontWeight: '600',
-    color: '#047857',
+    color: colors.statusApproved,
   },
   emiValue: {
     fontSize: 14.5,
     fontWeight: '800',
-    color: '#047857',
+    color: colors.statusApproved,
   },
   emiRate: {
     fontSize: 11,
     fontWeight: '700',
-    color: '#059669',
+    color: colors.success,
   },
   twoColRow: {
     flexDirection: 'row',
@@ -1083,22 +1083,22 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     paddingHorizontal: 12,
     borderRadius: 14,
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.slate50,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
     marginBottom: 4,
   },
   smallOptionChipSelected: {
-    backgroundColor: '#0D0E12',
-    borderColor: '#0D0E12',
+    backgroundColor: colors.topBarBlack,
+    borderColor: colors.topBarBlack,
   },
   smallOptionText: {
     fontSize: 11.5,
     fontWeight: '700',
-    color: '#64748B',
+    color: colors.slate500,
   },
   smallOptionTextSelected: {
-    color: '#FFFFFF',
+    color: colors.white,
   },
   foirBadge: {
     flexDirection: 'row',
@@ -1109,12 +1109,12 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   foirHealthy: {
-    backgroundColor: '#ECFDF5',
-    borderColor: '#A7F3D0',
+    backgroundColor: colors.statusApprovedBg,
+    borderColor: colors.statusApprovedBorder,
   },
   foirCaution: {
-    backgroundColor: '#FFFBEB',
-    borderColor: '#FDE68A',
+    backgroundColor: colors.statusPendingBg,
+    borderColor: colors.statusPendingBorder,
   },
   foirTitle: {
     fontSize: 12.5,
@@ -1122,7 +1122,7 @@ const styles = StyleSheet.create({
   },
   foirSub: {
     fontSize: 11,
-    color: '#64748B',
+    color: colors.slate500,
     marginTop: 2,
     lineHeight: 15,
   },
@@ -1134,7 +1134,7 @@ const styles = StyleSheet.create({
   },
   docsSubHeader: {
     fontSize: 11.5,
-    color: '#64748B',
+    color: colors.slate500,
     marginTop: 2,
     lineHeight: 16,
   },
@@ -1142,21 +1142,21 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     paddingHorizontal: 10,
     borderRadius: 12,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: colors.slate100,
     borderWidth: 1,
-    borderColor: '#CBD5E1',
+    borderColor: colors.slate300,
   },
   quickAttachAllText: {
     fontSize: 11,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   docsProgressStrip: {
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.slate50,
     padding: 10,
     borderRadius: 12,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
     marginBottom: 14,
   },
   progressTopRow: {
@@ -1168,33 +1168,33 @@ const styles = StyleSheet.create({
   progressLabel: {
     fontSize: 11.5,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   progressPercent: {
     fontSize: 11.5,
     fontWeight: '800',
-    color: '#047857',
+    color: colors.statusApproved,
   },
   progressBarTrack: {
     height: 6,
     borderRadius: 3,
-    backgroundColor: '#E2E8F0',
+    backgroundColor: colors.border,
     overflow: 'hidden',
   },
   progressBarFill: {
     height: '100%',
-    backgroundColor: '#10B981',
+    backgroundColor: colors.success,
     borderRadius: 3,
   },
   docsList: {
     gap: 10,
   },
   docItemCard: {
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.slate50,
     padding: 12,
     borderRadius: 16,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
   },
   docTopRow: {
     flexDirection: 'row',
@@ -1204,21 +1204,21 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: 10,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: colors.slate100,
     alignItems: 'center',
     justifyContent: 'center',
   },
   docIconBoxAttached: {
-    backgroundColor: '#DCFCE7',
+    backgroundColor: colors.statusApprovedBg,
   },
   docName: {
     fontSize: 12.5,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   docCategory: {
     fontSize: 11,
-    color: '#64748B',
+    color: colors.slate500,
     marginTop: 2,
   },
   docStatusBadge: {
@@ -1230,10 +1230,10 @@ const styles = StyleSheet.create({
     gap: 3,
   },
   docStatusAttached: {
-    backgroundColor: '#DCFCE7',
+    backgroundColor: colors.statusApprovedBg,
   },
   docStatusPending: {
-    backgroundColor: '#FEF3C7',
+    backgroundColor: colors.statusPendingBg,
   },
   docStatusBadgeText: {
     fontSize: 10,
@@ -1246,7 +1246,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingTop: 8,
     borderTopWidth: 1,
-    borderTopColor: '#EEF2F6',
+    borderTopColor: colors.borderLight,
   },
   docToggleBtn: {
     flexDirection: 'row',
@@ -1257,14 +1257,14 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   docToggleBtnAttach: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderWidth: 1,
-    borderColor: '#CBD5E1',
+    borderColor: colors.slate300,
   },
   docToggleBtnAttached: {
-    backgroundColor: '#FEF2F2',
+    backgroundColor: colors.statusRejectedBg,
     borderWidth: 1,
-    borderColor: '#FECACA',
+    borderColor: colors.statusRejectedBorder,
   },
   docToggleBtnText: {
     fontSize: 11,
@@ -1274,59 +1274,59 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     paddingHorizontal: 10,
     borderRadius: 10,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderWidth: 1,
-    borderColor: '#CBD5E1',
+    borderColor: colors.slate300,
   },
   docViewBtnText: {
     fontSize: 11,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   consentItemRow: {
     flexDirection: 'row',
     alignItems: 'flex-start',
     paddingVertical: 12,
     borderBottomWidth: 1,
-    borderBottomColor: '#F1F5F9',
+    borderBottomColor: colors.borderLight,
   },
   checkboxBox: {
     width: 20,
     height: 20,
     borderRadius: 6,
     borderWidth: 1.8,
-    borderColor: '#CBD5E1',
-    backgroundColor: '#FFFFFF',
+    borderColor: colors.slate300,
+    backgroundColor: colors.card,
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 2,
   },
   checkboxBoxChecked: {
-    backgroundColor: '#0D0E12',
-    borderColor: '#0D0E12',
+    backgroundColor: colors.topBarBlack,
+    borderColor: colors.topBarBlack,
   },
   consentTitle: {
     fontSize: 13,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   consentDesc: {
     fontSize: 11.5,
-    color: '#64748B',
+    color: colors.slate500,
     lineHeight: 16,
     marginTop: 2,
   },
   errorInlineText: {
     fontSize: 11,
     fontWeight: '600',
-    color: '#DC2626',
+    color: colors.error,
     marginTop: 4,
     marginBottom: 8,
   },
   errorNotice: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FEF2F2',
+    backgroundColor: colors.statusRejectedBg,
     padding: 10,
     borderRadius: 10,
     gap: 6,
@@ -1335,7 +1335,7 @@ const styles = StyleSheet.create({
   errorNoticeText: {
     fontSize: 11.5,
     fontWeight: '700',
-    color: '#DC2626',
+    color: colors.error,
   },
   submitBtn: {
     width: '100%',
@@ -1349,16 +1349,16 @@ const styles = StyleSheet.create({
   cancelText: {
     fontSize: 12.5,
     fontWeight: '700',
-    color: '#64748B',
+    color: colors.slate500,
   },
   modalOverlay: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: colors.overlay,
     justifyContent: 'center',
     paddingHorizontal: 20,
   },
   modalSheet: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderRadius: 24,
     padding: 20,
   },
@@ -1371,34 +1371,34 @@ const styles = StyleSheet.create({
   modalCategory: {
     fontSize: 10,
     fontWeight: '800',
-    color: '#94A3B8',
+    color: colors.slate400,
     letterSpacing: 0.8,
   },
   modalTitle: {
     fontSize: 16,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   modalCloseBtn: {
     width: 30,
     height: 30,
     borderRadius: 15,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: colors.borderLight,
     alignItems: 'center',
     justifyContent: 'center',
   },
   docPreviewCard: {
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.slate50,
     padding: 16,
     borderRadius: 16,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
     alignItems: 'center',
   },
   stampBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#DCFCE7',
+    backgroundColor: colors.statusApprovedBg,
     paddingVertical: 4,
     paddingHorizontal: 10,
     borderRadius: 10,
@@ -1408,22 +1408,22 @@ const styles = StyleSheet.create({
   stampText: {
     fontSize: 11,
     fontWeight: '800',
-    color: '#047857',
+    color: colors.statusApproved,
   },
   previewMeta: {
     fontSize: 13,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     marginBottom: 4,
   },
   previewSource: {
     fontSize: 12,
-    color: '#475569',
+    color: colors.slate600,
     marginBottom: 2,
   },
   previewNotes: {
     fontSize: 11.5,
-    color: '#64748B',
+    color: colors.slate500,
     textAlign: 'center',
   },
 });

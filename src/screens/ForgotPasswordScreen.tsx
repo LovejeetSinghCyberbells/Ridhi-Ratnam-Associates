@@ -238,7 +238,7 @@ export const ForgotPasswordScreen: React.FC<ForgotPasswordScreenProps> = ({
           accessibilityRole="button"
           accessibilityLabel="Go back"
         >
-          <ChevronLeftIcon size={18} color="#FFFFFF" />
+          <ChevronLeftIcon size={18} color={colors.white} />
         </TouchableOpacity>
 
         <View style={styles.headerTitleBox}>
@@ -284,7 +284,7 @@ export const ForgotPasswordScreen: React.FC<ForgotPasswordScreenProps> = ({
         {/* Global Error Banner */}
         {errorMessage ? (
           <View style={styles.errorBox}>
-            <AlertCircleIcon size={14} color="#DC2626" />
+            <AlertCircleIcon size={14} color={colors.error} />
             <Text style={styles.errorText}>{errorMessage}</Text>
           </View>
         ) : null}
@@ -298,7 +298,7 @@ export const ForgotPasswordScreen: React.FC<ForgotPasswordScreenProps> = ({
               <View style={styles.chipsRow}>
                 <PillChip
                   label="Registered Email"
-                  icon={<MailIcon size={14} color={method === 'email' ? '#FFFFFF' : '#64748B'} />}
+                  icon={<MailIcon size={14} color={method === 'email' ? colors.white : colors.slate500} />}
                   selected={method === 'email'}
                   onPress={() => {
                     setMethod('email');
@@ -310,7 +310,7 @@ export const ForgotPasswordScreen: React.FC<ForgotPasswordScreenProps> = ({
                 />
                 <PillChip
                   label="SMS to Mobile"
-                  icon={<PhoneIcon size={14} color={method === 'phone' ? '#FFFFFF' : '#64748B'} />}
+                  icon={<PhoneIcon size={14} color={method === 'phone' ? colors.white : colors.slate500} />}
                   selected={method === 'phone'}
                   onPress={() => {
                     setMethod('phone');
@@ -334,9 +334,9 @@ export const ForgotPasswordScreen: React.FC<ForgotPasswordScreenProps> = ({
                 }}
                 leftIcon={
                   method === 'email' ? (
-                    <MailIcon size={16} color="#64748B" />
+                    <MailIcon size={16} color={colors.slate500} />
                   ) : (
-                    <PhoneIcon size={16} color="#64748B" />
+                    <PhoneIcon size={16} color={colors.slate500} />
                   )
                 }
                 accentColor={colors.primaryBlack}
@@ -390,7 +390,7 @@ export const ForgotPasswordScreen: React.FC<ForgotPasswordScreenProps> = ({
                   <Text
                     style={[
                       styles.resendText,
-                      { color: timer > 0 ? '#94A3B8' : '#0D0E12' },
+                      { color: timer > 0 ? colors.slate400 : colors.textPrimary },
                     ]}
                   >
                     {timer > 0 ? `Resend code in ${timer}s` : 'Resend Code Now'}
@@ -435,7 +435,7 @@ export const ForgotPasswordScreen: React.FC<ForgotPasswordScreenProps> = ({
                   setErrorMessage('');
                 }}
                 isPassword={true}
-                leftIcon={<LockIcon size={16} color="#64748B" />}
+                leftIcon={<LockIcon size={16} color={colors.slate500} />}
                 accentColor={colors.primaryBlack}
               />
 
@@ -448,7 +448,7 @@ export const ForgotPasswordScreen: React.FC<ForgotPasswordScreenProps> = ({
                   setErrorMessage('');
                 }}
                 isPassword={true}
-                leftIcon={<LockIcon size={16} color="#64748B" />}
+                leftIcon={<LockIcon size={16} color={colors.slate500} />}
                 accentColor={colors.primaryBlack}
               />
 
@@ -473,7 +473,7 @@ export const ForgotPasswordScreen: React.FC<ForgotPasswordScreenProps> = ({
           {step === 'success' && (
             <View style={styles.successContainer}>
               <View style={styles.successBadge}>
-                <CheckIcon size={24} color="#10B981" />
+                <CheckIcon size={24} color={colors.statusApproved} />
               </View>
 
               <Text style={styles.successTitle}>Password Reset Complete</Text>
@@ -536,7 +536,7 @@ const styles = StyleSheet.create({
   headerMainTitle: {
     fontSize: 19,
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: colors.white,
     letterSpacing: -0.3,
   },
   headerSpacer: {
@@ -568,13 +568,13 @@ const styles = StyleSheet.create({
   backButton: {
     paddingVertical: 7,
     paddingHorizontal: 14,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.white,
     borderRadius: borderRadius.pill,
     borderWidth: 1,
-    borderColor: '#E2E5E9',
+    borderColor: colors.borderLight,
   },
   backButtonText: {
-    color: '#0D0E12',
+    color: colors.textPrimary,
     fontSize: 13,
     fontWeight: '700',
   },
@@ -594,13 +594,13 @@ const styles = StyleSheet.create({
   mainTitle: {
     fontSize: 24,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     letterSpacing: -0.5,
     textAlign: 'center',
   },
   subTitle: {
     fontSize: 13,
-    color: '#64748B',
+    color: colors.slate500,
     textAlign: 'center',
     lineHeight: 19,
     marginTop: 6,
@@ -609,30 +609,30 @@ const styles = StyleSheet.create({
   errorBox: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FEF2F2',
+    backgroundColor: colors.statusRejectedBg,
     paddingVertical: 10,
     paddingHorizontal: 14,
     borderRadius: borderRadius.md,
     borderWidth: 1,
-    borderColor: '#FECACA',
+    borderColor: colors.statusRejectedBorder,
     marginHorizontal: spacing.lg,
     marginBottom: spacing.md,
     gap: 8,
   },
   errorText: {
-    color: '#DC2626',
+    color: colors.error,
     fontSize: 12,
     fontWeight: '600',
     flex: 1,
   },
   cardContainer: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     marginHorizontal: spacing.lg,
     borderRadius: 32,
     padding: spacing.xl,
     borderWidth: 1,
-    borderColor: '#E8EAED',
-    shadowColor: '#000',
+    borderColor: colors.borderMedium,
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.05,
     shadowRadius: 16,
@@ -641,7 +641,7 @@ const styles = StyleSheet.create({
   sectionLabel: {
     fontSize: 11,
     fontWeight: '700',
-    color: '#64748B',
+    color: colors.slate500,
     textTransform: 'uppercase',
     letterSpacing: 0.8,
     marginBottom: 10,
@@ -664,8 +664,8 @@ const styles = StyleSheet.create({
     height: 52,
     borderRadius: 14,
     borderWidth: 1.5,
-    borderColor: '#E2E5E9',
-    backgroundColor: '#F7F8FA',
+    borderColor: colors.borderLight,
+    backgroundColor: colors.surfaceSubtle,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -675,7 +675,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   timerRow: {
     alignItems: 'center',
@@ -697,7 +697,7 @@ const styles = StyleSheet.create({
   changeContactText: {
     fontSize: 12.5,
     fontWeight: '700',
-    color: '#64748B',
+    color: colors.slate500,
   },
   successContainer: {
     alignItems: 'center',
@@ -707,9 +707,9 @@ const styles = StyleSheet.create({
     width: 64,
     height: 64,
     borderRadius: 32,
-    backgroundColor: '#ECFDF5',
+    backgroundColor: colors.statusApprovedBg,
     borderWidth: 2,
-    borderColor: '#A7F3D0',
+    borderColor: colors.statusApprovedBorder,
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: spacing.md,
@@ -717,14 +717,14 @@ const styles = StyleSheet.create({
   successTitle: {
     fontSize: 20,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     letterSpacing: -0.4,
     marginBottom: 8,
     textAlign: 'center',
   },
   successDesc: {
     fontSize: 13,
-    color: '#64748B',
+    color: colors.slate500,
     textAlign: 'center',
     lineHeight: 20,
     marginBottom: spacing.lg,
@@ -738,11 +738,11 @@ const styles = StyleSheet.create({
   },
   footerPrompt: {
     fontSize: 13,
-    color: '#64748B',
+    color: colors.slate500,
   },
   footerLink: {
     fontSize: 13,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
 });

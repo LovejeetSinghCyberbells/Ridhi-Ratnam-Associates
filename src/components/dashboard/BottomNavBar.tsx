@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { DashboardTab } from '../../types/dashboard';
-import { useAppTheme } from '../../theme';
+import { useAppTheme, colors } from '../../theme';
 import {
   SolidHomeIcon,
   FilesIcon,
@@ -55,7 +55,7 @@ export const BottomNavBar: React.FC<BottomNavBarProps> = ({
         >
           <SolidHomeIcon
             size={22}
-            color={isHome ? colors.brandGold : isDark ? '#94A3B8' : '#64748B'}
+            color={isHome ? colors.brandGold : colors.slate500}
           />
           <Text style={styles.testHidden}>Dashboard</Text>
         </TouchableOpacity>
@@ -86,12 +86,12 @@ export const BottomNavBar: React.FC<BottomNavBarProps> = ({
           >
             <FilesIcon
               size={19}
-              color={isSubmissions ? colors.brandGold : '#FFFFFF'}
+              color={isSubmissions ? colors.brandGold : colors.white}
             />
             <Text
               style={[
                 styles.loansLabel,
-                { color: isSubmissions ? colors.brandGold : '#FFFFFF' },
+                { color: isSubmissions ? colors.brandGold : colors.white },
                 isSubmissions && { fontWeight: '800' },
               ]}
             >
@@ -127,12 +127,12 @@ export const BottomNavBar: React.FC<BottomNavBarProps> = ({
           >
             <HistoryIcon
               size={20}
-              color={isHistory ? colors.brandGold : '#FFFFFF'}
+              color={isHistory ? colors.brandGold : colors.white}
             />
             <Text
               style={[
                 styles.loansLabel,
-                { color: isHistory ? colors.brandGold : '#FFFFFF' },
+                { color: isHistory ? colors.brandGold : colors.white },
                 isHistory && { fontWeight: '800' },
               ]}
             >
@@ -163,7 +163,7 @@ export const BottomNavBar: React.FC<BottomNavBarProps> = ({
         >
           <OutlineGearIcon
             size={22}
-            color={isProfile ? colors.brandGold : isDark ? '#94A3B8' : '#64748B'}
+            color={isProfile ? colors.brandGold : colors.slate500}
           />
           <Text style={styles.testHidden}>Profile</Text>
         </TouchableOpacity>
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
     borderRadius: 26,
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.12,
     shadowRadius: 10,
@@ -214,7 +214,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 26,
     overflow: 'hidden',
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.22,
     shadowRadius: 16,

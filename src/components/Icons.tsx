@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, ViewStyle } from 'react-native';
+import { colors } from '../theme/colors';
 
 interface IconProps {
   size?: number;
@@ -12,7 +13,7 @@ interface IconProps {
  * Replaces emojis across all auth and dashboard screens for a crisp, professional banking finish.
  */
 
-export const EyeIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B', style }) => {
+export const EyeIcon: React.FC<IconProps> = ({ size = 18, color = colors.slate500, style }) => {
   return (
     <View style={[styles.center, { width: size, height: size }, style]}>
       <View
@@ -42,7 +43,7 @@ export const EyeIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B', sty
   );
 };
 
-export const EyeOffIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B', style }) => {
+export const EyeOffIcon: React.FC<IconProps> = ({ size = 18, color = colors.slate500, style }) => {
   return (
     <View style={[styles.center, { width: size, height: size }, style]}>
       <View
@@ -82,7 +83,7 @@ export const EyeOffIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B', 
   );
 };
 
-export const UserIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B', style }) => {
+export const UserIcon: React.FC<IconProps> = ({ size = 18, color = colors.slate500, style }) => {
   const headSize = Math.round(size * 0.42);
   const bodyWidth = Math.round(size * 0.85);
   const bodyHeight = Math.round(size * 0.45);
@@ -116,7 +117,7 @@ export const UserIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B', st
   );
 };
 
-export const UserRoundIcon: React.FC<IconProps> = ({ size = 20, color = '#64748B', style }) => {
+export const UserRoundIcon: React.FC<IconProps> = ({ size = 20, color = colors.slate500, style }) => {
   const headSize = Math.round(size * 0.38);
   const bodyWidth = Math.round(size * 0.72);
   const bodyHeight = Math.round(size * 0.38);
@@ -161,7 +162,7 @@ export const UserRoundIcon: React.FC<IconProps> = ({ size = 20, color = '#64748B
   );
 };
 
-export const BriefcaseIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B', style }) => {
+export const BriefcaseIcon: React.FC<IconProps> = ({ size = 18, color = colors.slate500, style }) => {
   const width = Math.round(size * 0.9);
   const height = Math.round(size * 0.65);
   const handleWidth = Math.round(size * 0.4);
@@ -207,7 +208,7 @@ export const BriefcaseIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B
   );
 };
 
-export const MailIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B', style }) => {
+export const MailIcon: React.FC<IconProps> = ({ size = 18, color = colors.slate500, style }) => {
   const width = Math.round(size * 0.92);
   const height = Math.round(size * 0.68);
 
@@ -242,7 +243,7 @@ export const MailIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B', st
   );
 };
 
-export const PhoneIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B', style }) => {
+export const PhoneIcon: React.FC<IconProps> = ({ size = 18, color = colors.slate500, style }) => {
   const width = Math.round(size * 0.65);
   const height = Math.round(size * 0.95);
 
@@ -281,7 +282,7 @@ export const PhoneIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B', s
   );
 };
 
-export const LockIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B', style }) => {
+export const LockIcon: React.FC<IconProps> = ({ size = 18, color = colors.slate500, style }) => {
   const shackleWidth = Math.round(size * 0.5);
   const shackleHeight = Math.round(size * 0.42);
   const bodyWidth = Math.round(size * 0.82);
@@ -325,7 +326,7 @@ export const LockIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B', st
   );
 };
 
-export const IdBadgeIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B', style }) => {
+export const IdBadgeIcon: React.FC<IconProps> = ({ size = 18, color = colors.slate500, style }) => {
   const width = Math.round(size * 0.75);
   const height = Math.round(size * 0.95);
 
@@ -382,7 +383,7 @@ export const IdBadgeIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B',
   );
 };
 
-export const BuildingIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B', style }) => {
+export const BuildingIcon: React.FC<IconProps> = ({ size = 18, color = colors.slate500, style }) => {
   const width = Math.round(size * 0.85);
   const height = Math.round(size * 0.95);
 
@@ -415,7 +416,7 @@ export const BuildingIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B'
   );
 };
 
-export const CheckIcon: React.FC<IconProps> = ({ size = 16, color = '#10B981', style }) => {
+export const CheckIcon: React.FC<IconProps> = ({ size = 16, color = colors.statusApproved, style }) => {
   const width = Math.round(size * 0.7);
   const height = Math.round(size * 0.4);
 
@@ -435,7 +436,7 @@ export const CheckIcon: React.FC<IconProps> = ({ size = 16, color = '#10B981', s
   );
 };
 
-export const AlertCircleIcon: React.FC<IconProps> = ({ size = 16, color = '#DC2626', style }) => {
+export const AlertCircleIcon: React.FC<IconProps> = ({ size = 16, color = colors.error, style }) => {
   return (
     <View
       style={[
@@ -471,7 +472,7 @@ export const AlertCircleIcon: React.FC<IconProps> = ({ size = 16, color = '#DC26
   );
 };
 
-export const CrossIcon: React.FC<IconProps> = ({ size = 16, color = '#EF4444', style }) => {
+export const CrossIcon: React.FC<IconProps> = ({ size = 16, color = colors.statusRejected, style }) => {
   const barLength = Math.round(size * 0.75);
   return (
     <View style={[styles.center, { width: size, height: size }, style]}>
@@ -499,7 +500,7 @@ export const CrossIcon: React.FC<IconProps> = ({ size = 16, color = '#EF4444', s
   );
 };
 
-export const ClockIcon: React.FC<IconProps> = ({ size = 16, color = '#F59E0B', style }) => {
+export const ClockIcon: React.FC<IconProps> = ({ size = 16, color = colors.brandGold, style }) => {
   return (
     <View
       style={[
@@ -543,7 +544,7 @@ export const ClockIcon: React.FC<IconProps> = ({ size = 16, color = '#F59E0B', s
 
 export const BellIcon: React.FC<
   IconProps & { hasNotification?: boolean; badgeCount?: number }
-> = ({ size = 20, color = '#0D0E12', hasNotification = false, style }) => {
+> = ({ size = 20, color = colors.topBarBlack, hasNotification = false, style }) => {
   const bellWidth = Math.round(size * 0.72);
   const bellHeight = Math.round(size * 0.65);
 
@@ -611,9 +612,9 @@ export const BellIcon: React.FC<
             width: 7,
             height: 7,
             borderRadius: 3.5,
-            backgroundColor: '#DC2626',
+            backgroundColor: colors.error,
             borderWidth: 1.2,
-            borderColor: '#FFFFFF',
+            borderColor: colors.white,
           }}
         />
       )}
@@ -623,7 +624,7 @@ export const BellIcon: React.FC<
 
 export const LayoutDashboardIcon: React.FC<IconProps> = ({
   size = 20,
-  color = '#64748B',
+  color = colors.slate500,
   style,
 }) => {
   const quadSize = Math.round((size - 4) / 2);
@@ -682,7 +683,7 @@ export const LayoutDashboardIcon: React.FC<IconProps> = ({
   );
 };
 
-export const FilesIcon: React.FC<IconProps> = ({ size = 20, color = '#64748B', style }) => {
+export const FilesIcon: React.FC<IconProps> = ({ size = 20, color = colors.slate500, style }) => {
   const width = Math.round(size * 0.7);
   const height = Math.round(size * 0.82);
 
@@ -713,7 +714,7 @@ export const FilesIcon: React.FC<IconProps> = ({ size = 20, color = '#64748B', s
           borderRadius: 2.5,
           borderWidth: 1.6,
           borderColor: color,
-          backgroundColor: '#FFFFFF',
+          backgroundColor: colors.white,
           padding: 2,
           justifyContent: 'space-evenly',
         }}
@@ -726,7 +727,7 @@ export const FilesIcon: React.FC<IconProps> = ({ size = 20, color = '#64748B', s
   );
 };
 
-export const HistoryIcon: React.FC<IconProps> = ({ size = 20, color = '#64748B', style }) => {
+export const HistoryIcon: React.FC<IconProps> = ({ size = 20, color = colors.slate500, style }) => {
   return (
     <View
       style={[
@@ -769,7 +770,7 @@ export const HistoryIcon: React.FC<IconProps> = ({ size = 20, color = '#64748B',
 
 export const ChevronRightIcon: React.FC<IconProps> = ({
   size = 16,
-  color = '#94A3B8',
+  color = colors.slate400,
   style,
 }) => {
   const armSize = Math.round(size * 0.38);
@@ -791,7 +792,7 @@ export const ChevronRightIcon: React.FC<IconProps> = ({
 
 export const ChevronDownIcon: React.FC<IconProps> = ({
   size = 16,
-  color = '#94A3B8',
+  color = colors.slate400,
   style,
 }) => {
   const armSize = Math.round(size * 0.38);
@@ -813,7 +814,7 @@ export const ChevronDownIcon: React.FC<IconProps> = ({
 
 export const ChevronUpIcon: React.FC<IconProps> = ({
   size = 16,
-  color = '#94A3B8',
+  color = colors.slate400,
   style,
 }) => {
   const armSize = Math.round(size * 0.38);
@@ -833,7 +834,7 @@ export const ChevronUpIcon: React.FC<IconProps> = ({
   );
 };
 
-export const TrendingUpIcon: React.FC<IconProps> = ({ size = 16, color = '#10B981', style }) => {
+export const TrendingUpIcon: React.FC<IconProps> = ({ size = 16, color = colors.statusApproved, style }) => {
   return (
     <View style={[styles.center, { width: size, height: size }, style]}>
       {/* Slanted Arrow Stem */}
@@ -863,7 +864,7 @@ export const TrendingUpIcon: React.FC<IconProps> = ({ size = 16, color = '#10B98
   );
 };
 
-export const FilterIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B', style }) => {
+export const FilterIcon: React.FC<IconProps> = ({ size = 18, color = colors.slate500, style }) => {
   return (
     <View style={[styles.center, { width: size, height: size }, style]}>
       <View
@@ -896,7 +897,7 @@ export const FilterIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B', 
   );
 };
 
-export const SearchIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B', style }) => {
+export const SearchIcon: React.FC<IconProps> = ({ size = 18, color = colors.slate500, style }) => {
   const glassSize = Math.round(size * 0.58);
   return (
     <View style={[styles.center, { width: size, height: size }, style]}>
@@ -926,7 +927,7 @@ export const SearchIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B', 
   );
 };
 
-export const HouseIcon: React.FC<IconProps> = ({ size = 20, color = '#64748B', style }) => {
+export const HouseIcon: React.FC<IconProps> = ({ size = 20, color = colors.slate500, style }) => {
   const width = Math.round(size * 0.85);
   const height = Math.round(size * 0.85);
   const roofHeight = Math.round(height * 0.45);
@@ -981,7 +982,7 @@ export const HouseIcon: React.FC<IconProps> = ({ size = 20, color = '#64748B', s
   );
 };
 
-export const FilePlusIcon: React.FC<IconProps> = ({ size = 20, color = '#64748B', style }) => {
+export const FilePlusIcon: React.FC<IconProps> = ({ size = 20, color = colors.slate500, style }) => {
   const width = Math.round(size * 0.75);
   const height = Math.round(size * 0.9);
 
@@ -1022,7 +1023,7 @@ export const FilePlusIcon: React.FC<IconProps> = ({ size = 20, color = '#64748B'
   );
 };
 
-export const MessageSquareIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B', style }) => {
+export const MessageSquareIcon: React.FC<IconProps> = ({ size = 18, color = colors.slate500, style }) => {
   const width = Math.round(size * 0.85);
   const height = Math.round(size * 0.7);
 
@@ -1049,7 +1050,7 @@ export const MessageSquareIcon: React.FC<IconProps> = ({ size = 18, color = '#64
             borderLeftWidth: 1.6,
             borderBottomWidth: 1.6,
             borderColor: color,
-            backgroundColor: '#FFFFFF',
+            backgroundColor: colors.white,
             transform: [{ rotate: '45deg' }],
           }}
         />
@@ -1058,7 +1059,7 @@ export const MessageSquareIcon: React.FC<IconProps> = ({ size = 18, color = '#64
   );
 };
 
-export const ShieldIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B', style }) => {
+export const ShieldIcon: React.FC<IconProps> = ({ size = 18, color = colors.slate500, style }) => {
   const width = Math.round(size * 0.8);
   const height = Math.round(size * 0.95);
 
@@ -1084,7 +1085,7 @@ export const ShieldIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B', 
   );
 };
 
-export const HeadphonesIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B', style }) => {
+export const HeadphonesIcon: React.FC<IconProps> = ({ size = 18, color = colors.slate500, style }) => {
   const width = Math.round(size * 0.85);
   const height = Math.round(size * 0.85);
 
@@ -1134,7 +1135,7 @@ export const HeadphonesIcon: React.FC<IconProps> = ({ size = 18, color = '#64748
 
 export const ChevronLeftIcon: React.FC<IconProps> = ({
   size = 18,
-  color = '#0D0E12',
+  color = colors.topBarBlack,
   style,
 }) => {
   const armSize = Math.round(size * 0.4);
@@ -1154,7 +1155,7 @@ export const ChevronLeftIcon: React.FC<IconProps> = ({
   );
 };
 
-export const DownloadIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B', style }) => {
+export const DownloadIcon: React.FC<IconProps> = ({ size = 18, color = colors.slate500, style }) => {
   const width = Math.round(size * 0.8);
   const height = Math.round(size * 0.85);
 
@@ -1202,7 +1203,7 @@ export const DownloadIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B'
   );
 };
 
-export const FileTextIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B', style }) => {
+export const FileTextIcon: React.FC<IconProps> = ({ size = 18, color = colors.slate500, style }) => {
   const width = Math.round(size * 0.75);
   const height = Math.round(size * 0.9);
 
@@ -1227,7 +1228,7 @@ export const FileTextIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B'
   );
 };
 
-export const UploadCloudIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B', style }) => {
+export const UploadCloudIcon: React.FC<IconProps> = ({ size = 18, color = colors.slate500, style }) => {
   const width = Math.round(size * 0.8);
   const height = Math.round(size * 0.85);
 
@@ -1275,7 +1276,7 @@ export const UploadCloudIcon: React.FC<IconProps> = ({ size = 18, color = '#6474
   );
 };
 
-export const LogOutIcon: React.FC<IconProps> = ({ size = 18, color = '#DC2626', style }) => {
+export const LogOutIcon: React.FC<IconProps> = ({ size = 18, color = colors.error, style }) => {
   return (
     <View style={[styles.center, { width: size, height: size }, style]}>
       {/* Door frame */}
@@ -1319,7 +1320,7 @@ export const LogOutIcon: React.FC<IconProps> = ({ size = 18, color = '#DC2626', 
   );
 };
 
-export const SettingsIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B', style }) => {
+export const SettingsIcon: React.FC<IconProps> = ({ size = 18, color = colors.slate500, style }) => {
   return (
     <View style={[styles.center, { width: size, height: size }, style]}>
       <View
@@ -1347,7 +1348,7 @@ export const SettingsIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B'
   );
 };
 
-export const EditIcon: React.FC<IconProps> = ({ size = 16, color = '#64748B', style }) => {
+export const EditIcon: React.FC<IconProps> = ({ size = 16, color = colors.slate500, style }) => {
   return (
     <View style={[styles.center, { width: size, height: size }, style]}>
       {/* Pencil shaft */}
@@ -1377,7 +1378,7 @@ export const EditIcon: React.FC<IconProps> = ({ size = 16, color = '#64748B', st
   );
 };
 
-export const HelpCircleIcon: React.FC<IconProps> = ({ size = 18, color = '#64748B', style }) => {
+export const HelpCircleIcon: React.FC<IconProps> = ({ size = 18, color = colors.slate500, style }) => {
   return (
     <View style={[styles.center, { width: size, height: size }, style]}>
       <View
@@ -1418,7 +1419,7 @@ export const HelpCircleIcon: React.FC<IconProps> = ({ size = 18, color = '#64748
   );
 };
 
-export const SendIcon: React.FC<IconProps> = ({ size = 16, color = '#FFFFFF', style }) => {
+export const SendIcon: React.FC<IconProps> = ({ size = 16, color = colors.white, style }) => {
   return (
     <View style={[styles.center, { width: size, height: size }, style]}>
       <View
@@ -1435,7 +1436,7 @@ export const SendIcon: React.FC<IconProps> = ({ size = 16, color = '#FFFFFF', st
   );
 };
 
-export const SlidersIcon: React.FC<IconProps> = ({ size = 18, color = '#FFFFFF', style }) => {
+export const SlidersIcon: React.FC<IconProps> = ({ size = 18, color = colors.white, style }) => {
   return (
     <View style={[styles.center, { width: size, height: size }, style]}>
       {/* Track 1 */}
@@ -1450,7 +1451,7 @@ export const SlidersIcon: React.FC<IconProps> = ({ size = 18, color = '#FFFFFF',
   );
 };
 
-export const PaletteIcon: React.FC<IconProps> = ({ size = 18, color = '#FFFFFF', style }) => {
+export const PaletteIcon: React.FC<IconProps> = ({ size = 18, color = colors.white, style }) => {
   return (
     <View style={[styles.center, { width: size, height: size }, style]}>
       <View
@@ -1474,7 +1475,7 @@ export const PaletteIcon: React.FC<IconProps> = ({ size = 18, color = '#FFFFFF',
   );
 };
 
-export const BookmarkIcon: React.FC<IconProps> = ({ size = 18, color = '#FFFFFF', style }) => {
+export const BookmarkIcon: React.FC<IconProps> = ({ size = 18, color = colors.white, style }) => {
   return (
     <View style={[styles.center, { width: size, height: size }, style]}>
       <View
@@ -1506,7 +1507,7 @@ export const BookmarkIcon: React.FC<IconProps> = ({ size = 18, color = '#FFFFFF'
   );
 };
 
-export const BrainIcon: React.FC<IconProps> = ({ size = 18, color = '#FFFFFF', style }) => {
+export const BrainIcon: React.FC<IconProps> = ({ size = 18, color = colors.white, style }) => {
   return (
     <View style={[styles.center, { width: size, height: size }, style]}>
       <View
@@ -1526,7 +1527,7 @@ export const BrainIcon: React.FC<IconProps> = ({ size = 18, color = '#FFFFFF', s
   );
 };
 
-export const CameraIcon: React.FC<IconProps> = ({ size = 16, color = '#0284C7', style }) => {
+export const CameraIcon: React.FC<IconProps> = ({ size = 16, color = colors.brandNavy, style }) => {
   return (
     <View style={[styles.center, { width: size, height: size }, style]}>
       <View
@@ -1566,7 +1567,7 @@ export const CameraIcon: React.FC<IconProps> = ({ size = 16, color = '#0284C7', 
   );
 };
 
-export const PlusIcon: React.FC<IconProps> = ({ size = 16, color = '#FFFFFF', style }) => {
+export const PlusIcon: React.FC<IconProps> = ({ size = 16, color = colors.white, style }) => {
   return (
     <View style={[styles.center, { width: size, height: size }, style]}>
       <View style={{ position: 'absolute', width: size * 0.75, height: 2, backgroundColor: color, borderRadius: 1 }} />
@@ -1575,7 +1576,7 @@ export const PlusIcon: React.FC<IconProps> = ({ size = 16, color = '#FFFFFF', st
   );
 };
 
-export const SolidHomeIcon: React.FC<IconProps> = ({ size = 22, color = '#0D0E12', style }) => {
+export const SolidHomeIcon: React.FC<IconProps> = ({ size = 22, color = colors.topBarBlack, style }) => {
   const w = size;
   const h = size;
   return (
@@ -1610,7 +1611,7 @@ export const SolidHomeIcon: React.FC<IconProps> = ({ size = 22, color = '#0D0E12
   );
 };
 
-export const ChatDotsIcon: React.FC<IconProps> = ({ size = 22, color = '#FFFFFF', style }) => {
+export const ChatDotsIcon: React.FC<IconProps> = ({ size = 22, color = colors.white, style }) => {
   const w = Math.round(size * 1.05);
   const h = Math.round(size * 0.85);
   return (
@@ -1652,7 +1653,7 @@ export const ChatDotsIcon: React.FC<IconProps> = ({ size = 22, color = '#FFFFFF'
   );
 };
 
-export const SquarePlusIcon: React.FC<IconProps> = ({ size = 22, color = '#FFFFFF', style }) => {
+export const SquarePlusIcon: React.FC<IconProps> = ({ size = 22, color = colors.white, style }) => {
   return (
     <View
       style={[
@@ -1691,7 +1692,7 @@ export const SquarePlusIcon: React.FC<IconProps> = ({ size = 22, color = '#FFFFF
   );
 };
 
-export const OutlineGearIcon: React.FC<IconProps> = ({ size = 22, color = '#0D0E12', style }) => {
+export const OutlineGearIcon: React.FC<IconProps> = ({ size = 22, color = colors.topBarBlack, style }) => {
   const toothAngles = [0, 45, 90, 135];
   return (
     <View style={[styles.center, { width: size, height: size }, style]}>
@@ -1715,7 +1716,7 @@ export const OutlineGearIcon: React.FC<IconProps> = ({ size = 22, color = '#0D0E
           width: size * 0.76,
           height: size * 0.76,
           borderRadius: (size * 0.76) / 2,
-          backgroundColor: '#FFFFFF',
+          backgroundColor: colors.white,
           alignItems: 'center',
           justifyContent: 'center',
           borderWidth: 1.8,
@@ -1736,7 +1737,7 @@ export const OutlineGearIcon: React.FC<IconProps> = ({ size = 22, color = '#0D0E
   );
 };
 
-export const LoanDossierIcon: React.FC<IconProps> = ({ size = 20, color = '#FFFFFF', style }) => {
+export const LoanDossierIcon: React.FC<IconProps> = ({ size = 20, color = colors.white, style }) => {
   const width = Math.round(size * 0.78);
   const height = Math.round(size * 0.92);
 
@@ -1780,7 +1781,7 @@ export const LoanDossierIcon: React.FC<IconProps> = ({ size = 20, color = '#FFFF
   );
 };
 
-export const SunIcon: React.FC<IconProps> = ({ size = 18, color = '#F59E0B', style }) => {
+export const SunIcon: React.FC<IconProps> = ({ size = 18, color = colors.brandGold, style }) => {
   const centerSize = Math.round(size * 0.44);
   return (
     <View style={[styles.center, { width: size, height: size }, style]}>
@@ -1837,7 +1838,7 @@ export const SunIcon: React.FC<IconProps> = ({ size = 18, color = '#F59E0B', sty
   );
 };
 
-export const MoonIcon: React.FC<IconProps> = ({ size = 18, color = '#CDA148', style }) => {
+export const MoonIcon: React.FC<IconProps> = ({ size = 18, color = colors.brandGold, style }) => {
   const outerSize = Math.round(size * 0.82);
   return (
     <View style={[styles.center, { width: size, height: size }, style]}>
@@ -1859,7 +1860,7 @@ export const MoonIcon: React.FC<IconProps> = ({ size = 18, color = '#CDA148', st
             width: Math.round(size * 0.65),
             height: Math.round(size * 0.65),
             borderRadius: Math.round(size * 0.32),
-            backgroundColor: '#012655',
+            backgroundColor: colors.brandNavy,
           }}
         />
       </View>

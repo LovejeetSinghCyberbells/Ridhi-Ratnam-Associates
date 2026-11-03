@@ -8,7 +8,7 @@ import {
   TextInputProps,
   ViewStyle,
 } from 'react-native';
-import { borderRadius, spacing, useAppTheme } from '../theme';
+import { borderRadius, spacing, useAppTheme, colors } from '../theme';
 import { EyeIcon, EyeOffIcon, AlertCircleIcon } from './Icons';
 
 export interface CustomInputProps extends TextInputProps {
@@ -50,19 +50,15 @@ export const CustomInput: React.FC<CustomInputProps> = ({
   };
 
   const borderColor = error
-    ? '#DC2626'
+    ? colors.error
     : isFocused
     ? activeAccent
     : colors.inputBorder;
 
   const backgroundColor = error
-    ? isDark
-      ? '#2D1515'
-      : '#FFFBFB'
+    ? colors.statusRejectedBg
     : isFocused
-    ? isDark
-      ? colors.cardElevated
-      : '#FFFFFF'
+    ? colors.white
     : colors.inputBg;
 
   return (
@@ -73,7 +69,7 @@ export const CustomInput: React.FC<CustomInputProps> = ({
           style={[
             styles.label,
             { color: colors.textSecondary },
-            isFocused && { color: error ? '#DC2626' : activeAccent },
+            isFocused && { color: error ? colors.error : activeAccent },
             error ? styles.labelError : null,
           ]}
         >
@@ -132,7 +128,7 @@ export const CustomInput: React.FC<CustomInputProps> = ({
       {/* Inline Field Error */}
       {error ? (
         <View style={styles.errorRow}>
-          <AlertCircleIcon size={12} color="#DC2626" />
+          <AlertCircleIcon size={12} color={colors.error} />
           <Text style={styles.errorText}>{error}</Text>
         </View>
       ) : null}
@@ -155,7 +151,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.1,
   },
   labelError: {
-    color: '#DC2626',
+    color: colors.error,
   },
   inputWrapper: {
     flexDirection: 'row',
@@ -197,7 +193,7 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   errorText: {
-    color: '#DC2626',
+    color: colors.error,
     fontSize: 11.5,
     fontWeight: '600',
   },

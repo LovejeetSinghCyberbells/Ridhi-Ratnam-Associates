@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ClientTab } from '../../types/client';
-import { useAppTheme } from '../../theme';
+import { useAppTheme, colors } from '../../theme';
 import {
   SolidHomeIcon,
   UploadCloudIcon,
@@ -56,7 +56,7 @@ export const ClientBottomNav: React.FC<ClientBottomNavProps> = ({
         >
           <SolidHomeIcon
             size={22}
-            color={isHome ? colors.brandGold : isDark ? '#94A3B8' : '#64748B'}
+            color={isHome ? colors.brandGold : isDark ? colors.slate400 : colors.slate500}
           />
           <Text style={styles.testHidden}>Home</Text>
         </TouchableOpacity>
@@ -87,12 +87,12 @@ export const ClientBottomNav: React.FC<ClientBottomNavProps> = ({
           >
             <SquarePlusIcon
               size={20}
-              color={isUpload ? colors.brandGold : '#FFFFFF'}
+              color={isUpload ? colors.brandGold : colors.white}
             />
             <Text
               style={[
                 styles.loansLabel,
-                { color: isUpload ? colors.brandGold : '#FFFFFF' },
+                { color: isUpload ? colors.brandGold : colors.white },
                 isUpload && { fontWeight: '800' },
               ]}
             >
@@ -127,12 +127,12 @@ export const ClientBottomNav: React.FC<ClientBottomNavProps> = ({
           >
             <HistoryIcon
               size={20}
-              color={isHistory ? colors.brandGold : '#FFFFFF'}
+              color={isHistory ? colors.brandGold : colors.white}
             />
             <Text
               style={[
                 styles.loansLabel,
-                { color: isHistory ? colors.brandGold : '#FFFFFF' },
+                { color: isHistory ? colors.brandGold : colors.white },
                 isHistory && { fontWeight: '800' },
               ]}
             >
@@ -162,7 +162,7 @@ export const ClientBottomNav: React.FC<ClientBottomNavProps> = ({
         >
           <OutlineGearIcon
             size={22}
-            color={isProfile ? colors.brandGold : isDark ? '#94A3B8' : '#64748B'}
+            color={isProfile ? colors.brandGold : isDark ? colors.slate400 : colors.slate500}
           />
           <Text style={styles.testHidden}>Profile</Text>
         </TouchableOpacity>
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
     borderRadius: 26,
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.12,
     shadowRadius: 10,
@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 26,
     overflow: 'hidden',
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.22,
     shadowRadius: 16,

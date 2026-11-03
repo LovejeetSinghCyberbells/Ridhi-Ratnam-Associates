@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Linking } from 'react-native';
-import { spacing, useAppTheme } from '../../theme';
+import { spacing, useAppTheme, colors } from '../../theme';
 import { PhoneIcon, MessageSquareIcon, HeadphonesIcon } from '../Icons';
 import { AnimatedButton } from '../AnimatedButton';
 import { themeAlert } from '../ThemeDialog';
@@ -68,10 +68,10 @@ export const SupportCard: React.FC<SupportCardProps> = ({ onPressContactSupport 
         <View
           style={[
             styles.iconCircle,
-            { backgroundColor: isDark ? colors.cardSecondary : '#F1F5F9' },
+            { backgroundColor: isDark ? colors.cardSecondary : colors.slate100 },
           ]}
         >
-          <HeadphonesIcon size={18} color={isDark ? colors.brandGold : '#0D0E12'} />
+          <HeadphonesIcon size={18} color={isDark ? colors.brandGold : colors.textPrimary} />
         </View>
         <View style={styles.titleCol}>
           <View style={styles.titleBadgeRow}>
@@ -83,7 +83,7 @@ export const SupportCard: React.FC<SupportCardProps> = ({ onPressContactSupport 
                 style={[
                   styles.viewDeskPill,
                   {
-                    backgroundColor: isDark ? colors.cardSecondary : '#F8FAFC',
+                    backgroundColor: isDark ? colors.cardSecondary : colors.slate50,
                     borderColor: colors.cardBorder,
                   },
                 ]}
@@ -106,13 +106,13 @@ export const SupportCard: React.FC<SupportCardProps> = ({ onPressContactSupport 
           style={[
             styles.channelButton,
             {
-              backgroundColor: isDark ? colors.cardSecondary : '#F8FAFC',
+              backgroundColor: isDark ? colors.cardSecondary : colors.slate50,
               borderColor: colors.cardBorder,
             },
           ]}
           accessibilityLabel="Call Customer Support"
         >
-          <PhoneIcon size={14} color={isDark ? colors.brandGold : '#0D0E12'} />
+          <PhoneIcon size={14} color={isDark ? colors.brandGold : colors.textPrimary} />
           <Text style={[styles.channelText, { color: colors.textPrimary }]}>
             1800 234 5678
           </Text>
@@ -124,13 +124,13 @@ export const SupportCard: React.FC<SupportCardProps> = ({ onPressContactSupport 
           style={[
             styles.channelButton,
             {
-              backgroundColor: isDark ? colors.cardSecondary : '#F8FAFC',
+              backgroundColor: isDark ? colors.cardSecondary : colors.slate50,
               borderColor: colors.cardBorder,
             },
           ]}
           accessibilityLabel="Email Customer Support"
         >
-          <MessageSquareIcon size={14} color={isDark ? colors.brandGold : '#0D0E12'} />
+          <MessageSquareIcon size={14} color={isDark ? colors.brandGold : colors.textPrimary} />
           <Text style={[styles.channelText, { color: colors.textPrimary }]}>
             support@ridhiratnam.com
           </Text>
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     padding: 18,
     borderWidth: 1,
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.05,
     shadowRadius: 10,
@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
   viewDeskPillText: {
     fontSize: 10.5,
     fontWeight: '700',
-    color: '#CDA148',
+    color: colors.brandGold,
     textAlign: 'center',
     textAlignVertical: 'center',
     includeFontPadding: false,

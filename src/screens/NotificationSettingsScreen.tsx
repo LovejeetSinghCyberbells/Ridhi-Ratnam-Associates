@@ -191,7 +191,7 @@ export const NotificationSettingsScreen: React.FC<NotificationSettingsScreenProp
           style={styles.headerBackBtn}
           accessibilityLabel="Go back"
         >
-          <ChevronLeftIcon size={20} color="#FFFFFF" />
+          <ChevronLeftIcon size={20} color={colors.white} />
         </TouchableOpacity>
 
         <View style={styles.headerTitleBox}>
@@ -206,7 +206,7 @@ export const NotificationSettingsScreen: React.FC<NotificationSettingsScreenProp
           style={styles.headerResetBtn}
           accessibilityLabel="Reset to default settings"
         >
-          <SlidersIcon size={16} color="#FFFFFF" />
+          <SlidersIcon size={16} color={colors.white} />
         </TouchableOpacity>
       </View>
 
@@ -262,8 +262,8 @@ export const NotificationSettingsScreen: React.FC<NotificationSettingsScreenProp
           >
             {/* 1.1 Status Milestones */}
             <View style={styles.settingItemRow}>
-              <View style={[styles.iconBadge, { backgroundColor: '#0284C7' }]}>
-                <ClockIcon size={15} color="#FFFFFF" />
+              <View style={[styles.iconBadge, { backgroundColor: colors.info }]}>
+                <ClockIcon size={15} color={colors.white} />
               </View>
               <View style={{ flex: 1, marginRight: 12 }}>
                 <Text style={[styles.settingTitle, { color: themeColors.textPrimary }]}>
@@ -277,8 +277,8 @@ export const NotificationSettingsScreen: React.FC<NotificationSettingsScreenProp
                 testID="switch-app-status-alerts"
                 value={applicationStatusUpdates}
                 onValueChange={setApplicationStatusUpdates}
-                trackColor={{ false: isDark ? '#323846' : '#CBD5E1', true: colors.brandGold }}
-                thumbColor="#FFFFFF"
+                trackColor={{ false: colors.slate300, true: colors.brandGold }}
+                thumbColor={colors.white}
               />
             </View>
 
@@ -286,8 +286,8 @@ export const NotificationSettingsScreen: React.FC<NotificationSettingsScreenProp
 
             {/* 1.2 Disbursement Notices */}
             <View style={styles.settingItemRow}>
-              <View style={[styles.iconBadge, { backgroundColor: '#047857' }]}>
-                <CheckIcon size={15} color="#FFFFFF" />
+              <View style={[styles.iconBadge, { backgroundColor: colors.statusApproved }]}>
+                <CheckIcon size={15} color={colors.white} />
               </View>
               <View style={{ flex: 1, marginRight: 12 }}>
                 <Text style={[styles.settingTitle, { color: themeColors.textPrimary }]}>
@@ -301,8 +301,8 @@ export const NotificationSettingsScreen: React.FC<NotificationSettingsScreenProp
                 testID="switch-disbursement-notices"
                 value={disbursementNotices}
                 onValueChange={setDisbursementNotices}
-                trackColor={{ false: isDark ? '#323846' : '#CBD5E1', true: colors.brandGold }}
-                thumbColor="#FFFFFF"
+                trackColor={{ false: colors.slate300, true: colors.brandGold }}
+                thumbColor={colors.white}
               />
             </View>
 
@@ -310,8 +310,8 @@ export const NotificationSettingsScreen: React.FC<NotificationSettingsScreenProp
 
             {/* 1.3 Document Verification */}
             <View style={styles.settingItemRow}>
-              <View style={[styles.iconBadge, { backgroundColor: '#CDA148' }]}>
-                <FileTextIcon size={15} color="#FFFFFF" />
+              <View style={[styles.iconBadge, { backgroundColor: colors.brandGold }]}>
+                <FileTextIcon size={15} color={colors.white} />
               </View>
               <View style={{ flex: 1, marginRight: 12 }}>
                 <Text style={[styles.settingTitle, { color: themeColors.textPrimary }]}>
@@ -325,8 +325,8 @@ export const NotificationSettingsScreen: React.FC<NotificationSettingsScreenProp
                 testID="switch-doc-verification-alerts"
                 value={documentVerificationAlerts}
                 onValueChange={setDocumentVerificationAlerts}
-                trackColor={{ false: isDark ? '#323846' : '#CBD5E1', true: colors.brandGold }}
-                thumbColor="#FFFFFF"
+                trackColor={{ false: colors.slate300, true: colors.brandGold }}
+                thumbColor={colors.white}
               />
             </View>
 
@@ -334,8 +334,8 @@ export const NotificationSettingsScreen: React.FC<NotificationSettingsScreenProp
 
             {/* 1.4 Advisor Queries */}
             <View style={[styles.settingItemRow, { borderBottomWidth: 0 }]}>
-              <View style={[styles.iconBadge, { backgroundColor: '#8B5CF6' }]}>
-                <MessageSquareIcon size={15} color="#FFFFFF" />
+              <View style={[styles.iconBadge, { backgroundColor: colors.accentPurple }]}>
+                <MessageSquareIcon size={15} color={colors.white} />
               </View>
               <View style={{ flex: 1, marginRight: 12 }}>
                 <Text style={[styles.settingTitle, { color: themeColors.textPrimary }]}>
@@ -349,8 +349,8 @@ export const NotificationSettingsScreen: React.FC<NotificationSettingsScreenProp
                 testID="switch-advisor-queries"
                 value={underwriterQueries}
                 onValueChange={setUnderwriterQueries}
-                trackColor={{ false: isDark ? '#323846' : '#CBD5E1', true: colors.brandGold }}
-                thumbColor="#FFFFFF"
+                trackColor={{ false: colors.slate300, true: colors.brandGold }}
+                thumbColor={colors.white}
               />
             </View>
           </View>
@@ -370,8 +370,8 @@ export const NotificationSettingsScreen: React.FC<NotificationSettingsScreenProp
           >
             {/* 2.1 Push Notifications */}
             <View style={styles.settingItemRow}>
-              <View style={[styles.iconBadge, { backgroundColor: '#0D0E12' }]}>
-                <BellIcon size={15} color="#FFFFFF" />
+              <View style={[styles.iconBadge, { backgroundColor: colors.topBarBlack }]}>
+                <BellIcon size={15} color={colors.white} />
               </View>
               <View style={{ flex: 1, marginRight: 12 }}>
                 <Text style={[styles.settingTitle, { color: themeColors.textPrimary }]}>
@@ -385,8 +385,8 @@ export const NotificationSettingsScreen: React.FC<NotificationSettingsScreenProp
                 testID="switch-push-channel"
                 value={pushNotifications}
                 onValueChange={setPushNotifications}
-                trackColor={{ false: isDark ? '#323846' : '#CBD5E1', true: colors.brandGold }}
-                thumbColor="#FFFFFF"
+                trackColor={{ false: colors.slate300, true: colors.brandGold }}
+                thumbColor={colors.white}
               />
             </View>
 
@@ -394,8 +394,8 @@ export const NotificationSettingsScreen: React.FC<NotificationSettingsScreenProp
 
             {/* 2.2 SMS Alerts */}
             <View style={styles.settingItemRow}>
-              <View style={[styles.iconBadge, { backgroundColor: '#B45309' }]}>
-                <PhoneIcon size={15} color="#FFFFFF" />
+              <View style={[styles.iconBadge, { backgroundColor: colors.statusPending }]}>
+                <PhoneIcon size={15} color={colors.white} />
               </View>
               <View style={{ flex: 1, marginRight: 12 }}>
                 <Text style={[styles.settingTitle, { color: themeColors.textPrimary }]}>
@@ -409,8 +409,8 @@ export const NotificationSettingsScreen: React.FC<NotificationSettingsScreenProp
                 testID="switch-sms-channel"
                 value={smsAlerts}
                 onValueChange={setSmsAlerts}
-                trackColor={{ false: isDark ? '#323846' : '#CBD5E1', true: colors.brandGold }}
-                thumbColor="#FFFFFF"
+                trackColor={{ false: colors.slate300, true: colors.brandGold }}
+                thumbColor={colors.white}
               />
             </View>
 
@@ -418,8 +418,8 @@ export const NotificationSettingsScreen: React.FC<NotificationSettingsScreenProp
 
             {/* 2.3 Email Digest */}
             <View style={styles.settingItemRow}>
-              <View style={[styles.iconBadge, { backgroundColor: '#0D9488' }]}>
-                <MailIcon size={15} color="#FFFFFF" />
+              <View style={[styles.iconBadge, { backgroundColor: colors.accentMint }]}>
+                <MailIcon size={15} color={colors.white} />
               </View>
               <View style={{ flex: 1, marginRight: 12 }}>
                 <Text style={[styles.settingTitle, { color: themeColors.textPrimary }]}>
@@ -433,8 +433,8 @@ export const NotificationSettingsScreen: React.FC<NotificationSettingsScreenProp
                 testID="switch-email-channel"
                 value={emailDigest}
                 onValueChange={setEmailDigest}
-                trackColor={{ false: isDark ? '#323846' : '#CBD5E1', true: colors.brandGold }}
-                thumbColor="#FFFFFF"
+                trackColor={{ false: colors.slate300, true: colors.brandGold }}
+                thumbColor={colors.white}
               />
             </View>
 
@@ -442,8 +442,8 @@ export const NotificationSettingsScreen: React.FC<NotificationSettingsScreenProp
 
             {/* 2.4 WhatsApp Corporate Updates */}
             <View style={[styles.settingItemRow, { borderBottomWidth: 0 }]}>
-              <View style={[styles.iconBadge, { backgroundColor: '#10B981' }]}>
-                <MessageSquareIcon size={15} color="#FFFFFF" />
+              <View style={[styles.iconBadge, { backgroundColor: colors.accentGreen }]}>
+                <MessageSquareIcon size={15} color={colors.white} />
               </View>
               <View style={{ flex: 1, marginRight: 12 }}>
                 <Text style={[styles.settingTitle, { color: themeColors.textPrimary }]}>
@@ -457,8 +457,8 @@ export const NotificationSettingsScreen: React.FC<NotificationSettingsScreenProp
                 testID="switch-whatsapp-channel"
                 value={whatsappUpdates}
                 onValueChange={setWhatsappUpdates}
-                trackColor={{ false: isDark ? '#323846' : '#CBD5E1', true: colors.brandGold }}
-                thumbColor="#FFFFFF"
+                trackColor={{ false: colors.slate300, true: colors.brandGold }}
+                thumbColor={colors.white}
               />
             </View>
           </View>
@@ -478,8 +478,8 @@ export const NotificationSettingsScreen: React.FC<NotificationSettingsScreenProp
           >
             {/* 3.1 EMI Reminders */}
             <View style={styles.settingItemRow}>
-              <View style={[styles.iconBadge, { backgroundColor: '#D97706' }]}>
-                <ClockIcon size={15} color="#FFFFFF" />
+              <View style={[styles.iconBadge, { backgroundColor: colors.warning }]}>
+                <ClockIcon size={15} color={colors.white} />
               </View>
               <View style={{ flex: 1, marginRight: 12 }}>
                 <Text style={[styles.settingTitle, { color: themeColors.textPrimary }]}>
@@ -493,8 +493,8 @@ export const NotificationSettingsScreen: React.FC<NotificationSettingsScreenProp
                 testID="switch-emi-reminders"
                 value={emiReminders}
                 onValueChange={setEmiReminders}
-                trackColor={{ false: isDark ? '#323846' : '#CBD5E1', true: colors.brandGold }}
-                thumbColor="#FFFFFF"
+                trackColor={{ false: colors.slate300, true: colors.brandGold }}
+                thumbColor={colors.white}
               />
             </View>
 
@@ -502,8 +502,8 @@ export const NotificationSettingsScreen: React.FC<NotificationSettingsScreenProp
 
             {/* 3.2 Low Balance Alert */}
             <View style={styles.settingItemRow}>
-              <View style={[styles.iconBadge, { backgroundColor: '#DC2626' }]}>
-                <AlertCircleIcon size={15} color="#FFFFFF" />
+              <View style={[styles.iconBadge, { backgroundColor: colors.error }]}>
+                <AlertCircleIcon size={15} color={colors.white} />
               </View>
               <View style={{ flex: 1, marginRight: 12 }}>
                 <Text style={[styles.settingTitle, { color: themeColors.textPrimary }]}>
@@ -517,8 +517,8 @@ export const NotificationSettingsScreen: React.FC<NotificationSettingsScreenProp
                 testID="switch-low-balance-warnings"
                 value={mandateLowBalanceWarning}
                 onValueChange={setMandateLowBalanceWarning}
-                trackColor={{ false: isDark ? '#323846' : '#CBD5E1', true: colors.brandGold }}
-                thumbColor="#FFFFFF"
+                trackColor={{ false: colors.slate300, true: colors.brandGold }}
+                thumbColor={colors.white}
               />
             </View>
 
@@ -526,8 +526,8 @@ export const NotificationSettingsScreen: React.FC<NotificationSettingsScreenProp
 
             {/* 3.3 Interest Rate Updates */}
             <View style={[styles.settingItemRow, { borderBottomWidth: 0 }]}>
-              <View style={[styles.iconBadge, { backgroundColor: '#6366F1' }]}>
-                <ShieldIcon size={15} color="#FFFFFF" />
+              <View style={[styles.iconBadge, { backgroundColor: colors.accentBlue }]}>
+                <ShieldIcon size={15} color={colors.white} />
               </View>
               <View style={{ flex: 1, marginRight: 12 }}>
                 <Text style={[styles.settingTitle, { color: themeColors.textPrimary }]}>
@@ -541,8 +541,8 @@ export const NotificationSettingsScreen: React.FC<NotificationSettingsScreenProp
                 testID="switch-rate-revisions"
                 value={rateRevisions}
                 onValueChange={setRateRevisions}
-                trackColor={{ false: isDark ? '#323846' : '#CBD5E1', true: colors.brandGold }}
-                thumbColor="#FFFFFF"
+                trackColor={{ false: colors.slate300, true: colors.brandGold }}
+                thumbColor={colors.white}
               />
             </View>
           </View>
@@ -584,12 +584,8 @@ export const NotificationSettingsScreen: React.FC<NotificationSettingsScreenProp
                         styles.frequencyChip,
                         {
                           backgroundColor: isSelected
-                            ? isDark
-                              ? colors.brandGold
-                              : colors.topBarBlack
-                            : isDark
-                            ? themeColors.cardSecondary
-                            : '#F1F5F9',
+                            ? colors.topBarBlack
+                            : colors.slate100,
                           borderColor: isSelected
                             ? colors.brandGold
                             : themeColors.cardBorder,
@@ -601,9 +597,7 @@ export const NotificationSettingsScreen: React.FC<NotificationSettingsScreenProp
                           styles.frequencyChipText,
                           {
                             color: isSelected
-                              ? isDark
-                                ? '#012655'
-                                : '#FFFFFF'
+                              ? colors.white
                               : themeColors.textSecondary,
                             fontWeight: isSelected ? '800' : '600',
                           },
@@ -621,8 +615,8 @@ export const NotificationSettingsScreen: React.FC<NotificationSettingsScreenProp
 
             {/* Quiet Hours */}
             <View style={[styles.settingItemRow, { borderBottomWidth: 0 }]}>
-              <View style={[styles.iconBadge, { backgroundColor: '#64748B' }]}>
-                <ClockIcon size={15} color="#FFFFFF" />
+              <View style={[styles.iconBadge, { backgroundColor: colors.textSecondary }]}>
+                <ClockIcon size={15} color={colors.white} />
               </View>
               <View style={{ flex: 1, marginRight: 12 }}>
                 <Text style={[styles.settingTitle, { color: themeColors.textPrimary }]}>
@@ -636,8 +630,8 @@ export const NotificationSettingsScreen: React.FC<NotificationSettingsScreenProp
                 testID="switch-quiet-hours"
                 value={quietHours}
                 onValueChange={setQuietHours}
-                trackColor={{ false: isDark ? '#323846' : '#CBD5E1', true: colors.brandGold }}
-                thumbColor="#FFFFFF"
+                trackColor={{ false: colors.slate300, true: colors.brandGold }}
+                thumbColor={colors.white}
               />
             </View>
           </View>
@@ -695,7 +689,7 @@ const styles = StyleSheet.create({
   headerMainTitle: {
     fontSize: 20,
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: colors.white,
     letterSpacing: -0.4,
   },
   headerResetBtn: {
@@ -726,7 +720,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.04,
     shadowRadius: 6,
@@ -737,7 +731,7 @@ const styles = StyleSheet.create({
     width: 42,
     height: 42,
     borderRadius: 21,
-    backgroundColor: '#FEF8E7',
+    backgroundColor: colors.brandGoldSoft,
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 12,

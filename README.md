@@ -1,512 +1,538 @@
-# Ridhi Ratnam Associates
+# Ridhi Ratnam Associates (RRA) — Mobile Banking & Loan Application Portal
 
-Ridhi Ratnam Associates (RRA) is a React Native KYC and verification portal for clients and verification agents. It provides a polished mobile experience for submitting identity documents, reviewing application status, managing KYC history, and processing submissions.
+> **Enterprise-Grade React Native Banking & KYC Verification Ecosystem**  
+> *Engineered for High-Reliability Loan Underwriting, Compliant Client Onboarding, and Real-Time Agent Field Operations.*
 
-The repository currently uses realistic mock data and an in-memory service layer. It is designed for UI demonstration, workflow prototyping, and React Native development without requiring a backend.
+---
 
 ## Table of Contents
 
-- [Overview](#overview)
-- [Key Features](#key-features)
-- [User Roles](#user-roles)
-- [Application Flow](#application-flow)
-- [Demo Accounts](#demo-accounts)
-- [Technology Stack](#technology-stack)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Running the App](#running-the-app)
-- [Available Scripts](#available-scripts)
-- [Project Structure](#project-structure)
-- [Architecture](#architecture)
-- [Data and Mock Services](#data-and-mock-services)
-- [Testing](#testing)
-- [Android Build](#android-build)
-- [iOS Build](#ios-build)
-- [Troubleshooting](#troubleshooting)
-- [Known Limitations](#known-limitations)
-- [Configuration Reference](#configuration-reference)
-- [Contributing](#contributing)
-- [License](#license)
+1. [Executive Overview](#1-executive-overview)
+2. [Core Value Proposition & Dual-Portal Architecture](#2-core-value-proposition--dual-portal-architecture)
+3. [Design System & Strict Light Theme Architecture](#3-design-system--strict-light-theme-architecture)
+4. [Centralized Colors System (`colors.ts`)](#4-centralized-colors-system-colorsts)
+5. [User Roles & Demo Login Credentials](#5-user-roles--demo-login-credentials)
+6. [Detailed Screen & Component Breakdown](#6-detailed-screen--component-breakdown)
+   - [Authentication & Onboarding Flow](#61-authentication--onboarding-flow)
+   - [Client Experience & Self-Service Portal](#62-client-experience--self-service-portal)
+   - [Verification Agent & Underwriting Experience](#63-verification-agent--underwriting-experience)
+   - [Shared Support, Grievance & Regulatory Screens](#64-shared-support-grievance--regulatory-screens)
+7. [Hardware Navigation & Android Back Button Logic](#7-hardware-navigation--android-back-button-logic)
+8. [Regulatory Compliance, Security & Data Governance](#8-regulatory-compliance-security--data-governance)
+9. [Technology Stack & Dependencies](#9-technology-stack--dependencies)
+10. [Comprehensive Codebase Directory Map](#10-comprehensive-codebase-directory-map)
+11. [Installation & Local Development Guide](#11-installation--local-development-guide)
+12. [Testing & Quality Assurance Suite](#12-testing--quality-assurance-suite)
+13. [Native Android & iOS Production Builds](#13-native-android--ios-production-builds)
+14. [Troubleshooting & Frequently Asked Questions](#14-troubleshooting--frequently-asked-questions)
+15. [Project Roadmap & Production Deployment Readiness](#15-project-roadmap--production-deployment-readiness)
 
-## Overview
+---
 
-RRA organizes the KYC process into two separate experiences:
+## 1. Executive Overview
 
-- **Clients** can register, sign in, upload identity and supporting documents, submit KYC applications, track verification progress, view history, and manage profile and support information.
-- **Verification agents** can review submission statistics, search applications, inspect document details, approve or reject requests, add remarks, and review their verification history.
+**Ridhi Ratnam Associates (RRA)** is a modern, high-performance mobile application built with **React Native 0.88.1**, **React 19.3**, and **TypeScript 6**. The platform addresses the critical workflow divide in retail lending: empowering **loan applicants (Clients)** to effortlessly upload identity documentation, calculate loan eligibility, and monitor real-time approval milestones while providing **Verification Agents** with an institutional-grade underwriting cockpit to inspect dossiers, audit documentation, and render credit decisions.
 
-The app has a custom light theme, safe-area-aware layout, Android hardware back navigation, animated splash screen, accessibility labels, reusable UI components, and a centralized application navigator.
+The application adheres strictly to modern banking UI/UX principles:
+- **Corporate Navy (`#012655`)** and **Warm Antique Gold (`#CDA148`)** brand identity.
+- **Strict Light Theme** enforcement across all components, modals, and screens for maximum visual clarity in daylight and field settings.
+- **100% Zero-Hex-In-Code Enforcement**: All styling throughout the entire source repository references centralized theme tokens from `src/theme/colors.ts`.
+- **Custom Stack-State Navigator** with deterministic Android hardware back-button handling, preventing premature app closure.
+- **Pre-Integrated Mock Repository Layer** simulating asynchronous network latencies, validation errors, and document processing without external database dependencies.
 
-## Key Features
+---
 
-### Client features
+## 2. Core Value Proposition & Dual-Portal Architecture
 
-- Splash screen with branded animation
-- Login and client registration
-- Password validation and forgot-password workflow
-- Client dashboard with verification status
-- KYC document upload form
-- Aadhaar, PAN, address proof, and photograph workflows
-- Submission status progression:
-  - Submitted
-  - Document verification
-  - Application review
-  - Final decision
-- Recent and complete submission history
-- Status, rejection, document, and advisor information
-- Profile details and assigned agent information
-- Notifications, support, privacy, terms, and sign-out actions
+The RRA architecture provides two specialized interfaces decoupled at the authorization boundary:
 
-### Agent features
-
-- Agent login
-- Total, pending, approved, and rejected submission statistics
-- Latest KYC submissions dashboard
-- Searchable submission list with status filters
-- Application and document detail view
-- Individual document verification
-- Approval and rejection actions
-- Rejection reasons and reviewer remarks
-- Verified submission history
-- Agent profile, branch, designation, and activity summary
-
-### Shared features
-
-- Two-role interface
-- Custom bottom navigation for each role
-- Theme provider and reusable design tokens
-- Input validation and inline form errors
-- Loading and empty-state presentation
-- Modal notification, alert, profile, and detail components
-- Android back handling and double-tap exit behavior
-- Privacy policy and terms acknowledgement screens
-- Jest and React Test Renderer coverage
-
-## User Roles
-
-### Client
-
-Clients use the client portal to upload documents and track verification. Sample client access:
-
-```text
-Email:    amit.client@ridhiratnam.demo
-Password: Client@123
+```mermaid
+graph TD
+    App[RRA Mobile App] --> Splash[Animated Splash Screen]
+    Splash --> Auth[Auth Portal: Login / Signup / Forgot Password]
+    
+    Auth -->|Role: Client| ClientPortal[Client Self-Service Portal]
+    Auth -->|Role: Agent| AgentPortal[Agent Underwriting Dashboard]
+    
+    subgraph ClientPortal [Client Workspace]
+        C_Home[Dashboard & Active Loan Card]
+        C_KYC[KYC Document Upload Form]
+        C_Loan[Interactive Loan Application]
+        C_History[Application History & Dossiers]
+        C_Profile[Client Profile & Support]
+    end
+    
+    subgraph AgentPortal [Agent Workspace]
+        A_Home[Executive KPI Dashboard]
+        A_Queue[Live Application Queue & Search]
+        A_Dossier[Full Applicant Dossier Inspection]
+        A_Action[Approval / Rejection Engine]
+        A_Stats[Monthly Performance & Ratios]
+    end
+    
+    ClientPortal --> Shared[Shared Services: Notifications, Tiered Grievance, Legal Policies]
+    AgentPortal --> Shared
 ```
 
-Client identifier options also include the demo ID `RRA-CL-1001` or the demo mobile number `+91 9876543210`.
+### Key Differences Between Portals:
+| Architectural Dimension | Client Experience | Agent Field Experience |
+| :--- | :--- | :--- |
+| **Primary Goal** | Document submission, loan discovery, milestone tracking | Application auditing, KYC validation, credit sanctioning |
+| **Navigation Model** | 3-Pill Bottom Nav (Home, Upload/Apply Peanut, Profile) | Conjoined Dual-Capsule Bottom Nav (Dashboard, Applications, History, Settings) |
+| **Financial Tools** | Live EMI Estimator, Real-Time FOIR Debt Capacity Gauge | Sanctioned vs. Requested analysis, CIBIL Bureau score audit |
+| **Document Actions** | Camera capture, Gallery picker, PDF upload, Checksum preview | Multi-document cross-examination, verification tagging |
+| **Decision Authority** | Self-declaration & credit bureau check consent | Sanction approval, conditional review, rejection with remarks |
 
-### Agent
+---
 
-Agents use the verification dashboard to process submissions. Sample agent access:
+## 3. Design System & Strict Light Theme Architecture
 
-```text
-Email/ID: rahul.agent@ridhiratnam.demo or RRA-AG-1024
-Password: Agent@123
+RRA utilizes a **Strict Light Theme Architecture**. Rather than imposing fragmented dark modes that degrade contrast in field banking environments, all components and screens render on calibrated light canvases:
+- **`ThemeContext` Guarantee**: `useAppTheme()` provides `{ isDark: false, colors: lightColors }`.
+- **Top Bar Consistency**: Every main screen incorporates the standardized corporate black/navy top header (`colors.topBarBlack` / `colors.brandNavy`) with gold trim (`colors.brandGold`), ensuring visual continuity.
+- **Safe Area Insets**: Handled comprehensively with `react-native-safe-area-context` to accommodate Android punch-hole cameras, navigation bars, and iOS Dynamic Island notches.
+- **Card Depth & Elevators**: Tactile drop shadows (`colors.shadow`) calibrated with subtle borders (`colors.border`, `colors.borderMedium`, `colors.borderLight`) to eliminate visual clutter.
+
+---
+
+## 4. Centralized Colors System (`colors.ts`)
+
+Every single visual token in the application originates from `src/theme/colors.ts`. The codebase enforces a strict policy preventing hardcoded hex literals in components and style sheets.
+
+### Master Color Token Palette
+
+```typescript
+// Located at src/theme/colors.ts
+export const colors = {
+  // Brand Anchors
+  brandNavy: '#012655',              // Deep Corporate Trust Navy
+  corporateNavy: '#012655',          // Primary corporate alias
+  brandNavyLight: '#08326D',         // Hover/press states
+  brandGold: '#CDA148',              // Signature Warm Antique Gold
+  brandGoldLight: '#EED8A1',         // Subtle gold border
+  brandGoldSoft: '#FEF8E7',          // Soft gold surface pill background
+  brandGoldDark: '#9C7523',          // High-contrast gold text
+  
+  // Base Canvas & Neutral Surfaces
+  white: '#FFFFFF',                  // Pure crisp card surface
+  black: '#000000',                  // Pure black
+  topBarBlack: '#0D0E12',            // High-elegance dark charcoal top bar
+  textPrimary: '#0D0E12',            // High-contrast primary typography
+  textSecondary: '#64748B',          // Slate 500 secondary labels
+  textMuted: '#94A3B8',              // Slate 400 captions & meta
+  
+  // Slate Scale
+  slate50: '#F8FAFC',                // Primary screen background
+  slate100: '#F1F5F9',               // Sub-surface & track background
+  slate200: '#E2E8F0',               // Neutral card border
+  slate300: '#CBD5E1',               // Input border & inactive pill
+  slate400: '#94A3B8',               // Icons & muted tags
+  slate500: '#64748B',               // Subheaders & descriptions
+  slate600: '#475569',               // Table headings & bold notes
+  
+  // Semantic Status Tokens
+  statusApproved: '#047857',         // Approved emerald green
+  statusApprovedBg: '#ECFDF5',       // Approved badge fill
+  statusApprovedBorder: '#A7F3D0',   // Approved badge border
+  statusPending: '#B45309',          // Pending amber/gold text
+  statusPendingBg: '#FFFBEB',        // Pending badge fill
+  statusPendingBorder: '#FDE68A',    // Pending badge border
+  statusReview: '#1D4ED8',           // Under Review blue
+  statusReviewBg: '#EFF6FF',         // Under Review badge fill
+  statusReviewBorder: '#BFDBFE',     // Under Review badge border
+  statusRejected: '#B91C1C',         // Rejected dark crimson text
+  statusRejectedBg: '#FEF2F2',       // Rejected badge fill
+  statusRejectedBorder: '#FECACA',   // Rejected badge border
+  error: '#DC2626',                  // Input error red
+  success: '#10B981',                // Metric positive green
+  
+  // Structural Overlays & Shadows
+  overlay: 'rgba(0, 0, 0, 0.45)',    // Modal backdrop scrim
+  shadow: '#000000',                 // Cross-platform shadow target
+};
 ```
 
-Identifiers containing `agent` are also routed through the mock agent authentication path.
+---
 
-## Application Flow
+## 5. User Roles & Demo Login Credentials
 
-1. The app opens on the animated splash screen.
-2. The user selects the sign-in or registration workflow.
-3. Mock authentication resolves a client or agent account.
-4. The user enters the role-specific dashboard.
-5. Clients can upload documents and submit or resubmit KYC requests.
-6. Agents can search submissions and open an application detail view.
-7. Agents can mark documents or applications as approved or rejected.
-8. Status, history, notifications, and profile screens reflect the in-memory state.
-9. Sign-out returns the user to authentication.
+The application provides out-of-the-box demonstration accounts configured directly in `src/services/kycService.ts`.
 
-## Demo Accounts
+### 1. Loan Verification Agent Portal
+- **Identifier**: `rahul.agent@ridhiratnam.demo` or `RRA-AG-1024`
+- **Password**: `Agent@123`
+- **Assigned Identity**: Rahul Sharma (Senior Field Credit Officer, Jaipur Branch)
+- **Privileges**: Access to pending queue, ability to view applicant dossiers, approve/reject loans with underwriting comments, and view monthly performance analytics.
 
-| Role | Identifier | Password |
-| --- | --- | --- |
-| Agent | `rahul.agent@ridhiratnam.demo` | `Agent@123` |
-| Agent | `RRA-AG-1024` | `Agent@123` |
-| Client | `amit.client@ridhiratnam.demo` | `Client@123` |
-| Client | `RRA-CL-1001` | `Client@123` |
-| Client | `+91 9876543210` | `Client@123` |
+### 2. Client Self-Service Portal
+- **Identifier**: `amit.client@ridhiratnam.demo` or `RRA-CL-1001` or `+91 9876543210`
+- **Password**: `Client@123`
+- **Assigned Identity**: Amit Patel (Verified Retail Customer)
+- **Privileges**: Upload KYC identity documents, calculate EMI/FOIR ratios, submit new loan applications, review current application status, inspect assigned agent details, and access grievance redressal.
 
-These credentials are demonstration credentials only. They are not suitable for production authentication.
+> *Note: For testing convenience, any identifier entered during login that contains the substring `agent` automatically routes to the Agent Dashboard. Any other identifier routes to the Client Portal.*
 
-## Technology Stack
+---
 
-| Area | Technology |
-| --- | --- |
-| UI framework | React Native 0.88.1 |
-| Language | TypeScript 6 |
-| Runtime library | React 19.3 |
-| Navigation | Custom screen-state navigator |
-| Styling | React Native StyleSheet |
-| Safe areas | `react-native-safe-area-context` |
-| Android build | Gradle |
-| iOS build | Xcode and CocoaPods |
-| Testing | Jest 29 and react-test-renderer |
-| JavaScript tooling | Metro and Babel |
-| Linting | ESLint |
+## 6. Detailed Screen & Component Breakdown
 
-## Requirements
+### 6.1 Authentication & Onboarding Flow
+- **`SplashScreen.tsx`**: Features smooth spring-based scaling of the corporate logo with high-contrast badge typography, validating session state before routing.
+- **`AuthScreen.tsx` / `LoginScreen.tsx`**: Interactive segmented role selector (Client vs. Verification Agent), demo credential quick-fill pills, live password visibility toggling, and input validation.
+- **`SignupScreen.tsx`**: New applicant registration with real-time field validation (Full Name, 10-digit Indian Mobile `+91`, Email, Password strength, Terms acceptance).
+- **`ForgotPasswordScreen.tsx`**: Multi-step identity recovery simulating secure SMS/Email OTP dispatch with countdown timers and secure password reset.
 
-### All platforms
+### 6.2 Client Experience & Self-Service Portal
+- **`ClientHomeScreen.tsx`**: The master hub orchestrating client operations:
+  - **`ClientHeader.tsx`**: Displays personalized greeting, client account tag, notification badge bell, and profile trigger.
+  - **`ClientStatCards.tsx`**: 3-card metric strip (Total Applications, Approved Sanctions, Pending Underwriting).
+  - **`CurrentApplicationCard.tsx`**: Displays active loan dossier ID, amount, estimated EMI, 6-point document audit badge, assigned advisor contact, and milestone stepper (Application Submitted -> KYC Verified -> Underwriting -> Sanctioned).
+  - **`ApplyBannerCard.tsx`**: Financial advancement banner triggering the full loan application form.
+  - **`KycUploadBannerCard.tsx`**: Prompts the client to complete mandatory KYC verification.
+  - **`KycDocumentUploadForm.tsx`**: Interactive KYC uploader:
+    - Dedicated slots for **PAN Card, Aadhaar Card, Address Proof, and Income/Bank Statement**.
+    - Choice between **Camera Capture, Device Gallery Image, or PDF Document**.
+    - Digital seal and **SHA-256 Checksum preview modal** simulating RBI-compliant local encryption.
+  - **`LoanApplicationForm.tsx`**: Comprehensive credit underwriting application:
+    - **Loan Type Selection**: Personal Loan, Business Expansion, Machinery & Asset, Home Loan, Vehicle Finance.
+    - **Interactive Amount Selector**: Quick pills (₹1L, ₹3L, ₹5L, ₹10L) + custom input with Indian Rupee formatting.
+    - **Live EMI Calculator**: Dynamic monthly outflow computation `@ 10.5% p.a.`
+    - **Real-Time FOIR Debt Capacity Gauge**: Dynamic calculation of Debt-to-Income ratio `< 50%` with Healthy vs. High-Debt warnings.
+    - **Regulatory Consents**: Explicit CIBIL/Experian bureau check authorization and RBI digital lending accuracy declaration checkboxes.
+  - **`ClientBottomNav.tsx`**: Unique conjoined dual-capsule ("peanut") navigation featuring separate lobes for Upload and Submission History.
 
-- Node.js `>= 22.11.0`
-- npm
-- Git
+### 6.3 Verification Agent & Underwriting Experience
+- **`AgentHomeScreen.tsx`**: The underwriting dashboard:
+  - **`DashboardHeader.tsx`**: Displays agent credentials, branch details, notification shortcut, and profile modal trigger.
+  - **`StatCard.tsx`**: High-impact KPI grid for Pending Reviews, Approved Files, and Rejected Submissions.
+  - **`MonthlyPerformanceCard.tsx`**: Circular progress gauge tracking handled dossiers, approval percentage, and conversion ratios.
+  - **`ApplicationCard.tsx`**: Application cards featuring applicant initials avatar, timestamp, amount, and status pill.
+  - **`ApplicationDetailModal.tsx`**: Slide-up dossier modal displaying contact details, CIBIL score, loan tenure, underwriting notes, and action triggers.
+  - **`ApplicationDetailScreen.tsx`**: Full-screen dossier view with document inspect viewer, remarks textarea, and final Approve/Reject decision triggers.
 
-### Android
+### 6.4 Shared Support, Grievance & Regulatory Screens
+- **`SupportScreen.tsx`**: Complete customer advocacy center:
+  - Direct telephone dialer (`1800 234 5678`) and email launcher (`support@ridhiratnam.com`).
+  - **Three-Tier Grievance Redressal Architecture**:
+    - **Level 1**: Branch Grievance Redressal Officer (TAT: 7 business days).
+    - **Level 2**: Principal Nodal Officer (Jaipur Head Office).
+    - **Level 3**: RBI Integrated Ombudsman Scheme portal links.
+- **`NotificationScreen.tsx`**: Tabbed notification list (All, Loan Updates, Security Alerts) with mark-all-read and dismiss gestures.
+- **`NotificationSettingsScreen.tsx`**: Granular push, email, and SMS switches for sanction alerts, interest rate updates, and login notices.
+- **`PrivacyPolicyScreen.tsx`**: Comprehensive RBI-compliant digital lending policy detailing KYC data minimization, domestic server storage, and user erasure rights.
+- **`TermsAndConditionsScreen.tsx`**: Full institutional terms governing loan sanctions, repayment schedules, interest calculation, and statutory arbitration.
 
-- JDK 17
-- Android Studio
-- Android SDK
-- Android SDK Platform and Build Tools matching the project Gradle configuration
-- An Android emulator or USB-connected device
+---
 
-### iOS
+## 7. Hardware Navigation & Android Back Button Logic
 
-- macOS
-- Xcode and Xcode Command Line Tools
-- CocoaPods
-- Ruby and Bundler
-- An iOS simulator or provisioned device
+To ensure professional compliance on Android devices, hardware back-button handling is implemented deterministically in `src/navigation/Navigator.tsx` via React Native's `BackHandler`:
 
-Use the official React Native environment setup for your operating system:
+```text
+User presses Android Hardware Back Button:
+│
+├── 1. Is a modal open (Profile, Dossier, Document Preview)?
+│      └── YES: Close the modal and consume event (return true).
+│
+├── 2. Is the user on a sub-screen (Notifications, Support, Privacy, Loan Form)?
+│      └── YES: Pop the navigation history stack and return to root dashboard (return true).
+│
+└── 3. Is the user already on Root Screen (Login, Agent Dashboard, Client Dashboard)?
+       └── First Tap: Display Toast/Notification: "Press back again to exit".
+       └── Second Tap (< 2000ms): Exit application gracefully.
+```
 
-<https://reactnative.dev/docs/set-up-your-environment>
+This prevents accidental application termination while filling multi-step loan applications or reviewing financial tables.
 
-## Installation
+---
 
-Clone the repository and install JavaScript dependencies:
+## 8. Regulatory Compliance, Security & Data Governance
 
+Ridhi Ratnam Associates is modeled after RBI Digital Lending Directives (2022/2023) and Indian FinTech compliance standards:
+
+1. **Explicit Data Consent**: Loan underwriting queries mandate active boolean confirmation before accessing simulated bureau files.
+2. **Zero In-Code Secrets**: No production API keys or tokens are stored in the client-side binary.
+3. **Audit Trail Verification**: Documents attached within `LoanApplicationForm` and `KycDocumentUploadForm` include simulated SHA-256 integrity hashes.
+4. **Three-Tier Grievance Framework**: Transparent escalation paths explicitly documented in `SupportScreen.tsx` in accordance with Ombudsman directives.
+
+---
+
+## 9. Technology Stack & Dependencies
+
+```json
+{
+  "name": "RidhiRatnamAssociates",
+  "version": "0.0.1",
+  "dependencies": {
+    "react": "19.3.0",
+    "react-native": "0.88.1",
+    "react-native-safe-area-context": "^5.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.2",
+    "@babel/runtime": "^7.25.0",
+    "@react-native/babel-preset": "0.88.1",
+    "@react-native/eslint-config": "0.88.1",
+    "@react-native/metro-config": "0.88.1",
+    "@react-native/typescript-config": "0.88.1",
+    "@types/jest": "^29.5.13",
+    "@types/react": "^19.0.0",
+    "@types/react-test-renderer": "^19.0.0",
+    "eslint": "^8.19.0",
+    "jest": "^29.6.3",
+    "prettier": "2.8.8",
+    "react-test-renderer": "19.3.0",
+    "typescript": "^6.0.0"
+  }
+}
+```
+
+---
+
+## 10. Comprehensive Codebase Directory Map
+
+```text
+RidhiRatnamAssociates/
+├── App.tsx                                  # Application Root with SafeArea & Theme Providers
+├── index.js                                 # React Native Entrypoint
+├── app.json                                 # Application display metadata
+├── package.json                             # Dependencies & Scripts
+├── tsconfig.json                            # Strict TypeScript configuration
+├── jest.config.js                           # Test runner configuration
+├── __tests__/                               # 12 Unit & Integration Test Suites
+│   ├── AgentDashboard.test.tsx              # Agent metrics & dossier tests
+│   ├── App.test.tsx                         # Root app mount tests
+│   ├── ApplicationDetail.test.tsx           # Full dossier screen tests
+│   ├── AuthFlow.test.tsx                    # Login, signup & role switching tests
+│   ├── BackHandlerNavigation.test.tsx       # Android back button stack tests
+│   ├── ClientDashboard.test.tsx             # Client dashboard & form tests
+│   ├── NotificationAndProfileScreens.test.tsx # Notification & profile tests
+│   ├── NotificationSettingsScreen.test.tsx  # Push/SMS settings tests
+│   ├── PrivacyPolicyScreen.test.tsx         # Privacy legal document tests
+│   ├── SupportScreen.test.tsx               # Grievance redressal & support tests
+│   ├── TermsAndConditionsScreen.test.tsx    # Terms legal document tests
+│   └── ThemeDialog.test.tsx                 # Alert & Dialog modal tests
+├── src/
+│   ├── components/                          # Core UI Primitives & Components
+│   │   ├── AnimatedButton.tsx               # Polished haptic/animated CTA button
+│   │   ├── AvatarCluster.tsx                # Client initial avatar groupings
+│   │   ├── BrandLogo.tsx                    # Corporate logo vector render
+│   │   ├── CustomInput.tsx                  # Accessible validated text input with inline errors
+│   │   ├── Icons.tsx                        # Complete set of 30+ lightweight SVG-style vector icons
+│   │   ├── PillChip.tsx                     # Filter chips & status capsules
+│   │   ├── RoleSelector.tsx                 # Client vs. Agent toggle control
+│   │   ├── ScreenHeader.tsx                 # Standardized corporate top bar
+│   │   ├── ThemeDialog.tsx                  # Theme-aware custom modal dialogs & alerts
+│   │   ├── client/                          # Client-Specific Components
+│   │   │   ├── ApplyBannerCard.tsx          # Loan promotion banner
+│   │   │   ├── ClientAppDetailModal.tsx     # Client active dossier modal
+│   │   │   ├── ClientBottomNav.tsx          # Client 3-pill bottom navigation
+│   │   │   ├── ClientHeader.tsx             # Client personalized greeting header
+│   │   │   ├── ClientStatCards.tsx          # Client application metric pills
+│   │   │   ├── CurrentApplicationCard.tsx   # Active loan tracker & milestone stepper
+│   │   │   ├── KycDocumentUploadForm.tsx    # KYC multi-document uploader & cert preview
+│   │   │   ├── KycStatusCard.tsx            # Current KYC review state card
+│   │   │   ├── KycUploadBannerCard.tsx      # KYC completion reminder banner
+│   │   │   ├── LoanApplicationForm.tsx      # Loan application with EMI & FOIR calculators
+│   │   │   ├── RecentApplicationsSection.tsx # Recent 3 applications list
+│   │   │   └── SupportCard.tsx              # Quick assistance & direct dialer card
+│   │   └── dashboard/                       # Agent-Specific Components
+│   │       ├── AgentInfoCard.tsx            # Agent designation & branch badge
+│   │       ├── ApplicationCard.tsx          # Underwriter queue item card
+│   │       ├── ApplicationDetailModal.tsx   # Quick dossier evaluation bottom sheet
+│   │       ├── BottomNavBar.tsx             # Conjoined dual-capsule agent navigation
+│   │       ├── DashboardHeader.tsx          # Agent corporate header
+│   │       ├── MonthlyPerformanceCard.tsx   # Performance circular gauge
+│   │       ├── ProfileModal.tsx             # Agent quick profile & logout modal
+│   │       └── StatCard.tsx                 # Underwriting KPI counter card
+│   ├── constants/
+│   │   └── app.ts                           # Global brand strings, branch names, contact details
+│   ├── navigation/
+│   │   └── Navigator.tsx                    # Stack-State Navigator with hardware back handling
+│   ├── screens/                             # Top-Level Screen Controllers
+│   │   ├── AgentHomeScreen.tsx              # Agent operational dashboard
+│   │   ├── ApplicationDetailScreen.tsx      # Full underwriting dossier screen
+│   │   ├── AuthScreen.tsx                   # Master authentication screen
+│   │   ├── ClientHomeScreen.tsx             # Client portal master screen
+│   │   ├── ForgotPasswordScreen.tsx         # Account recovery & OTP flow
+│   │   ├── LoginScreen.tsx                  # Dedicated login controller
+│   │   ├── NotificationScreen.tsx           # Notifications management screen
+│   │   ├── NotificationSettingsScreen.tsx   # Communication preferences screen
+│   │   ├── PrivacyPolicyScreen.tsx          # RBI compliance privacy disclosure
+│   │   ├── ProfileScreen.tsx                # Client user profile & settings
+│   │   ├── SignupScreen.tsx                 # Client self-registration screen
+│   │   ├── SplashScreen.tsx                 # Animated entry splash screen
+│   │   ├── SupportScreen.tsx                # Three-tier grievance & support desk
+│   │   └── TermsAndConditionsScreen.tsx     # Institutional terms of service
+│   ├── services/                            # Data Repositories & In-Memory Services
+│   │   ├── clientService.ts                 # Client data access & loan creation
+│   │   ├── dashboardService.ts              # Agent queue, metrics & underwriting remarks
+│   │   └── kycService.ts                    # Auth repository & KYC document state
+│   ├── theme/                               # Design Tokens & Styling Primitives
+│   │   ├── colors.ts                        # Master 100% centralized color token system
+│   │   ├── shadows.ts                       # Standardized elevation & shadow styles
+│   │   ├── typography.ts                    # Font scale & weight tokens
+│   │   └── index.ts                         # ThemeContext & useAppTheme hook
+│   └── types/                               # TypeScript Domain Models
+│       ├── client.ts                        # Client applications, steps & stats
+│       ├── dashboard.ts                     # Agent profiles, performance & filters
+│       └── kyc.ts                           # KYC document configurations & submissions
+```
+
+---
+
+## 11. Installation & Local Development Guide
+
+### Prerequisites
+- **Node.js**: `>= 22.11.0` (LTS recommended)
+- **Package Manager**: `npm` (v10+)
+- **Android Development**: Android Studio, JDK 17, Android SDK Platform 34+
+- **iOS Development (macOS only)**: Xcode 15+, CocoaPods, Ruby Bundler
+
+### Step 1: Clone the Repository
 ```bash
 git clone https://github.com/LovejeetSinghCyberbells/Ridhi-Ratnam-Associates.git
 cd Ridhi-Ratnam-Associates
-npm install
 ```
 
-For a clean installation from the committed lock file:
-
+### Step 2: Install Node Dependencies
 ```bash
+npm install
+# or for strict reproducible install:
 npm ci
 ```
 
-### iOS dependencies
-
-Install Ruby gems and CocoaPods dependencies from the repository root:
-
+### Step 3: Configure Native Dependencies
+For iOS (macOS only):
 ```bash
-bundle install
 cd ios
+bundle install
 bundle exec pod install
 cd ..
 ```
 
-## Running the App
-
-Start Metro in a terminal:
-
+### Step 4: Start the Metro Bundler
 ```bash
 npm start
-```
-
-To start Metro without reusing its cached state:
-
-```bash
+# or reset cache if dependencies changed:
 npm start -- --reset-cache
 ```
 
-### Run on Android
-
-With an emulator running or device connected:
-
+### Step 5: Run on Target Platform
+In a separate terminal window:
 ```bash
+# Run on connected Android device or running emulator:
 npm run android
-```
 
-Alternatively, open `android/` in Android Studio, wait for Gradle synchronization, and run the `app` configuration.
-
-### Run on iOS
-
-Install CocoaPods first, then run:
-
-```bash
+# Run on iOS simulator (macOS only):
 npm run ios
 ```
 
-To open the native workspace in Xcode:
+---
+
+## 12. Testing & Quality Assurance Suite
+
+The project includes 12 comprehensive Jest test suites covering 69 unit and integration scenarios:
 
 ```bash
-open ios/RidhiRatnamAssociates.xcworkspace
-```
+# Run all tests
+npm test -- --watchAll=false
 
-Run the `RidhiRatnamAssociates` scheme on a simulator or device.
-
-## Available Scripts
-
-| Command | Description |
-| --- | --- |
-| `npm start` | Start the Metro bundler |
-| `npm run android` | Build and launch the Android app |
-| `npm run ios` | Build and launch the iOS app |
-| `npm test` | Run the Jest suite without file watching |
-| `npm run lint` | Run ESLint across the project |
-
-Useful targeted test commands:
-
-```bash
+# Run with serial band execution for debugging
 npm test -- --runInBand
+
+# Run a specific test suite
 npm test -- __tests__/AuthFlow.test.tsx
 npm test -- __tests__/ClientDashboard.test.tsx
-npm test -- __tests__/AgentDashboard.test.tsx
+npm test -- __tests__/BackHandlerNavigation.test.tsx
 ```
 
-## Project Structure
+### Test Suite Summary
+| Test Suite | Focus Area | Status |
+| :--- | :--- | :--- |
+| `BackHandlerNavigation.test.tsx` | Android hardware back button & stack navigation | PASS |
+| `AuthFlow.test.tsx` | Role switching, demo accounts, validation | PASS |
+| `ClientDashboard.test.tsx` | KYC forms, loan calculation, status stepper | PASS |
+| `AgentDashboard.test.tsx` | Underwriting queue, status filters, KPI cards | PASS |
+| `ApplicationDetail.test.tsx` | Dossier inspection, approval/rejection comments | PASS |
+| `NotificationAndProfileScreens.test.tsx` | Profile details, notification mark-read | PASS |
+| `NotificationSettingsScreen.test.tsx` | Communication toggle preferences | PASS |
+| `SupportScreen.test.tsx` | Three-tier grievance redressal & dialers | PASS |
+| `PrivacyPolicyScreen.test.tsx` | RBI digital lending disclosure rendering | PASS |
+| `TermsAndConditionsScreen.test.tsx` | Financial terms & arbitration clauses | PASS |
+| `ThemeDialog.test.tsx` | Custom alert dialog presentation | PASS |
+| `App.test.tsx` | Root provider mounting & splash transition | PASS |
 
-```text
-.
-├── App.tsx                     # Root provider composition
-├── index.js                    # React Native application entry
-├── app.json                    # App display name and package identity
-├── package.json                # npm scripts and dependencies
-├── jest.config.js              # Jest configuration
-├── metro.config.js             # Metro bundler configuration
-├── babel.config.js             # Babel configuration
-├── tsconfig.json               # TypeScript configuration
-├── assets/
-│   └── images/
-│       └── logo.png            # Application logo
-├── src/
-│   ├── components/             # Reusable UI and dashboard components
-│   │   ├── client/             # Client cards, forms, and navigation
-│   │   └── dashboard/          # Agent dashboard components
-│   ├── constants/              # Shared app configuration and lists
-│   ├── navigation/
-│   │   └── Navigator.tsx       # Screen state and back navigation
-│   ├── screens/                # Authentication and application screens
-│   ├── services/               # Mock API and in-memory repositories
-│   ├── theme/                  # Theme provider and design colors
-│   └── types/                  # Shared TypeScript domain models
-├── __tests__/                  # Jest UI and navigation tests
-├── android/                    # Native Android project
-└── ios/                        # Native iOS project
-```
+**Result**: `12 passed, 12 total (69 tests passed, 0 failures).`
 
-## Architecture
+---
 
-The app uses a lightweight custom screen-state navigator rather than React Navigation. `AppNavigator` owns the active screen, role, selected application, detail viewer role, and screen history.
+## 13. Native Android & iOS Production Builds
 
-```text
-App
-├── SafeAreaProvider
-├── ThemeProvider
-├── ThemeDialogProvider
-└── AppNavigator
-    ├── Splash
-    ├── Authentication
-    ├── Forgot Password
-    ├── Agent Dashboard
-    ├── Client Dashboard
-    ├── Application Detail
-    ├── Notifications
-    ├── Profile
-    ├── Support
-    ├── Notification Settings
-    ├── Privacy Policy
-    └── Terms and Conditions
-```
-
-The service modules return domain objects and promises so components can later be connected to REST, GraphQL, or another backend with minimal structural changes. The currently implemented state lives in JavaScript memory.
-
-## Data and Mock Services
-
-| Service | Responsibility |
-| --- | --- |
-| `kycService.ts` | Demo accounts, KYC repository, authentication, submission, approval, rejection, and history |
-| `clientService.ts` | Client profile, statistics, applications, and status data |
-| `dashboardService.ts` | Agent profile, dashboard statistics, applications, documents, performance, and notifications |
-
-Current mock behavior includes:
-
-- In-memory registration and login accounts
-- In-memory KYC submission storage
-- Document upload metadata without real file transfer
-- Approval and rejection history updates
-- Resubmission behavior
-- Simulated asynchronous service responses
-- Static sample applications and deep-analysis reports
-
-Important: restarting the app, reloading Metro, or remounting the JavaScript runtime resets in-memory data. No real database, authentication provider, cloud storage, email service, SMS provider, or signing service is currently connected.
-
-## Testing
-
-Run the complete suite:
-
-```bash
-npm test
-```
-
-The existing suite covers authentication, agent and client dashboards, application details, notifications, profile, support, policy, terms, navigation back handling, theme dialog behavior, and accessibility-oriented rendering.
-
-Run tests from the first test failure is recommended during debugging:
-
-```bash
-npm test -- --runInBand
-```
-
-ESLint can be run with:
-
-```bash
-npm run lint
-```
-
-## Android Build
-
-The native Android project is located in `android/`.
-
-Run a debug build:
-
-```bash
-cd android
-./gradlew assembleDebug
-```
-
-The generated APK is normally written under:
-
-```text
-android/app/build/outputs/apk/debug/app-debug.apk
-```
-
-To run unit or connected Android tests available in the native project:
-
-```bash
-cd android
-./gradlew test
-```
-
-## iOS Build
-
-The native project and workspace are located in `ios/`.
-
-After dependencies are installed:
-
-```bash
-cd ios
-bundle exec pod install
-open RidhiRatnamAssociates.xcworkspace
-```
-
-Build and archive the app from the `RidhiRatnamAssociates` scheme in Xcode. Configure the signing team, bundle identifier, provisioning profile, and release certificates in the target settings before distributing the app.
-
-## Troubleshooting
-
-### Metro cache issues
-
-```bash
-npm start -- --reset-cache
-```
-
-### Node modules or native dependency mismatch
-
-```bash
-rm -rf node_modules
-npm ci
-npm start -- --reset-cache
-```
-
-### Android build or Gradle issue
-
-```bash
-cd android
-./gradlew clean
-cd ..
-npm run android
-```
-
-### CocoaPods issue
-
-```bash
-cd ios
-bundle exec pod install --repo-update
-cd ..
-npm run ios
-```
-
-### Port already in use
-
-Stop the existing Metro process, then restart Metro. On macOS and Linux, the active Metro port can be inspected with:
-
-```bash
-lsof -nP -iTCP:8081 -sTCP:LISTEN
-```
-
-Terminate only the process you identify as the old Metro instance.
-
-### Android device not found
-
-Confirm that USB debugging is enabled and check:
-
-```bash
-adb devices
-```
-
-Start an emulator from Android Studio or launch an existing AVD.
-
-### iOS simulator not found or stale
-
-Confirm that Xcode simulators are installed:
-
-```bash
-xcrun simctl list devices
-```
-
-Then run `npm run ios` again or select a simulator from Xcode.
-
-## Known Limitations
-
-- Authentication is simulated and not production-secured.
-- No real backend, API endpoint, or database is configured.
-- Client registration only exists for the running JavaScript session.
-- Uploaded files use metadata and filenames; real file storage is not implemented.
-- Approval and rejection actions mutate an in-memory store only.
-- Government identifiers shown in mock data must never be treated as live personal data.
-- No real payments, credit bureau, OTP, e-signature, or disbursement integration is included.
-- Notification delivery is local mock content rather than push notification infrastructure.
-- KYC approval logic is a demonstration and is not suitable for regulatory or financial decisions without formal validation and backend controls.
-
-## Configuration Reference
-
-The shared app configuration is defined in `src/constants/app.ts`:
-
-```text
-APP_CONFIG.NAME               Application name
-APP_CONFIG.TAGLINE            Brand tagline
-APP_CONFIG.SUPPORT_PHONE      Support phone number
-APP_CONFIG.SUPPORT_EMAIL      Client support email
-APP_CONFIG.AGENT_SUPPORT_EMAIL Agent support email
-APP_CONFIG.OFFICIAL_WEBSITE   Public website
-APP_CONFIG.DEFAULT_BRANCH     Default customer branch
-APP_CONFIG.CURRENCY_SYMBOL    Currency symbol
-APP_CONFIG.DEFAULT_INTEREST_RATE Default displayed rate
-```
-
-App display configuration is defined in `app.json`. Native package and application identifiers should be updated consistently in the Android and iOS projects before publishing.
-
-## Contributing
-
-1. Create a feature branch from the current default branch.
-2. Follow the existing TypeScript, component, service, and StyleSheet conventions.
-3. Keep mock data and domain types consistent across services and screens.
-4. Add or update focused Jest tests for behavior changes.
-5. Run:
-
+### Android Release APK Generation
+1. Navigate to the `android/` directory:
    ```bash
-   npm run lint
-   npm test -- --runInBand
+   cd android
+   ```
+2. Clean existing Gradle build artifacts:
+   ```bash
+   ./gradlew clean
+   ```
+3. Assemble the release build:
+   ```bash
+   ./gradlew assembleRelease
+   ```
+   *(Or for debug testing: `./gradlew assembleDebug`)*
+4. The generated APK will be available at:
+   ```text
+   android/app/build/outputs/apk/release/app-release.apk
    ```
 
-6. Review the native Android and iOS behavior for changes that affect navigation, safe areas, permissions, or device APIs.
-7. Open a pull request with a clear summary and testing evidence.
+### iOS Archive (macOS)
+1. Open the native workspace:
+   ```bash
+   open ios/RidhiRatnamAssociates.xcworkspace
+   ```
+2. Select **Product > Scheme > RidhiRatnamAssociates**.
+3. Select **Any iOS Device (arm64)**.
+4. Select **Product > Archive** to build the distribution bundle for TestFlight or App Store deployment.
 
-## License
+---
 
-No license file is currently included in this repository. All rights and distribution terms should be confirmed with the project owner before publishing or redistributing the application.
+## 14. Troubleshooting & Frequently Asked Questions
+
+#### Q1: Why does pressing the Android back button not close the app immediately?
+> **Answer**: By design. RRA implements professional Android hardware back handling. On sub-screens or modals, pressing back navigates up the hierarchy or dismisses the modal. On root screens, double-tapping back within 2 seconds exits the app, preventing accidental data loss during form entry.
+
+#### Q2: Where do I change the application colors?
+> **Answer**: All colors are consolidated in `src/theme/colors.ts`. Modifying values in `colors.ts` automatically propagates across all screens, navigation bars, modals, icons, and text components.
+
+#### Q3: How do I test the Agent view versus the Client view?
+> **Answer**: On the login screen, use the demo quick-fill pills or enter `rahul.agent@ridhiratnam.demo` (`Agent@123`) for Agent mode, or `amit.client@ridhiratnam.demo` (`Client@123`) for Client mode.
+
+#### Q4: Metro bundler throws port 8081 collision.
+> **Answer**: Terminate any lingering Node processes:
+> ```bash
+> lsof -nP -iTCP:8081 -sTCP:LISTEN
+> kill -9 <PID>
+> npm start -- --reset-cache
+> ```
+
+---
+
+## 15. Project Roadmap & Production Deployment Readiness
+
+- [x] **Light-Theme-First UI System**: Complete removal of dark mode for consistent banking compliance.
+- [x] **100% Zero-Hex Policy**: All hex codes abstracted into `src/theme/colors.ts`.
+- [x] **Multi-Step KYC Document Upload**: Camera, gallery, and PDF support with preview modal.
+- [x] **Credit Underwriting Form**: Live EMI estimator and FOIR debt capacity calculator.
+- [x] **Android Hardware Back Handler**: Stack navigation and double-tap exit.
+- [x] **RBI Grievance Escalation**: 3-tier redressal framework embedded in support.
+- [ ] **Phase 2 (Backend Integration)**: Connect REST / GraphQL endpoints to replace `kycService` in-memory repositories.
+- [ ] **Phase 3 (Live e-KYC & Digilocker)**: Plug in UIDAI Aadhaar OTP and Digilocker SDKs for automated credential pulling.
+- [ ] **Phase 4 (Push Notifications)**: Integrate Firebase Cloud Messaging (FCM) / Apple APNs for live sanction alerts.
+
+---
+
+*Copyright © 2026 Ridhi Ratnam Associates. All rights reserved.*

@@ -48,7 +48,7 @@ export const AnimatedButton: React.FC<AnimatedButtonProps> = ({
         return {
           container: styles.blackBtn,
           text: styles.blackBtnText,
-          chevronColor: '#FFFFFF',
+          chevronColor: colors.white,
         };
       case 'white':
         return {
@@ -60,13 +60,13 @@ export const AnimatedButton: React.FC<AnimatedButtonProps> = ({
         return {
           container: styles.goldBtn,
           text: styles.goldBtnText,
-          chevronColor: '#1A1405',
+          chevronColor: colors.textPrimary,
         };
       case 'mint':
         return {
           container: styles.mintBtn,
           text: styles.mintBtnText,
-          chevronColor: '#0A2521',
+          chevronColor: colors.textPrimary,
         };
       case 'dark':
         return {
@@ -110,7 +110,7 @@ export const AnimatedButton: React.FC<AnimatedButtonProps> = ({
       {loading ? (
         <ActivityIndicator
           size="small"
-          color={variant === 'black' ? '#FFFFFF' : colors.textDark}
+          color={variant === 'black' ? colors.white : colors.textDark}
         />
       ) : (
         <View style={styles.contentRow}>
@@ -186,22 +186,22 @@ const styles = StyleSheet.create({
   // Shapes.inc signature primary black button
   blackBtn: {
     backgroundColor: colors.primaryBlack,
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.06,
     shadowRadius: 6,
     elevation: 1,
   },
   blackBtnText: {
-    color: '#FFFFFF',
+    color: colors.white,
   },
 
   // Clean secondary white button with subtle border
   whiteBtn: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.white,
     borderWidth: 1.5,
-    borderColor: '#E2E5E9',
-    shadowColor: '#000',
+    borderColor: colors.borderMedium,
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.03,
     shadowRadius: 4,
@@ -213,34 +213,34 @@ const styles = StyleSheet.create({
 
   goldBtn: {
     backgroundColor: colors.brandGold,
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.08,
     shadowRadius: 6,
     elevation: 1,
   },
   goldBtnText: {
-    color: '#130E02',
+    color: colors.textPrimary,
   },
 
   mintBtn: {
-    backgroundColor: '#10B981',
+    backgroundColor: colors.accentGreen,
   },
   mintBtnText: {
-    color: '#FFFFFF',
+    color: colors.white,
   },
 
   darkBtn: {
-    backgroundColor: '#1E2026',
+    backgroundColor: colors.brandNavy,
   },
   darkBtnText: {
-    color: '#FFFFFF',
+    color: colors.white,
   },
 
   outlineBtn: {
-    backgroundColor: 'transparent',
+    backgroundColor: colors.transparent,
     borderWidth: 1.5,
-    borderColor: '#E2E5E9',
+    borderColor: colors.borderMedium,
   },
   outlineBtnText: {
     color: colors.textDark,

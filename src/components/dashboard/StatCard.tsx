@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { ApplicationStat } from '../../types/dashboard';
-import { useAppTheme } from '../../theme';
+import { useAppTheme, colors } from '../../theme';
 import {
   FilesIcon,
   ClockIcon,
@@ -31,39 +31,39 @@ export const StatCard: React.FC<StatCardProps> = ({ stat, onPress }) => {
     switch (rawVariant) {
       case 'pending':
         return {
-          icon: <ClockIcon size={16} color={isDark ? '#FBBF24' : '#D97706'} />,
-          iconBg: isDark ? '#45330D' : '#FEF3C7',
-          border: isDark ? '#B45309' : '#FDE68A',
-          valueColor: isDark ? '#FBBF24' : '#B45309',
-          badgeBg: isDark ? '#2E2208' : '#FFFBEB',
-          badgeText: isDark ? '#FDE68A' : '#92400E',
+          icon: <ClockIcon size={16} color={colors.brandGold} />,
+          iconBg: colors.brandGoldSoft,
+          border: colors.brandGoldLight,
+          valueColor: colors.statusPending,
+          badgeBg: colors.brandGoldSoft,
+          badgeText: colors.brandGoldDark,
         };
       case 'approved':
         return {
-          icon: <CheckIcon size={16} color={isDark ? '#34D399' : '#059669'} />,
-          iconBg: isDark ? '#0F3E2C' : '#D1FAE5',
-          border: isDark ? '#065F46' : '#A7F3D0',
-          valueColor: isDark ? '#34D399' : '#047857',
-          badgeBg: isDark ? '#06281D' : '#ECFDF5',
-          badgeText: isDark ? '#A7F3D0' : '#065F46',
+          icon: <CheckIcon size={16} color={colors.statusApproved} />,
+          iconBg: colors.statusApprovedBg,
+          border: colors.statusApprovedBorder,
+          valueColor: colors.statusApproved,
+          badgeBg: colors.statusApprovedBg,
+          badgeText: colors.statusApproved,
         };
       case 'rejected':
         return {
-          icon: <CrossIcon size={16} color={isDark ? '#F87171' : '#DC2626'} />,
-          iconBg: isDark ? '#451A1A' : '#FEE2E2',
-          border: isDark ? '#B91C1C' : '#FECACA',
-          valueColor: isDark ? '#F87171' : '#B91C1C',
-          badgeBg: isDark ? '#2D1515' : '#FEF2F2',
-          badgeText: isDark ? '#FECACA' : '#991B1B',
+          icon: <CrossIcon size={16} color={colors.statusRejected} />,
+          iconBg: colors.statusRejectedBg,
+          border: colors.statusRejectedBorder,
+          valueColor: colors.statusRejected,
+          badgeBg: colors.statusRejectedBg,
+          badgeText: colors.statusRejected,
         };
       case 'total':
       default:
         return {
           icon: <FilesIcon size={16} color={colors.textPrimary} />,
-          iconBg: isDark ? colors.cardSecondary : '#F1F5F9',
+          iconBg: colors.slate100,
           border: colors.cardBorder,
           valueColor: colors.textPrimary,
-          badgeBg: isDark ? colors.cardSecondary : '#F8FAFC',
+          badgeBg: colors.slate50,
           badgeText: colors.textSecondary,
         };
     }
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     borderRadius: 22,
     padding: 14,
     borderWidth: 1,
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.05,
     shadowRadius: 8,

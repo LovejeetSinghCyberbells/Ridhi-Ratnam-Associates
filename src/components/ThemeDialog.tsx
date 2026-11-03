@@ -227,20 +227,20 @@ export const ThemeDialogProvider: React.FC<{ children: React.ReactNode }> = ({ c
       case 'destructive':
         return (
           <View style={[styles.iconCircle, styles.iconCircleDestructive]}>
-            <LogOutIcon size={22} color="#DC2626" />
+            <LogOutIcon size={22} color={colors.error} />
           </View>
         );
       case 'success':
         return (
           <View style={[styles.iconCircle, styles.iconCircleSuccess]}>
-            <CheckIcon size={22} color="#10B981" />
+            <CheckIcon size={22} color={colors.success} />
           </View>
         );
       case 'warning':
       case 'error':
         return (
           <View style={[styles.iconCircle, styles.iconCircleWarning]}>
-            <AlertCircleIcon size={22} color="#B45309" />
+            <AlertCircleIcon size={22} color={colors.statusPending} />
           </View>
         );
       case 'phone':
@@ -258,7 +258,7 @@ export const ThemeDialogProvider: React.FC<{ children: React.ReactNode }> = ({ c
       case 'security':
         return (
           <View style={[styles.iconCircle, styles.iconCircleSecurity]}>
-            <ShieldIcon size={22} color="#CDA148" />
+            <ShieldIcon size={22} color={colors.brandGold} />
           </View>
         );
       default:
@@ -307,11 +307,11 @@ export const ThemeDialogProvider: React.FC<{ children: React.ReactNode }> = ({ c
               onPress={hideDialog}
               style={[
                 styles.closeCrossBtn,
-                { backgroundColor: isDark ? themeColors.cardSecondary : '#F1F5F9' },
+                { backgroundColor: colors.slate100 },
               ]}
               accessibilityLabel="Close dialog"
             >
-              <CrossIcon size={12} color={isDark ? '#94A3B8' : '#64748B'} />
+              <CrossIcon size={12} color={colors.textSecondary} />
             </TouchableOpacity>
 
             {/* Top Themed Icon */}
@@ -323,7 +323,7 @@ export const ThemeDialogProvider: React.FC<{ children: React.ReactNode }> = ({ c
                 style={[
                   styles.badgeWrapper,
                   {
-                    backgroundColor: isDark ? themeColors.cardSecondary : '#F8FAFC',
+                    backgroundColor: colors.slate50,
                     borderColor: themeColors.cardBorder,
                   },
                 ]}
@@ -373,7 +373,7 @@ export const ThemeDialogProvider: React.FC<{ children: React.ReactNode }> = ({ c
                       isCancel && [
                         styles.cancelButton,
                         {
-                          backgroundColor: isDark ? themeColors.cardSecondary : '#F1F5F9',
+                          backgroundColor: colors.slate100,
                           borderColor: themeColors.cardBorder,
                         },
                       ],
@@ -381,7 +381,7 @@ export const ThemeDialogProvider: React.FC<{ children: React.ReactNode }> = ({ c
                       isPrimary && [
                         styles.primaryButton,
                         {
-                          backgroundColor: isDark ? colors.brandGold : colors.topBarBlack,
+                          backgroundColor: colors.topBarBlack,
                         },
                       ],
                     ]}
@@ -389,9 +389,9 @@ export const ThemeDialogProvider: React.FC<{ children: React.ReactNode }> = ({ c
                     <Text
                       style={[
                         styles.actionButtonText,
-                        isCancel && [styles.cancelButtonText, { color: isDark ? '#CBD5E1' : '#475569' }],
+                        isCancel && [styles.cancelButtonText, { color: colors.slate600 }],
                         isDestructive && styles.destructiveButtonText,
-                        isPrimary && [styles.primaryButtonText, { color: isDark ? '#012655' : '#FFFFFF' }],
+                        isPrimary && [styles.primaryButtonText, { color: colors.white }],
                       ]}
                     >
                       {btn.text || 'Confirm'}
@@ -412,7 +412,7 @@ const { width } = Dimensions.get('window');
 const styles = StyleSheet.create({
   modalBackdrop: {
     flex: 1,
-    backgroundColor: 'rgba(13, 14, 18, 0.65)',
+    backgroundColor: colors.overlay,
     justifyContent: 'center',
     alignItems: 'center',
     padding: spacing.xl,
@@ -426,15 +426,15 @@ const styles = StyleSheet.create({
   },
   dialogCard: {
     width: Math.min(width - 40, 360),
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.white,
     borderRadius: 28,
     paddingTop: 24,
     paddingBottom: 22,
     paddingHorizontal: 22,
     alignItems: 'center',
     borderWidth: 1.5,
-    borderColor: '#E8EAED',
-    shadowColor: '#000',
+    borderColor: colors.borderMedium,
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.08,
     shadowRadius: 14,
@@ -447,7 +447,7 @@ const styles = StyleSheet.create({
     width: 28,
     height: 28,
     borderRadius: 14,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: colors.slate100,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -463,38 +463,38 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
   },
   iconCircleDestructive: {
-    backgroundColor: '#FEF2F2',
-    borderColor: '#FECACA',
+    backgroundColor: colors.statusRejectedBg,
+    borderColor: colors.statusRejectedBorder,
   },
   iconCircleSuccess: {
-    backgroundColor: '#ECFDF5',
-    borderColor: '#A7F3D0',
+    backgroundColor: colors.statusApprovedBg,
+    borderColor: colors.statusApprovedBorder,
   },
   iconCircleWarning: {
-    backgroundColor: '#FEF3C7',
-    borderColor: '#FDE68A',
+    backgroundColor: colors.statusPendingBg,
+    borderColor: colors.statusPendingBorder,
   },
   iconCircleSecurity: {
-    backgroundColor: '#FFFBEB',
-    borderColor: '#FEF3C7',
+    backgroundColor: colors.statusPendingBg,
+    borderColor: colors.statusPendingBorder,
   },
   iconCircleNeutral: {
-    backgroundColor: '#F1F5F9',
-    borderColor: '#E2E8F0',
+    backgroundColor: colors.slate100,
+    borderColor: colors.border,
   },
   badgeWrapper: {
     paddingHorizontal: 10,
     paddingVertical: 3,
     borderRadius: 8,
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.slate50,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
     marginBottom: 8,
   },
   badgeText: {
     fontSize: 9.5,
     fontWeight: '800',
-    color: '#CDA148',
+    color: colors.brandGold,
     letterSpacing: 0.8,
   },
   dialogTitle: {
@@ -508,7 +508,7 @@ const styles = StyleSheet.create({
   },
   dialogMessage: {
     fontSize: 13,
-    color: '#475569',
+    color: colors.slate600,
     textAlign: 'center',
     lineHeight: 18,
     marginBottom: 20,
@@ -537,34 +537,34 @@ const styles = StyleSheet.create({
   },
   primaryButton: {
     backgroundColor: colors.topBarBlack,
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.12,
     shadowRadius: 8,
     elevation: 3,
   },
   primaryButtonText: {
-    color: '#FFFFFF',
+    color: colors.white,
     fontSize: 13.5,
     fontWeight: '700',
   },
   cancelButton: {
-    backgroundColor: '#F1F5F9',
+    backgroundColor: colors.slate100,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
   },
   cancelButtonText: {
-    color: '#475569',
+    color: colors.slate600,
     fontSize: 13.5,
     fontWeight: '700',
   },
   destructiveButton: {
-    backgroundColor: '#FEF2F2',
+    backgroundColor: colors.statusRejectedBg,
     borderWidth: 1.5,
-    borderColor: '#FECACA',
+    borderColor: colors.statusRejectedBorder,
   },
   destructiveButtonText: {
-    color: '#DC2626',
+    color: colors.error,
     fontSize: 13.5,
     fontWeight: '800',
   },

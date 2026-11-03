@@ -73,13 +73,13 @@ export const ApplicationDetailScreen: React.FC<ApplicationDetailScreenProps> = (
   const getStatusStyle = (status: ApplicationStatus) => {
     switch (status) {
       case 'Approved':
-        return { bg: '#ECFDF5', border: '#A7F3D0', text: '#047857', dot: '#10B981' };
+        return { bg: colors.statusApprovedBg, border: colors.statusApprovedBorder, text: colors.statusApproved, dot: colors.statusApproved };
       case 'Rejected':
-        return { bg: '#FEF2F2', border: '#FECACA', text: '#B91C1C', dot: '#DC2626' };
+        return { bg: colors.statusRejectedBg, border: colors.statusRejectedBorder, text: colors.statusRejected, dot: colors.error };
       case 'Under Review':
-        return { bg: '#EFF6FF', border: '#BFDBFE', text: '#1D4ED8', dot: '#2563EB' };
+        return { bg: colors.clientSoftBg, border: colors.borderLight, text: colors.brandNavy, dot: colors.brandNavy };
       default:
-        return { bg: '#FFFBEB', border: '#FDE68A', text: '#B45309', dot: '#D97706' };
+        return { bg: colors.statusPendingBg, border: colors.statusPendingBorder, text: colors.statusPending, dot: colors.brandGold };
     }
   };
 
@@ -158,7 +158,7 @@ export const ApplicationDetailScreen: React.FC<ApplicationDetailScreenProps> = (
           style={styles.headerBackBtn}
           accessibilityLabel="Go back"
         >
-          <ChevronLeftIcon size={18} color="#FFFFFF" />
+          <ChevronLeftIcon size={18} color={colors.white} />
         </TouchableOpacity>
 
         <View style={styles.headerTitleBox}>
@@ -172,7 +172,7 @@ export const ApplicationDetailScreen: React.FC<ApplicationDetailScreenProps> = (
           style={styles.headerActionBtnDark}
           accessibilityLabel="Export Dossier PDF"
         >
-          <DownloadIcon size={16} color="#FFFFFF" />
+          <DownloadIcon size={16} color={colors.white} />
         </TouchableOpacity>
       </View>
 
@@ -219,7 +219,7 @@ export const ApplicationDetailScreen: React.FC<ApplicationDetailScreenProps> = (
             </View>
             <View style={styles.finCol}>
               <Text style={styles.finLabel}>EST. EMI</Text>
-              <Text style={[styles.finValue, { color: '#047857' }]}>
+              <Text style={[styles.finValue, { color: colors.statusApproved }]}>
                 {app.emiAmount || '₹16,250 / mo'}
               </Text>
             </View>
@@ -269,7 +269,7 @@ export const ApplicationDetailScreen: React.FC<ApplicationDetailScreenProps> = (
             <View style={styles.docsSummaryCard}>
               <View style={styles.docsSummaryTop}>
                 <View style={styles.shieldIconWrapper}>
-                  <ShieldIcon size={18} color="#047857" />
+                  <ShieldIcon size={18} color={colors.statusApproved} />
                 </View>
                 <View style={{ flex: 1, marginLeft: 10 }}>
                   <Text style={styles.docsSummaryTitle}>Document Verification Audit</Text>
@@ -306,7 +306,7 @@ export const ApplicationDetailScreen: React.FC<ApplicationDetailScreenProps> = (
                   <View key={doc.id} style={styles.docItemCard}>
                     <View style={styles.docTopRow}>
                       <View style={styles.docFileIcon}>
-                        <FileTextIcon size={18} color="#0D0E12" />
+                        <FileTextIcon size={18} color={colors.topBarBlack} />
                       </View>
 
                       <View style={styles.docInfoCol}>
@@ -328,11 +328,11 @@ export const ApplicationDetailScreen: React.FC<ApplicationDetailScreenProps> = (
                         ]}
                       >
                         {isVerified ? (
-                          <CheckIcon size={10} color="#047857" />
+                          <CheckIcon size={10} color={colors.statusApproved} />
                         ) : isFlagged ? (
-                          <AlertCircleIcon size={10} color="#B91C1C" />
+                          <AlertCircleIcon size={10} color={colors.statusRejected} />
                         ) : (
-                          <ClockIcon size={10} color="#1D4ED8" />
+                          <ClockIcon size={10} color={colors.brandNavy} />
                         )}
                         <Text
                           style={[
@@ -381,8 +381,8 @@ export const ApplicationDetailScreen: React.FC<ApplicationDetailScreenProps> = (
                           onPress={() => handleVerifyDocument(doc.id)}
                           style={[styles.docActionBtn, styles.docActionBtnVerify]}
                         >
-                          <CheckIcon size={12} color="#047857" />
-                          <Text style={[styles.docActionText, { color: '#047857' }]}>
+                          <CheckIcon size={12} color={colors.statusApproved} />
+                          <Text style={[styles.docActionText, { color: colors.statusApproved }]}>
                             Stamp & Verify
                           </Text>
                         </TouchableOpacity>
@@ -468,9 +468,9 @@ export const ApplicationDetailScreen: React.FC<ApplicationDetailScreenProps> = (
                     ]}
                   >
                     {check.passed ? (
-                      <CheckIcon size={10} color="#FFFFFF" />
+                      <CheckIcon size={10} color={colors.white} />
                     ) : (
-                      <CrossIcon size={10} color="#FFFFFF" />
+                      <CrossIcon size={10} color={colors.white} />
                     )}
                   </View>
 
@@ -491,7 +491,7 @@ export const ApplicationDetailScreen: React.FC<ApplicationDetailScreenProps> = (
             {app.status === 'Rejected' && app.rejectionReason && (
               <View style={styles.rejectionNoticeCard}>
                 <View style={styles.rejectionHeader}>
-                  <AlertCircleIcon size={16} color="#DC2626" />
+                  <AlertCircleIcon size={16} color={colors.error} />
                   <Text style={styles.rejectionTitle}>Underwriting Decline Rationale</Text>
                 </View>
                 <Text style={styles.rejectionText}>{app.rejectionReason}</Text>
@@ -503,7 +503,7 @@ export const ApplicationDetailScreen: React.FC<ApplicationDetailScreenProps> = (
               <Text style={styles.cardSectionTitle}>Client Identification & KYC</Text>
 
               <View style={styles.contactItem}>
-                <PhoneIcon size={16} color="#64748B" />
+                <PhoneIcon size={16} color={colors.slate500} />
                 <View style={{ flex: 1, marginLeft: 10 }}>
                   <Text style={styles.contactLabel}>Mobile Number</Text>
                   <Text style={styles.contactValue}>{app.clientPhone}</Text>
@@ -511,7 +511,7 @@ export const ApplicationDetailScreen: React.FC<ApplicationDetailScreenProps> = (
               </View>
 
               <View style={styles.contactItem}>
-                <MailIcon size={16} color="#64748B" />
+                <MailIcon size={16} color={colors.slate500} />
                 <View style={{ flex: 1, marginLeft: 10 }}>
                   <Text style={styles.contactLabel}>Email Address</Text>
                   <Text style={styles.contactValue}>{app.clientEmail}</Text>
@@ -519,7 +519,7 @@ export const ApplicationDetailScreen: React.FC<ApplicationDetailScreenProps> = (
               </View>
 
               <View style={styles.contactItem}>
-                <BuildingIcon size={16} color="#64748B" />
+                <BuildingIcon size={16} color={colors.slate500} />
                 <View style={{ flex: 1, marginLeft: 10 }}>
                   <Text style={styles.contactLabel}>Servicing Branch</Text>
                   <Text style={styles.contactValue}>
@@ -548,7 +548,7 @@ export const ApplicationDetailScreen: React.FC<ApplicationDetailScreenProps> = (
                     onPress={() => themeAlert('Dialing Advisor', `Connecting to ${app.agentAssigned?.phone}`)}
                     style={styles.callAdvisorBtn}
                   >
-                    <PhoneIcon size={16} color="#0D0E12" />
+                    <PhoneIcon size={16} color={colors.topBarBlack} />
                   </TouchableOpacity>
                 </View>
               </View>
@@ -585,7 +585,7 @@ export const ApplicationDetailScreen: React.FC<ApplicationDetailScreenProps> = (
                 variant="outline"
                 onPress={handleRejectApplication}
                 style={styles.secondaryAction}
-                textStyle={{ color: '#DC2626' }}
+                textStyle={{ color: colors.error }}
               />
             )}
           </View>
@@ -619,14 +619,14 @@ export const ApplicationDetailScreen: React.FC<ApplicationDetailScreenProps> = (
                 onPress={() => setSelectedDocForPreview(null)}
                 style={styles.previewClose}
               >
-                <CrossIcon size={14} color="#0D0E12" />
+                <CrossIcon size={14} color={colors.topBarBlack} />
               </TouchableOpacity>
             </View>
 
             {/* Simulated Verified Document Sheet */}
             <View style={styles.previewSheet}>
               <View style={styles.stampBadge}>
-                <CheckIcon size={14} color="#047857" />
+                <CheckIcon size={14} color={colors.statusApproved} />
                 <Text style={styles.stampText}>DIGITALLY VERIFIED</Text>
               </View>
 
@@ -694,7 +694,7 @@ const styles = StyleSheet.create({
   headerMainTitle: {
     fontSize: 19,
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: colors.white,
     letterSpacing: -0.3,
   },
   headerActionBtnDark: {
@@ -718,9 +718,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: spacing.lg,
     paddingBottom: 10,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderBottomWidth: 1,
-    borderBottomColor: '#E8EAED',
+    borderBottomColor: colors.borderMedium,
   },
   backButton: {
     flexDirection: 'row',
@@ -728,13 +728,13 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     paddingHorizontal: 10,
     borderRadius: borderRadius.pill,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: colors.slate100,
     gap: 4,
   },
   backText: {
     fontSize: 13,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   topCenterTitle: {
     alignItems: 'center',
@@ -742,19 +742,19 @@ const styles = StyleSheet.create({
   topCategory: {
     fontSize: 9.5,
     fontWeight: '800',
-    color: '#94A3B8',
+    color: colors.slate400,
     letterSpacing: 0.8,
   },
   topAppId: {
     fontSize: 14,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   exportBtn: {
     width: 36,
     height: 36,
     borderRadius: 18,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: colors.slate100,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -762,13 +762,13 @@ const styles = StyleSheet.create({
     paddingTop: 12,
   },
   heroCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     marginHorizontal: spacing.lg,
     borderRadius: 24,
     padding: 16,
     borderWidth: 1,
-    borderColor: '#E8EAED',
-    shadowColor: '#000',
+    borderColor: colors.borderMedium,
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.04,
     shadowRadius: 10,
@@ -784,7 +784,7 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48,
     borderRadius: 24,
-    backgroundColor: '#0D0E12',
+    backgroundColor: colors.topBarBlack,
     borderWidth: 1.5,
     borderColor: colors.brandGold,
     alignItems: 'center',
@@ -794,7 +794,7 @@ const styles = StyleSheet.create({
   avatarInitials: {
     fontSize: 16,
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: colors.white,
   },
   heroInfoBlock: {
     flex: 1,
@@ -802,17 +802,17 @@ const styles = StyleSheet.create({
   heroClientName: {
     fontSize: 17,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   heroLoanType: {
     fontSize: 12,
     fontWeight: '600',
-    color: '#64748B',
+    color: colors.slate500,
     marginTop: 1,
   },
   heroDate: {
     fontSize: 11,
-    color: '#94A3B8',
+    color: colors.slate400,
     marginTop: 2,
   },
   statusBadge: {
@@ -835,11 +835,11 @@ const styles = StyleSheet.create({
   },
   financialStrip: {
     flexDirection: 'row',
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.slate50,
     borderRadius: 16,
     padding: 12,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
   },
   finCol: {
     flex: 1,
@@ -847,23 +847,23 @@ const styles = StyleSheet.create({
   finLabel: {
     fontSize: 9,
     fontWeight: '700',
-    color: '#64748B',
+    color: colors.slate500,
     letterSpacing: 0.4,
     marginBottom: 2,
   },
   finAmount: {
     fontSize: 15,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   finValue: {
     fontSize: 12.5,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   tabsTrack: {
     flexDirection: 'row',
-    backgroundColor: '#E8EAED',
+    backgroundColor: colors.borderMedium,
     borderRadius: 16,
     padding: 3,
     marginHorizontal: spacing.lg,
@@ -877,8 +877,8 @@ const styles = StyleSheet.create({
     borderRadius: 13,
   },
   tabButtonActive: {
-    backgroundColor: '#FFFFFF',
-    shadowColor: '#000',
+    backgroundColor: colors.card,
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.06,
     shadowRadius: 4,
@@ -887,21 +887,21 @@ const styles = StyleSheet.create({
   tabButtonText: {
     fontSize: 11.5,
     fontWeight: '600',
-    color: '#64748B',
+    color: colors.slate500,
   },
   tabButtonTextActive: {
-    color: '#0D0E12',
+    color: colors.textPrimary,
     fontWeight: '800',
   },
   sectionContainer: {
     paddingHorizontal: spacing.lg,
   },
   docsSummaryCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderRadius: 20,
     padding: 14,
     borderWidth: 1,
-    borderColor: '#E8EAED',
+    borderColor: colors.borderMedium,
     marginBottom: 12,
   },
   docsSummaryTop: {
@@ -913,44 +913,44 @@ const styles = StyleSheet.create({
     width: 36,
     height: 36,
     borderRadius: 18,
-    backgroundColor: '#ECFDF5',
+    backgroundColor: colors.statusApprovedBg,
     alignItems: 'center',
     justifyContent: 'center',
   },
   docsSummaryTitle: {
     fontSize: 13.5,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   docsSummarySub: {
     fontSize: 11,
-    color: '#64748B',
+    color: colors.slate500,
     marginTop: 1,
   },
   docsPercentText: {
     fontSize: 16,
     fontWeight: '800',
-    color: '#047857',
+    color: colors.statusApproved,
   },
   docProgressBar: {
     height: 6,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: colors.slate100,
     borderRadius: 3,
     overflow: 'hidden',
   },
   docProgressFill: {
     height: '100%',
-    backgroundColor: '#10B981',
+    backgroundColor: colors.statusApproved,
   },
   docsList: {
     gap: 10,
   },
   docItemCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderRadius: 20,
     padding: 14,
     borderWidth: 1,
-    borderColor: '#E8EAED',
+    borderColor: colors.borderMedium,
   },
   docTopRow: {
     flexDirection: 'row',
@@ -960,7 +960,7 @@ const styles = StyleSheet.create({
     width: 36,
     height: 36,
     borderRadius: 18,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: colors.slate100,
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 10,
@@ -971,11 +971,11 @@ const styles = StyleSheet.create({
   docName: {
     fontSize: 13,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   docMeta: {
     fontSize: 10.5,
-    color: '#64748B',
+    color: colors.slate500,
     marginTop: 2,
   },
   docBadge: {
@@ -988,29 +988,29 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   docBadgeVerified: {
-    backgroundColor: '#ECFDF5',
-    borderColor: '#A7F3D0',
+    backgroundColor: colors.statusApprovedBg,
+    borderColor: colors.statusApprovedBorder,
   },
   docBadgeReview: {
-    backgroundColor: '#EFF6FF',
-    borderColor: '#BFDBFE',
+    backgroundColor: colors.clientSoftBg,
+    borderColor: colors.borderLight,
   },
   docBadgeFlagged: {
-    backgroundColor: '#FEF2F2',
-    borderColor: '#FECACA',
+    backgroundColor: colors.statusRejectedBg,
+    borderColor: colors.statusRejectedBorder,
   },
   docBadgeText: {
     fontSize: 10,
     fontWeight: '700',
   },
   docBadgeTextVerified: {
-    color: '#047857',
+    color: colors.statusApproved,
   },
   docBadgeTextReview: {
-    color: '#1D4ED8',
+    color: colors.brandNavy,
   },
   docBadgeTextFlagged: {
-    color: '#B91C1C',
+    color: colors.statusRejected,
   },
   docSourceRow: {
     flexDirection: 'row',
@@ -1018,28 +1018,28 @@ const styles = StyleSheet.create({
     marginTop: 8,
     paddingTop: 8,
     borderTopWidth: 1,
-    borderTopColor: '#F1F3F6',
+    borderTopColor: colors.borderLight,
     gap: 4,
   },
   docSourceLabel: {
     fontSize: 10,
     fontWeight: '700',
-    color: '#94A3B8',
+    color: colors.slate400,
   },
   docSourceText: {
     fontSize: 10.5,
     fontWeight: '600',
-    color: '#475569',
+    color: colors.slate600,
   },
   docNotesBox: {
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.slate50,
     padding: 8,
     borderRadius: 10,
     marginTop: 6,
   },
   docNotesText: {
     fontSize: 11,
-    color: '#475569',
+    color: colors.slate600,
   },
   docActionsRow: {
     flexDirection: 'row',
@@ -1051,27 +1051,27 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#F1F5F9',
+    backgroundColor: colors.slate100,
     paddingVertical: 7,
     borderRadius: 12,
     gap: 4,
   },
   docActionBtnVerify: {
-    backgroundColor: '#ECFDF5',
+    backgroundColor: colors.statusApprovedBg,
     borderWidth: 1,
-    borderColor: '#A7F3D0',
+    borderColor: colors.statusApprovedBorder,
   },
   docActionText: {
     fontSize: 11.5,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   recommendationCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderRadius: 22,
     padding: 16,
     borderWidth: 1,
-    borderColor: '#E8EAED',
+    borderColor: colors.borderMedium,
     marginBottom: 12,
   },
   recHeaderRow: {
@@ -1081,46 +1081,46 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   recBadge: {
-    backgroundColor: '#ECFDF5',
+    backgroundColor: colors.statusApprovedBg,
     paddingVertical: 3,
     paddingHorizontal: 8,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#A7F3D0',
+    borderColor: colors.statusApprovedBorder,
   },
   recBadgeText: {
     fontSize: 10,
     fontWeight: '800',
-    color: '#047857',
+    color: colors.statusApproved,
   },
   recScoreLabel: {
     fontSize: 9.5,
     fontWeight: '700',
-    color: '#94A3B8',
+    color: colors.slate400,
     letterSpacing: 0.5,
   },
   recHeadline: {
     fontSize: 16,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     marginBottom: 12,
   },
   cibilMeterRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.slate50,
     padding: 12,
     borderRadius: 16,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
   },
   cibilScoreCircle: {
     width: 60,
     height: 60,
     borderRadius: 30,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderWidth: 3,
-    borderColor: '#10B981',
+    borderColor: colors.statusApproved,
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 12,
@@ -1128,12 +1128,12 @@ const styles = StyleSheet.create({
   cibilScoreNumber: {
     fontSize: 18,
     fontWeight: '900',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   cibilScoreGrade: {
     fontSize: 9,
     fontWeight: '800',
-    color: '#047857',
+    color: colors.statusApproved,
   },
   cibilAnalysisCol: {
     flex: 1,
@@ -1141,26 +1141,26 @@ const styles = StyleSheet.create({
   cibilDetailTitle: {
     fontSize: 12,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   cibilDetailText: {
     fontSize: 11,
-    color: '#64748B',
+    color: colors.slate500,
     lineHeight: 15,
     marginTop: 2,
   },
   ratiosGridCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderRadius: 22,
     padding: 16,
     borderWidth: 1,
-    borderColor: '#E8EAED',
+    borderColor: colors.borderMedium,
     marginBottom: 12,
   },
   cardSectionTitle: {
     fontSize: 11,
     fontWeight: '800',
-    color: '#64748B',
+    color: colors.slate500,
     textTransform: 'uppercase',
     letterSpacing: 0.6,
     marginBottom: 10,
@@ -1171,34 +1171,34 @@ const styles = StyleSheet.create({
   },
   ratioBox: {
     flex: 1,
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.slate50,
     padding: 10,
     borderRadius: 14,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
   },
   ratioLabel: {
     fontSize: 9,
     fontWeight: '700',
-    color: '#94A3B8',
+    color: colors.slate400,
     letterSpacing: 0.4,
   },
   ratioValue: {
     fontSize: 16,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     marginVertical: 2,
   },
   ratioSub: {
     fontSize: 10,
-    color: '#64748B',
+    color: colors.slate500,
   },
   checklistCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderRadius: 22,
     padding: 16,
     borderWidth: 1,
-    borderColor: '#E8EAED',
+    borderColor: colors.borderMedium,
     marginBottom: 12,
   },
   checkItemRow: {
@@ -1216,10 +1216,10 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   checkDotPass: {
-    backgroundColor: '#10B981',
+    backgroundColor: colors.statusApproved,
   },
   checkDotFail: {
-    backgroundColor: '#DC2626',
+    backgroundColor: colors.error,
   },
   checkInfoCol: {
     flex: 1,
@@ -1227,19 +1227,19 @@ const styles = StyleSheet.create({
   checkItemTitle: {
     fontSize: 12.5,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   checkItemDesc: {
     fontSize: 11,
-    color: '#64748B',
+    color: colors.slate500,
     marginTop: 1,
   },
   rejectionNoticeCard: {
-    backgroundColor: '#FEF2F2',
+    backgroundColor: colors.statusRejectedBg,
     borderRadius: 18,
     padding: 14,
     borderWidth: 1,
-    borderColor: '#FECACA',
+    borderColor: colors.statusRejectedBorder,
     marginBottom: 12,
   },
   rejectionHeader: {
@@ -1251,19 +1251,19 @@ const styles = StyleSheet.create({
   rejectionTitle: {
     fontSize: 12,
     fontWeight: '800',
-    color: '#B91C1C',
+    color: colors.statusRejected,
   },
   rejectionText: {
     fontSize: 12,
-    color: '#7F1D1D',
+    color: colors.statusRejected,
     lineHeight: 17,
   },
   contactCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderRadius: 22,
     padding: 16,
     borderWidth: 1,
-    borderColor: '#E8EAED',
+    borderColor: colors.borderMedium,
     marginBottom: 12,
   },
   contactItem: {
@@ -1274,80 +1274,80 @@ const styles = StyleSheet.create({
   contactLabel: {
     fontSize: 10,
     fontWeight: '600',
-    color: '#94A3B8',
+    color: colors.slate400,
   },
   contactValue: {
     fontSize: 13,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     marginTop: 1,
   },
   advisorCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderRadius: 22,
     padding: 16,
     borderWidth: 1,
-    borderColor: '#E8EAED',
+    borderColor: colors.borderMedium,
     marginBottom: 12,
   },
   advisorInner: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.slate50,
     padding: 12,
     borderRadius: 16,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
   },
   advisorAvatar: {
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#0D0E12',
+    backgroundColor: colors.topBarBlack,
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 10,
   },
   advisorAvatarText: {
-    color: '#FFFFFF',
+    color: colors.white,
     fontSize: 14,
     fontWeight: '800',
   },
   advisorName: {
     fontSize: 13.5,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   advisorId: {
     fontSize: 11,
-    color: '#64748B',
+    color: colors.slate500,
     marginTop: 1,
   },
   advisorPhone: {
     fontSize: 11,
-    color: '#94A3B8',
+    color: colors.slate400,
   },
   callAdvisorBtn: {
     width: 38,
     height: 38,
     borderRadius: 19,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderWidth: 1,
-    borderColor: '#CBD5E1',
+    borderColor: colors.slate300,
     alignItems: 'center',
     justifyContent: 'center',
   },
   notesCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderRadius: 20,
     padding: 16,
     borderWidth: 1,
-    borderColor: '#E8EAED',
+    borderColor: colors.borderMedium,
     marginBottom: 12,
   },
   notesBody: {
     fontSize: 12.5,
-    color: '#475569',
+    color: colors.slate600,
     lineHeight: 18,
   },
   bottomBar: {
@@ -1355,12 +1355,12 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderTopWidth: 1,
-    borderTopColor: '#E8EAED',
+    borderTopColor: colors.borderMedium,
     paddingHorizontal: spacing.lg,
     paddingTop: 10,
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: -4 },
     shadowOpacity: 0.05,
     shadowRadius: 8,
@@ -1378,7 +1378,7 @@ const styles = StyleSheet.create({
   },
   secondaryAction: {
     flex: 1,
-    borderColor: '#DC2626',
+    borderColor: colors.error,
   },
   previewOverlay: {
     flex: 1,
@@ -1389,7 +1389,7 @@ const styles = StyleSheet.create({
   },
   previewBox: {
     width: '100%',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderRadius: 24,
     padding: 20,
   },
@@ -1402,37 +1402,37 @@ const styles = StyleSheet.create({
   previewCategory: {
     fontSize: 9.5,
     fontWeight: '800',
-    color: '#94A3B8',
+    color: colors.slate400,
     letterSpacing: 0.6,
   },
   previewTitle: {
     fontSize: 16,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     marginTop: 2,
   },
   previewClose: {
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: colors.slate100,
     alignItems: 'center',
     justifyContent: 'center',
   },
   previewSheet: {
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.slate50,
     borderRadius: 18,
     padding: 16,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
     alignItems: 'center',
   },
   stampBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#ECFDF5',
+    backgroundColor: colors.statusApprovedBg,
     borderWidth: 1,
-    borderColor: '#A7F3D0',
+    borderColor: colors.statusApprovedBorder,
     paddingVertical: 4,
     paddingHorizontal: 10,
     borderRadius: 10,
@@ -1442,38 +1442,38 @@ const styles = StyleSheet.create({
   stampText: {
     fontSize: 10,
     fontWeight: '800',
-    color: '#047857',
+    color: colors.statusApproved,
     letterSpacing: 0.5,
   },
   previewDocFile: {
     fontSize: 14,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     textAlign: 'center',
   },
   previewDocSource: {
     fontSize: 11.5,
-    color: '#64748B',
+    color: colors.slate500,
     marginTop: 4,
     textAlign: 'center',
   },
   previewDocDate: {
     fontSize: 10.5,
-    color: '#94A3B8',
+    color: colors.slate400,
     marginTop: 4,
   },
   previewNotesBox: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderRadius: 10,
     padding: 10,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
     marginTop: 12,
     width: '100%',
   },
   previewNotesText: {
     fontSize: 11,
-    color: '#475569',
+    color: colors.slate600,
     lineHeight: 16,
   },
   testHidden: {

@@ -75,9 +75,9 @@ const styles = StyleSheet.create({
     opacity: 0.82,
   },
   unselectedChip: {
-    backgroundColor: '#F1F3F6',
+    backgroundColor: colors.pillInactiveBg,
     borderWidth: 1,
-    borderColor: '#E2E5E9',
+    borderColor: colors.pillInactiveBorder,
   },
   selectedChip: {
     backgroundColor: colors.primaryBlack,
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     color: colors.textSecondary,
   },
   selectedLabel: {
-    color: '#FFFFFF',
+    color: colors.white,
     fontWeight: '700',
   },
 });

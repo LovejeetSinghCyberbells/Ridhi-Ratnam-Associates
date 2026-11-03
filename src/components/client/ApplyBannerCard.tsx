@@ -25,7 +25,7 @@ export const ApplyBannerCard: React.FC<ApplyBannerCardProps> = ({ onPressApply }
           </View>
 
           <View style={styles.iconCircle}>
-            <TrendingUpIcon size={18} color="#0D0E12" />
+            <TrendingUpIcon size={18} color={colors.textPrimary} />
           </View>
         </View>
 
@@ -49,15 +49,15 @@ export const ApplyBannerCard: React.FC<ApplyBannerCardProps> = ({ onPressApply }
 
 const styles = StyleSheet.create({
   cardContainer: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     marginHorizontal: spacing.lg,
     marginTop: spacing.xs,
     marginBottom: spacing.md,
     borderRadius: 24,
     borderWidth: 1,
-    borderColor: '#E8EAED',
+    borderColor: colors.borderMedium,
     overflow: 'hidden',
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.04,
     shadowRadius: 10,
@@ -84,9 +84,9 @@ const styles = StyleSheet.create({
   shieldBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FEF9EE',
+    backgroundColor: colors.brandGoldSoft,
     borderWidth: 1,
-    borderColor: '#FDE68A',
+    borderColor: colors.brandGoldLight,
     paddingVertical: 3,
     paddingHorizontal: 8,
     borderRadius: 10,
@@ -95,29 +95,29 @@ const styles = StyleSheet.create({
   shieldText: {
     fontSize: 9.5,
     fontWeight: '800',
-    color: '#92400E',
+    color: colors.brandGoldDark,
     letterSpacing: 0.5,
   },
   iconCircle: {
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.slate50,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
     alignItems: 'center',
     justifyContent: 'center',
   },
   heading: {
     fontSize: 18,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     letterSpacing: -0.3,
     marginBottom: 6,
   },
   description: {
     fontSize: 13,
-    color: '#64748B',
+    color: colors.slate500,
     lineHeight: 18,
     marginBottom: 16,
   },

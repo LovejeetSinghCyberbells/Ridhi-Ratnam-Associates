@@ -141,35 +141,35 @@ export const NotificationScreen: React.FC<NotificationScreenProps> = ({
     switch (type) {
       case 'approval':
         return {
-          icon: <CheckIcon size={14} color="#047857" />,
-          bg: '#ECFDF5',
-          border: '#A7F3D0',
+          icon: <CheckIcon size={14} color={colors.statusApproved} />,
+          bg: colors.statusApprovedBg,
+          border: colors.statusApprovedBorder,
           badgeText: 'APPROVAL',
-          badgeColor: '#047857',
+          badgeColor: colors.statusApproved,
         };
       case 'review':
         return {
-          icon: <ClockIcon size={14} color="#1D4ED8" />,
-          bg: '#EFF6FF',
-          border: '#BFDBFE',
+          icon: <ClockIcon size={14} color={colors.statusReview} />,
+          bg: colors.statusReviewBg,
+          border: colors.statusReviewBorder,
           badgeText: 'REVIEW',
-          badgeColor: '#1D4ED8',
+          badgeColor: colors.statusReview,
         };
       case 'submission':
         return {
-          icon: <FilesIcon size={14} color="#B45309" />,
-          bg: '#FFFBEB',
-          border: '#FDE68A',
+          icon: <FilesIcon size={14} color={colors.statusPending} />,
+          bg: colors.statusPendingBg,
+          border: colors.statusPendingBorder,
           badgeText: 'NEW SUBMISSION',
-          badgeColor: '#B45309',
+          badgeColor: colors.statusPending,
         };
       default:
         return {
-          icon: <BellIcon size={14} color="#0D0E12" />,
-          bg: '#F1F5F9',
-          border: '#CBD5E1',
+          icon: <BellIcon size={14} color={colors.textPrimary} />,
+          bg: colors.slate100,
+          border: colors.borderDark,
           badgeText: 'SYSTEM',
-          badgeColor: '#475569',
+          badgeColor: colors.slate600,
         };
     }
   };
@@ -186,7 +186,7 @@ export const NotificationScreen: React.FC<NotificationScreenProps> = ({
           style={styles.headerBackBtn}
           accessibilityLabel="Go back"
         >
-          <ChevronLeftIcon size={18} color="#FFFFFF" />
+          <ChevronLeftIcon size={18} color={colors.white} />
         </TouchableOpacity>
 
         <View style={styles.headerTitleBox}>
@@ -220,7 +220,7 @@ export const NotificationScreen: React.FC<NotificationScreenProps> = ({
         <View style={styles.statusStrip}>
           <View style={styles.statusStripLeft}>
             <View style={styles.bellIconCircle}>
-              <BellIcon size={16} color="#0D0E12" />
+              <BellIcon size={16} color={colors.textPrimary} />
             </View>
             <View>
               <Text style={styles.statusStripTitle}>
@@ -326,7 +326,7 @@ export const NotificationScreen: React.FC<NotificationScreenProps> = ({
           ) : (
             <View style={styles.emptyContainer}>
               <View style={styles.emptyIconCircle}>
-                <BellIcon size={28} color="#94A3B8" />
+                <BellIcon size={28} color={colors.slate400} />
               </View>
               <Text style={styles.emptyTitle}>No Notifications</Text>
               <Text style={styles.emptySub}>
@@ -386,7 +386,7 @@ const styles = StyleSheet.create({
   headerMainTitle: {
     fontSize: 19,
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: colors.white,
     letterSpacing: -0.3,
   },
   markAllBtnDark: {
@@ -400,7 +400,7 @@ const styles = StyleSheet.create({
   markAllTextDark: {
     fontSize: 11.5,
     fontWeight: '700',
-    color: '#FFFFFF',
+    color: colors.white,
   },
   headerSpacer: {
     width: 40,
@@ -418,9 +418,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 20,
     paddingBottom: 14,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderBottomWidth: 1,
-    borderBottomColor: '#E2E8F0',
+    borderBottomColor: colors.border,
   },
   backButton: {
     flexDirection: 'row',
@@ -431,7 +431,7 @@ const styles = StyleSheet.create({
   backText: {
     fontSize: 14,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     marginLeft: 4,
   },
   topCenter: {
@@ -440,40 +440,40 @@ const styles = StyleSheet.create({
   topCategory: {
     fontSize: 9.5,
     fontWeight: '800',
-    color: '#64748B',
+    color: colors.textSecondary,
     letterSpacing: 0.8,
   },
   topTitle: {
     fontSize: 16,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     letterSpacing: -0.2,
   },
   markAllBtn: {
-    backgroundColor: '#F1F5F9',
+    backgroundColor: colors.slate100,
     paddingVertical: 6,
     paddingHorizontal: 12,
     borderRadius: 14,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
   },
   markAllText: {
     fontSize: 11.5,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   scrollContent: {
     paddingHorizontal: 20,
     paddingTop: 16,
   },
   statusStrip: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderRadius: 20,
     padding: 16,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
     marginBottom: 16,
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.03,
     shadowRadius: 6,
@@ -487,9 +487,9 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.slate50,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 12,
@@ -497,11 +497,11 @@ const styles = StyleSheet.create({
   statusStripTitle: {
     fontSize: 15,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
   statusStripSub: {
     fontSize: 12,
-    color: '#64748B',
+    color: colors.textSecondary,
     marginTop: 2,
     lineHeight: 16,
   },
@@ -513,42 +513,42 @@ const styles = StyleSheet.create({
     paddingVertical: 7,
     paddingHorizontal: 14,
     borderRadius: 20,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
   },
   filterChipActive: {
-    backgroundColor: '#0D0E12',
-    borderColor: '#0D0E12',
+    backgroundColor: colors.primaryBlack,
+    borderColor: colors.primaryBlack,
   },
   filterChipText: {
     fontSize: 12,
     fontWeight: '700',
-    color: '#64748B',
+    color: colors.textSecondary,
   },
   filterChipTextActive: {
-    color: '#FFFFFF',
+    color: colors.white,
   },
   listContainer: {
     gap: 12,
   },
   notifCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderRadius: 20,
     padding: 16,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
-    shadowColor: '#000',
+    borderColor: colors.border,
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.03,
     shadowRadius: 5,
     elevation: 2,
   },
   notifCardUnread: {
-    borderColor: '#CBD5E1',
+    borderColor: colors.borderDark,
     borderLeftWidth: 4,
-    borderLeftColor: '#0D0E12',
-    backgroundColor: '#FAFAFB',
+    borderLeftColor: colors.primaryBlack,
+    backgroundColor: colors.offWhiteGraySurface,
   },
   cardHeaderRow: {
     flexDirection: 'row',
@@ -581,54 +581,54 @@ const styles = StyleSheet.create({
   timeText: {
     fontSize: 11,
     fontWeight: '600',
-    color: '#94A3B8',
+    color: colors.slate400,
   },
   unreadDot: {
     width: 7,
     height: 7,
     borderRadius: 3.5,
-    backgroundColor: '#CDA148',
+    backgroundColor: colors.brandGold,
     marginLeft: 6,
   },
   notifTitle: {
     fontSize: 14.5,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     marginBottom: 5,
     lineHeight: 20,
   },
   notifMessage: {
     fontSize: 12.5,
-    color: '#475569',
+    color: colors.slate600,
     lineHeight: 18,
   },
   cardFooter: {
     marginTop: 10,
     paddingTop: 8,
     borderTopWidth: 1,
-    borderTopColor: '#F1F5F9',
+    borderTopColor: colors.slate100,
     flexDirection: 'row',
     justifyContent: 'flex-end',
   },
   tapActionText: {
     fontSize: 11,
     fontWeight: '600',
-    color: '#94A3B8',
+    color: colors.slate400,
   },
   emptyContainer: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.card,
     borderRadius: 20,
     padding: 32,
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.border,
     marginTop: 10,
   },
   emptyIconCircle: {
     width: 56,
     height: 56,
     borderRadius: 28,
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.slate50,
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 12,
@@ -636,12 +636,12 @@ const styles = StyleSheet.create({
   emptyTitle: {
     fontSize: 16,
     fontWeight: '800',
-    color: '#0D0E12',
+    color: colors.textPrimary,
     marginBottom: 6,
   },
   emptySub: {
     fontSize: 12.5,
-    color: '#64748B',
+    color: colors.textSecondary,
     textAlign: 'center',
     lineHeight: 18,
     marginBottom: 16,
@@ -650,12 +650,12 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 16,
     borderRadius: 14,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: colors.slate100,
   },
   resetFilterText: {
     fontSize: 12,
     fontWeight: '700',
-    color: '#0D0E12',
+    color: colors.textPrimary,
   },
 });
 
